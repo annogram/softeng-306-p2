@@ -10,6 +10,7 @@
 | Akram Darwazeh | @annogram | adar303 |
 | Taranpreet Kohli | @taranpreetkohli | tkoh638 |
 | Michael Kim | @ | xxx |
+| Nick Pollett | @Mungrel | npol807
 
 
 ## Overview
