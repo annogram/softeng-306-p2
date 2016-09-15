@@ -1,0 +1,62 @@
+#Game Concept Brainstorm
+
+A serious game or applied game is a game designed for a primary purpose other than pure entertainment. The "serious" adjective is generally prepended to refer to video games used by industries like defense, education, scientific exploration, health care, emergency management, city planning, engineering, and politics.
+
+Design a Serious Game to promote ONE of these skills:
+Empathy
+the ability to understand and share the feelings of another.
+Perspective Taking
+Perspective-taking is the act of viewing a situation or understanding of a concept from an alternate point-of-view.
+Collaboration (pro-social)
+relating to or denoting behaviour which is positive, helpful, and intended to promote social acceptance and friendship.
+Multiplayer game in the line of portal 2
+Two players, if you shrink, your team mate or grow
+Self-Regulation
+Self-regulation is when a person or group governs or polices itself without outside assistance or influence.
+Resources/control spending and or reserving stuff
+Cooking game or something
+Kingdom /FTL-like game 
+
+
+Considerations:
+Mobile or browser? Browser
+Genre? Local collaborative multi player
+Target market?
+Local Multiplayer or Single player? Not non-local multiplayer [Collab] Could make online
+2D over 3D
+Sidescroll or top-down
+SELF-REGULATION WINS VOTE X
+MULTIPLAYER COLLABORATIVE PUZZLE GAME
+Pinballs trying to escape a pinball machine
+Environmental via pinball machines
+Different pinballs with different powers from environment patches or something 
+Can go into circuits
+Level-based
+
+Basic Features (60%) – All Features Mandatory 
+● Design considerations and code quality (see on page 2) 
+● Central character (or avatar) design and functionality (or another related/corresponding feature if your design does not include a central character. This must be explained well in the project plan and highlighted in subsequent deliverables.) 
+● Various other characters with different mechanics (e.g. actions, speech, movement.) 
+● An engaging game world layout to go with the storyline (e.g. with scenes, objects, and actors) 
+● A scoring system (e.g. points/time etc.) 
+● A player life system where lives can be lost/gained/maxed out (e.g. 3 lives max) 
+● An achievement system (e.g. rewards unlocked based on player performance.) 
+● A welcome screen (e.g. select a game, return to welcome screen and ability to start again.) 
+● An exit screen (e.g. to congratulate player if finished all designed levels or to alert player to indicate game over.) 
+● Pre­designed, different levels of complexity Version 2.0 4/09/2016 
+● A clear game objective and level objectives (e.g. to get to the end of the level or get 100 points etc.) 
+● Some aspects of RNG (e.g. random item generation, enemy attacks except random level generation covered under ‘design features’) 
+
+Design Features (30%) – Select From Options Below 
+● Major UI redesign (e.g. customizable theme options for all art/graphics) [worth 10%] 
+● A high score screen (and a mechanism for storing those high scores) allowing users to enter their name for the high score function [worth 5%] 
+● Adding sound to the game and triggering on appropriate events [worth 10%] 
+● Local Multiplayer with Leaderboard [worth 10%] OR Online Multiplayer with Leaderboard [worth 20%] The local multi­player can be split screen or turn based (probably closer to turn based.) The leader board is for keeping track of the top scores or just the 1 highest score ­ so 1 leaderboard per game mode. 
+● Touch/Swipe/Tap functionality for those aiming to deploy to a smartphone: Make use of one sensor [worth 5%] or maximum two sensors [worth 10%] in meaningful ways, examples include but are not limited to: Accelerometer, Gyroscope, Camera, Proximity Sensor, Light Sensor. 
+● Level Generation (select one of two options): o Fixed level design (i.e. objects of fixed type are placed in fixed positions) with increasing levels of difficulty [worth 5%] OR o Random level generation (i.e. player gets ‘random’ level each time they play) with increasing difficulty and infinite number of levels till player loses all lives.[worth 10%] 
+● Monetisation ­ discuss in your report how your game/code design allows it to be modified to allow for multiple ways for the game to be monetised [worth 5%] 
+● Implement a 2.5D version of the game [worth 10%] 
+● Implement a 3D version of the game [worth 20%] 
+
+Advanced Features (10%) – Must Receive Approval 
+● All advanced feature ideas will need to be discussed and receive approval from lecturers beforehand. For example: o implement a turn­based online multiplayer with leader­board, including ability to challenge others and accept/reject challenge other’s challenges [worth 10%] 
