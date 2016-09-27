@@ -8,49 +8,67 @@ public class PlayerController : MonoBehaviour {
     public float jumpStrength;
     public LayerMask ground;
 
-    private Rigidbody2D rb;
-    private EdgeCollider2D feet;
-    private float moveX;
-    private float moveY;
+    private Rigidbody2D _rb;
+    private EdgeCollider2D _feet;
+    private float _moveX;
+    private float _moveY;
+    private bool _canJump;
+    private Vector2 _jump;
 
-    private bool canJump;
-    private Vector2 jump;
     // Use this for initialization
-    void Start () {
-        rb = GetComponent<Rigidbody2D>();
-        feet = GetComponent<EdgeCollider2D>();
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+    void Start() {
+        _rb = GetComponent<Rigidbody2D>();
+        _feet = GetComponent<EdgeCollider2D>();
+    }
+
+    // Update is called once per frame
+    void FixedUpdate() {
         this.movementManager();
         this.reset();
-	}
+    }
 
     // Helper method that deals with movement.
     private void movementManager() {
-        moveX = (rb.velocity.x >= maxSpeed) ? 0 : Input.GetAxis("Horizontal");
-        Vector2 forceX = new Vector2(moveX, 0f);
-        if (isGrounded()) {
-            moveY = Input.GetAxis("Vertical");
-            if (moveY > 0) {
-                jump = new Vector2(0f, jumpStrength);
-                rb.AddForce(jump, ForceMode2D.Impulse);
+        // Check if we need to do player 1 or player 2 controls
+        if (gameObject.name.Equals("Player")) {
+            // Horizontal movement
+            Vector2 forceX = Vector2.zero;
+            if (Input.GetKey(KeyCode.RightArrow)) {
+                forceX = new Vector2(1, 0f);
+            } else if (Input.GetKey(KeyCode.LeftArrow)) {
+                forceX = new Vector2(-1, 0f);
             }
+            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
+                Debug.Log(forceX * accl);
+                _rb.AddForce(forceX * accl);
+            }
+            if (isGrounded()) {
+                _moveY = Input.GetAxis("Vertical");
+                if (_moveY > 0) {
+                    _jump = new Vector2(0f, jumpStrength);
+                    _rb.AddForce(_jump, ForceMode2D.Impulse);
+                }
+            }
+        } else {
+
         }
+
+        //moveX = (Mathf.Abs(rb.velocity.x) >= maxSpeed) ? 0 : Input.GetAxis("Horizontal");
+        //Vector2 forceX = new Vector2(moveX, 0f);
+        
         // Horizontal movement to player object
-        rb.AddForce(forceX * accl);
+
     }
 
     #region Helper methods
     // Resets values after processing
     private void reset() {
-        
+
     }
-    
+
     private bool isGrounded() {
         // If its not in the jumping
-        if (rb.velocity.y <= 0 && feet.IsTouchingLayers(ground)) {
+        if (_rb.velocity.y <= 0 && _feet.IsTouchingLayers(ground)) {
             return true;
         }
         return false;
