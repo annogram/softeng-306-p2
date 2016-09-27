@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour {
     private bool isGrounded() {
         // If its not in the jumping
         if (rb.velocity.y <= 0 && feet.IsTouchingLayers(ground)) {
-            Debug.Log(jump.magnitude);
             return true;
         }
         return false;
