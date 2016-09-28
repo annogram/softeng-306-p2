@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpStrength;
     public LayerMask[] jumpableLayers;
 
-    //private bool _ball;
+    private bool _ball;
     private Rigidbody2D _rb;
     private EdgeCollider2D _feet;
     private float _moveX;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        //_ball = false;
+        _ball = false;
         _rb = GetComponent<Rigidbody2D>();
         _feet = GetComponent<EdgeCollider2D>();
     }
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
     // Helper method that deals with movement.
     private void movementManager() {
         // Check if we need to do player 1 or player 2 controls
-        if (gameObject.tag == "Player") {
+        if (gameObject.tag == "Player" && !_ball) {
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.RightArrow)) {
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
                 }
             }
-        } else if(gameObject.tag == "Player2") {
+        } else if(gameObject.tag == "Player2" && !_ball) {
             // Player 2 keys
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.D)) {
@@ -94,11 +94,21 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    //void OnCollisionEnter2D(Collision2D other) {
-    //    if (other.gameObject.tag == "Ramp") {
-    //        _ball = true;
-    //        _feet.enabled = false;
-    //    }
-    //}
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Ramp") {
+            _ball = true;
+            _feet.enabled = false;
+        } else {
+            _ball = false;
+            _feet.enabled = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.tag == "Ramp") {
+            _ball = false;
+            _feet.enabled = true;
+        }
+    }
     #endregion
 }
