@@ -29,6 +29,23 @@ public class PlayerController : MonoBehaviour {
         this.reset();
     }
 
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Ramp") {
+            _ball = true;
+            _feet.enabled = false;
+        } else {
+            _ball = false;
+            _feet.enabled = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.tag == "Ramp") {
+            _ball = false;
+            _feet.enabled = true;
+        }
+    }
+
     #region Helper methods
     // Helper method that deals with movement.
     private void movementManager() {
@@ -92,23 +109,6 @@ public class PlayerController : MonoBehaviour {
             }
         }
         return false;
-    }
-
-    void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Ramp") {
-            _ball = true;
-            _feet.enabled = false;
-        } else {
-            _ball = false;
-            _feet.enabled = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.tag == "Ramp") {
-            _ball = false;
-            _feet.enabled = true;
-        }
     }
     #endregion
 }
