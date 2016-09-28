@@ -482,7 +482,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2110404426}
   m_Layer: 8
-  m_Name: PlatForms
+  m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

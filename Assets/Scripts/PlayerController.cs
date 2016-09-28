@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour {
                 forceX = new Vector2(-1, 0f);
             }
             if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
-                Debug.Log(forceX * accl);
                 _rb.AddForce(forceX * accl);
             }
             if (isGrounded()) {
@@ -57,7 +56,6 @@ public class PlayerController : MonoBehaviour {
                 forceX = new Vector2(-1, 0f);
             }
             if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
-                Debug.Log(forceX * accl);
                 _rb.AddForce(forceX * accl);
             }
             if (isGrounded()) {
