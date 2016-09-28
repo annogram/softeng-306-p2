@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000014151031838}
+  m_IsPrefabParent: 1
+--- !u!1 &1000014151031838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010917984598}
+  - 33: {fileID: 33000011845350330}
+  - 23: {fileID: 23000010499283724}
+  - 114: {fileID: 114000010467166832}
+  - 68: {fileID: 68000010923124180}
+  m_Layer: 0
+  m_Name: Ramp
+  m_TagString: New Tag
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000010917984598
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014151031838}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7069883, w: -0.7072253}
+  m_LocalPosition: {x: 45.089348, y: 14.616325, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.981}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &23000010499283724
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014151031838}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &33000011845350330
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014151031838}
+  m_Mesh: {fileID: 0}
+--- !u!68 &68000010923124180
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014151031838}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: ac25468aff2222640bd936b1daa384aa, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: 3.3603094, y: 23.798256}
+  - {x: 5.0061345, y: 23.478031}
+  - {x: 6.660785, y: 23.033617}
+  - {x: 8.2802305, y: 22.518425}
+  - {x: 9.897855, y: 21.897346}
+  - {x: 11.374185, y: 21.1091}
+  - {x: 12.926437, y: 20.22696}
+  - {x: 14.341663, y: 19.244911}
+  - {x: 15.681877, y: 18.166756}
+  - {x: 16.924849, y: 16.997952}
+  - {x: 18.109108, y: 15.749238}
+  - {x: 19.186117, y: 14.417767}
+  - {x: 20.166386, y: 13.025706}
+  - {x: 21.026573, y: 11.525574}
+  - {x: 21.795444, y: 10.034417}
+  - {x: 22.48127, y: 8.396987}
+  - {x: 22.732147, y: 7.6371975}
+  - {x: 22.997845, y: 6.7799053}
+  - {x: 23.453457, y: 5.102953}
+  - {x: 23.767437, y: 3.4421654}
+  - {x: 23.947083, y: 1.696516}
+  - {x: 23.99545, y: 0.024057388}
+--- !u!114 &114000010467166832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014151031838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c3bf16b40f324041bbc5251ba0790ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SegmentCount: 20
+  OuterRadius: 25
+  InnerRadius: 24
+  DeltaStart: 0
+  DeltaSize: 82

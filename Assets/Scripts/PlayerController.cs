@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpStrength;
     public LayerMask[] jumpableLayers;
 
+    //private bool _ball;
     private Rigidbody2D _rb;
     private EdgeCollider2D _feet;
     private float _moveX;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        //_ball = false;
         _rb = GetComponent<Rigidbody2D>();
         _feet = GetComponent<EdgeCollider2D>();
     }
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour {
         this.reset();
     }
 
+    #region Helper methods
     // Helper method that deals with movement.
     private void movementManager() {
         // Check if we need to do player 1 or player 2 controls
@@ -73,7 +76,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    #region Helper methods
+    
     // Resets values after processing
     private void reset() {
 
@@ -90,5 +93,12 @@ public class PlayerController : MonoBehaviour {
         }
         return false;
     }
+
+    //void OnCollisionEnter2D(Collision2D other) {
+    //    if (other.gameObject.tag == "Ramp") {
+    //        _ball = true;
+    //        _feet.enabled = false;
+    //    }
+    //}
     #endregion
 }
