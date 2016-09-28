@@ -43,8 +43,7 @@ public class PlayerController : MonoBehaviour {
                 _rb.AddForce(forceX * accl);
             }
             if (isGrounded()) {
-                _moveY = Input.GetAxis("Vertical");
-                if (_moveY > 0) {
+				if (Input.GetKey(KeyCode.UpArrow)) {
                     _jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
                 }
@@ -53,8 +52,8 @@ public class PlayerController : MonoBehaviour {
             // Player 2 keys
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.D)) {
-                Vector2 forceX2 = new Vector2(1, 0f);
-            }else if (Input.GetKey(KeyCode.A)) {
+                forceX = new Vector2(1, 0f);
+            } else if (Input.GetKey(KeyCode.A)) {
                 forceX = new Vector2(-1, 0f);
             }
             if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
@@ -86,10 +85,10 @@ public class PlayerController : MonoBehaviour {
         // If its not in the jumping
         if (_rb.velocity.y <= 0) {
             foreach (LayerMask lm in jumpableLayers) {
-                if (_feet.IsTouchingLayers(lm)) break;
-                return false;
+				if (_feet.IsTouchingLayers (lm)) {
+					return true;
+				}
             }
-            return true;
         }
         return false;
     }

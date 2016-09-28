@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accl: 200
   maxSpeed: 300
-  jumpStrength: 100
+  jumpStrength: 75
   jumpableLayers:
   - serializedVersion: 2
     m_Bits: 256
