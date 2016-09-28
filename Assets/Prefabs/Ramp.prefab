@@ -25,7 +25,7 @@ GameObject:
   - 68: {fileID: 68000010923124180}
   m_Layer: 0
   m_Name: Ramp
-  m_TagString: New Tag
+  m_TagString: Ramp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
