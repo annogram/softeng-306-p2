@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
     public float accl;
     public float maxSpeed;
     public float jumpStrength;
-    public LayerMask ground;
+    public LayerMask[] jumpableLayers;
 
     private Rigidbody2D _rb;
     private EdgeCollider2D _feet;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
     // Helper method that deals with movement.
     private void movementManager() {
         // Check if we need to do player 1 or player 2 controls
-        if (gameObject.name.Equals("Player")) {
+        if (gameObject.tag == "Player") {
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.RightArrow)) {
@@ -49,8 +49,24 @@ public class PlayerController : MonoBehaviour {
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
                 }
             }
-        } else {
-
+        } else if(gameObject.tag == "Player2") {
+            // Player 2 keys
+            Vector2 forceX = Vector2.zero;
+            if (Input.GetKey(KeyCode.D)) {
+                Vector2 forceX2 = new Vector2(1, 0f);
+            }else if (Input.GetKey(KeyCode.A)) {
+                forceX = new Vector2(-1, 0f);
+            }
+            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
+                Debug.Log(forceX * accl);
+                _rb.AddForce(forceX * accl);
+            }
+            if (isGrounded()) {
+                if (Input.GetKey(KeyCode.W)) {
+                    Vector2 jump = new Vector2(0f, jumpStrength);
+                    _rb.AddForce(jump, ForceMode2D.Impulse);
+                }
+            }
         }
 
         //moveX = (Mathf.Abs(rb.velocity.x) >= maxSpeed) ? 0 : Input.GetAxis("Horizontal");
@@ -68,7 +84,11 @@ public class PlayerController : MonoBehaviour {
 
     private bool isGrounded() {
         // If its not in the jumping
-        if (_rb.velocity.y <= 0 && _feet.IsTouchingLayers(ground)) {
+        if (_rb.velocity.y <= 0) {
+            foreach (LayerMask lm in jumpableLayers) {
+                if (_feet.IsTouchingLayers(lm)) break;
+                return false;
+            }
             return true;
         }
         return false;
