@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012538350996}
   - 212: {fileID: 212000012418732920}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bumper_Active
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - 50: {fileID: 50000014053357390}
   - 60: {fileID: 60000012303085140}
   - 114: {fileID: 114000011494765150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bumper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e26574ed5a2a8a4999055de25787cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Power: 0
 --- !u!212 &212000012418732920
 SpriteRenderer:
   m_ObjectHideFlags: 1
