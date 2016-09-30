@@ -9,7 +9,7 @@
 | Gabriel Tiongco | @gtiongco95 | gtio848 |
 | Akram Darwazeh | @annogram | adar303 |
 | Taranpreet Kohli | @taranpreetkohli | tkoh638 |
-| Michael Kim | @ | xxx |
+| Michael Kim | @MichaelKim95 | kkim382 |
 | Nick Pollett | @Mungrel | npol807 |
 
 
