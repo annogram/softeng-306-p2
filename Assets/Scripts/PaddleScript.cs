@@ -1,37 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts;
+using System;
 
-public class PaddleScript : MonoBehaviour {
+public class PaddleScript : MonoBehaviour, IButtonPress {
 
 
     private HingeJoint2D hj;
+
+    public int HitPwr;
 
     // Use this for initialization
     void Start () {
         hj = GetComponent<HingeJoint2D>();
     }
 
-    public void ActivateMotor() {
+    protected void ActivateMotor() {
         hj.useMotor = true;
     }
 
-    public void DeactivateMotor() {
+    protected void DeactivateMotor() {
         hj.useMotor = false;
     }
 
-    public void ActivateLimits() {
+    protected void ActivateLimits() {
         hj.useLimits = true;
     }
 
-    public void DeactivateLimits() {
+    protected void DeactivateLimits() {
         hj.useLimits = false;
     }
 
-    public void SetAnglePosition(int pos) {
+    protected void SetAnglePosition(int pos) {
         SetLimits(pos, pos);
     }
 
-    public void SetSpeed(int speed) {
+    protected void SetSpeed(int speed) {
         JointMotor2D motor = new JointMotor2D();
         motor.motorSpeed = speed;
         motor.maxMotorTorque = hj.motor.maxMotorTorque;
@@ -39,7 +43,7 @@ public class PaddleScript : MonoBehaviour {
         hj.motor = motor;
     }
 
-    public void SetAcceleration(int acceleration) {
+    protected void SetAcceleration(int acceleration) {
         JointMotor2D motor = new JointMotor2D();
         motor.motorSpeed = hj.motor.motorSpeed;
         motor.maxMotorTorque = acceleration;
@@ -47,7 +51,7 @@ public class PaddleScript : MonoBehaviour {
         hj.motor = motor;
     }
 
-    public void SetLimits(int min, int max) {
+    protected void SetLimits(int min, int max) {
         if (min < 0 || min > 360 || max < 0 || max > 360) {
             return;
         }
@@ -60,4 +64,13 @@ public class PaddleScript : MonoBehaviour {
         hj.limits = jl;
     }
 
+    public bool Trigger() {
+        this.SetSpeed(-HitPwr);
+        return true;
+    }
+
+    public bool UnTrigger() {
+        this.SetSpeed(HitPwr);
+        return true;
+    }
 }
