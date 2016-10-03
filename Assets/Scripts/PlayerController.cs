@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float maxSpeed;
     public float jumpStrength;
     public LayerMask[] jumpableLayers;
-    public float airCtrl;
+    public float airealControl;
 
     private bool _ball;
     private Rigidbody2D _rb;
@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour {
     private float _moveY;
     private bool _canJump;
     private Vector2 _jump;
-    private float _airDrag = 1;
+    private float _currentAccl;
+    private float _currentMaxSpeed;
 
     // Use this for initialization
     void Start() {
@@ -62,17 +63,19 @@ public class PlayerController : MonoBehaviour {
             } else if (Input.GetKey(KeyCode.LeftArrow)) {
                 forceX = new Vector2(-1, 0f);
             }
-            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
-                _rb.AddForce(forceX * (accl * _airDrag));
+            if (Mathf.Abs(_rb.velocity.x) <= _currentMaxSpeed) {
+                _rb.AddForce(forceX * _currentAccl);
             }
             if (isGrounded()) {
-                _airDrag = 1;
+                _currentAccl = accl;
+                _currentMaxSpeed = maxSpeed;
                 if (Input.GetKey(KeyCode.UpArrow)) {
                     _jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
                 }
             } else {
-                _airDrag = 1/airCtrl;
+                _currentAccl = accl / airealControl;
+                _currentMaxSpeed = maxSpeed / airealControl;
             }
         } else if(gameObject.tag == "Player2" && !_ball) {
             // Player 2 keys
@@ -82,17 +85,19 @@ public class PlayerController : MonoBehaviour {
             } else if (Input.GetKey(KeyCode.A)) {
                 forceX = new Vector2(-1, 0f);
             }
-            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
-                _rb.AddForce(forceX * (accl * _airDrag));
+            if (Mathf.Abs(_rb.velocity.x) <= _currentMaxSpeed) {
+                _rb.AddForce(forceX * _currentAccl);
             }
             if (isGrounded()) {
-                _airDrag = 1;
+                _currentAccl = accl;
+                _currentMaxSpeed = maxSpeed;
                 if (Input.GetKey(KeyCode.W)) {
                     Vector2 jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(jump, ForceMode2D.Impulse);
                 }
             } else {
-                _airDrag = 1 / airCtrl;
+                _currentAccl = accl / airealControl;
+                _currentMaxSpeed = maxSpeed / airealControl;
             }
         }
 
