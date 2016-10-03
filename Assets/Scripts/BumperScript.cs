@@ -7,6 +7,7 @@ using System;
 public class BumperScript : MonoBehaviour, IButtonPress {
 
     public float Power;
+    public bool OverCharge;
 
     private Rigidbody2D _rb;
     private Sprite _currentSprite;
@@ -25,15 +26,19 @@ public class BumperScript : MonoBehaviour, IButtonPress {
         Rigidbody2D playerBody = other.gameObject.GetComponent<Rigidbody2D>();
         // We need to get the contact points -centre of bumper
         var pointOfContact = other.contacts.FirstOrDefault();
-        Vector2 launchTragectory = pointOfContact.normal.normalized;
-        playerBody.AddForce(launchTragectory * -Power);
+        Vector2 launchTragectory = (OverCharge) 
+            ? pointOfContact.normal.normalized * -(Power *3)
+            : pointOfContact.normal.normalized * -Power;
+        playerBody.AddForce(launchTragectory);
     }
 
-    public bool Trigger() {
-        throw new NotImplementedException();
+    public virtual bool Trigger() {
+        this.OverCharge = !this.OverCharge;
+        return true;
     }
 
-    public bool UnTrigger() {
-        throw new NotImplementedException();
+    public virtual bool UnTrigger() {
+        this.OverCharge = !this.OverCharge;
+        return true;
     }
 }
