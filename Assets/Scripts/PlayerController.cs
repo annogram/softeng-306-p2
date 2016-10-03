@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start() {
         _ball = false;
-        _currentAccl = accl;
-        _currentMaxSpeed = maxSpeed;
         _rb = GetComponent<Rigidbody2D>();
         _feet = GetComponent<EdgeCollider2D>();
     }

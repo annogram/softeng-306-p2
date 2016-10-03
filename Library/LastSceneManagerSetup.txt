@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/BumperTest.unity
+- path: Assets/Scenes/PlayerControlTest.unity
   isLoaded: 1
   isActive: 1
