@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Power: 5000
+  OverCharge: 0
 --- !u!212 &212000012451868170
 SpriteRenderer:
   m_ObjectHideFlags: 1

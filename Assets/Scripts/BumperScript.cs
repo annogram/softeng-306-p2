@@ -9,19 +9,15 @@ public class BumperScript : MonoBehaviour, IButtonPress {
     public float Power;
     public bool OverCharge;
 
-    private Rigidbody2D _rb;
-    private Sprite _currentSprite;
+    protected Rigidbody2D _rb;
+    protected Sprite _currentSprite;
     private Animator _anim;
 
 	// Use this for initialization
-	void Start () {
+	protected virtual void Start () {
         _rb = GetComponent<Rigidbody2D>();
         _currentSprite = GetComponent<Sprite>();
         _anim = GetComponent<Animator>();
-    }
-
-    void FixedUpdate() {
-
     }
     
     void OnCollisionEnter2D(Collision2D other) {

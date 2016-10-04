@@ -115,6 +115,8 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.W)) {
                     Vector2 jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(jump, ForceMode2D.Impulse);
+
+                    _anim.SetTrigger("Jump");
                 }
             } else {
                 _airDrag = 1 / airCtrl;
