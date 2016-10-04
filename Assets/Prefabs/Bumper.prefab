@@ -24,7 +24,7 @@ GameObject:
   - 114: {fileID: 114000011494765150}
   - 212: {fileID: 212000012451868170}
   - 95: {fileID: 95000012217624750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bumper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

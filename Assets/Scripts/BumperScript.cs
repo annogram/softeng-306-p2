@@ -8,6 +8,7 @@ public class BumperScript : MonoBehaviour, IButtonPress {
 
     public float Power;
     public bool OverCharge;
+    public float OverChargeMultiplier;
 
     protected Rigidbody2D _rb;
     protected Sprite _currentSprite;
@@ -26,7 +27,7 @@ public class BumperScript : MonoBehaviour, IButtonPress {
         // We need to get the contact points -centre of bumper
         var pointOfContact = other.contacts.FirstOrDefault();
         Vector2 launchTragectory = (OverCharge) 
-            ? pointOfContact.normal.normalized * -(Power *3)
+            ? pointOfContact.normal.normalized * -(Power * OverChargeMultiplier)
             : pointOfContact.normal.normalized * -Power;
         playerBody.AddForce(launchTragectory);
     }

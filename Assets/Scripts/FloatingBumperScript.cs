@@ -4,21 +4,25 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-class FloatingBumperScript : BumperScript{
+class FloatingBumperScript : BumperScript {
     public float ChangeHeight;
-    public float moveSpeed;
+    public float MoveSpeed;
 
     private bool _translate;
-    private Transform _startingPos;
+    private float _increment;
 
     protected override void Start() {
         base.Start();
-        this._startingPos = this.transform;
+        _increment = 0;
     }
 
     void FixedUpdate() {
-        if (_translate) {
-
+        if (_translate && _increment != ChangeHeight) {
+            this.transform.Translate(Vector2.up * MoveSpeed);
+            _increment++;
+        } else if(!_translate && _increment != 0) {
+            this.transform.Translate(Vector2.down * MoveSpeed);
+            _increment--;
         }
     }
 
@@ -26,5 +30,13 @@ class FloatingBumperScript : BumperScript{
         this._translate = true;
         return base.Trigger();
     }
+
+    public override bool UnTrigger() {
+        this._translate = false;
+        return base.UnTrigger();
+    }
+
+    #region Helper methods
+    #endregion
 }
 
