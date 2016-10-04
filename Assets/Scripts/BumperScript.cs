@@ -11,14 +11,17 @@ public class BumperScript : MonoBehaviour, IButtonPress {
 
     protected Rigidbody2D _rb;
     protected Sprite _currentSprite;
+    private Animator _anim;
 
 	// Use this for initialization
 	protected virtual void Start () {
         _rb = GetComponent<Rigidbody2D>();
         _currentSprite = GetComponent<Sprite>();
-	}
+        _anim = GetComponent<Animator>();
+    }
     
     void OnCollisionEnter2D(Collision2D other) {
+        _anim.SetTrigger("Hit");
         Rigidbody2D playerBody = other.gameObject.GetComponent<Rigidbody2D>();
         // We need to get the contact points -centre of bumper
         var pointOfContact = other.contacts.FirstOrDefault();
