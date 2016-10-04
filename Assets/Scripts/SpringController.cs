@@ -12,12 +12,14 @@ public class SpringController : MonoBehaviour {
     public float maxWidth = 30.0F;
     public Vector2 exitForce = new Vector2(2000F, 0);
 
+    private Rigidbody2D _springRb; 
     private float compressOrientation = 1.0F;
     private bool shouldCompress = false;
 
 	// Use this for initialization
 	void Start () {
         compressOrientation = compressLeft ? -1.0F : 1.0F;
+        _springRb = spring.GetComponent<Rigidbody2D>();
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -54,9 +56,7 @@ public class SpringController : MonoBehaviour {
         {
             Debug.Log("Expanding");
             spring.transform.localScale += new Vector3(compressFactor * 10, 0, 0);
-            spring.transform.position -= (new Vector3((compressFactor * 10 * -compressOrientation) / 2, 0, 0));
-            head.GetComponent<Rigidbody2D>().MovePosition(head.transform.position - new Vector3((compressFactor * 10 * -compressOrientation), 0, 0));
-            this.GetComponent<Rigidbody2D>().MovePosition(this.transform.position - new Vector3((compressFactor * 10 * -compressOrientation), 0, 0));
+            _springRb.MovePosition(spring.transform.position - (new Vector3((compressFactor * 10 * -compressOrientation) / 2, 0, 0)));
 
 
         }
@@ -69,9 +69,7 @@ public class SpringController : MonoBehaviour {
             Debug.Log("Compressing");
 
             spring.transform.localScale -= new Vector3(compressFactor, 0, 0);
-            spring.transform.position -= (new Vector3((compressFactor * compressOrientation) / 2, 0, 0));
-            head.GetComponent<Rigidbody2D>().MovePosition(head.transform.position - new Vector3((compressFactor * compressOrientation), 0, 0));
-            this.GetComponent<Rigidbody2D>().MovePosition(this.transform.position - new Vector3((compressFactor * compressOrientation), 0, 0));
+            _springRb.MovePosition(spring.transform.position - (new Vector3((compressFactor * compressOrientation) / 2, 0, 0)));
 
         }
 

@@ -143,8 +143,8 @@ GameObject:
   - 33: {fileID: 318864156}
   - 23: {fileID: 318864155}
   - 50: {fileID: 318864153}
-  - 255: {fileID: 318864157}
   - 61: {fileID: 318864152}
+  - 255: {fileID: 318864154}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -191,11 +191,28 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!255 &318864154
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 318864150}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 1888738098}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -0.6, y: -0.007999992}
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!23 &318864155
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -232,23 +249,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 318864150}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!255 &318864157
-FixedJoint2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 318864150}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 1888738098}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.6, y: -0.007999992}
-  m_DampingRatio: 0
-  m_Frequency: 0
 --- !u!1 &643534675
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spring: {fileID: 1888738096}
+  head: {fileID: 318864150}
   compressFactor: 0.075
   compressLeft: 1
   minWidth: 10
@@ -311,8 +312,8 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -18.037865, y: -3.784934}
-  - {x: -17.874449, y: 5.195812}
+  - {x: -17.69383, y: -2.8388443}
+  - {x: -17.874449, y: 5.281821}
 --- !u!50 &643534679
 Rigidbody2D:
   serializedVersion: 2
@@ -325,7 +326,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -553,7 +554,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
