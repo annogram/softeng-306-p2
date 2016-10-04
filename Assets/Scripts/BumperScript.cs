@@ -31,6 +31,12 @@ public class BumperScript : MonoBehaviour, IButtonPress {
         playerBody.AddForce(launchTragectory);
     }
 
+    protected virtual void Update()
+    {
+        _anim.SetBool("Overcharged", this.OverCharge);
+    }
+
+
     public virtual bool Trigger() {
         this.OverCharge = !this.OverCharge;
         return true;
