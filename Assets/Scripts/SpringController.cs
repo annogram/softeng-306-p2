@@ -35,21 +35,17 @@ public class SpringController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
 
-        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Player2") Debug.Log("collided by " + col.gameObject.tag);
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Player2")
         {
             pc = col.gameObject.GetComponent<PlayerController>();
-            Debug.Log("SETTING THE BOOL");
             shouldCompress = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Player2") Debug.Log("exited by " + col.gameObject.tag);
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Player2")
         {
-            Debug.Log("SETTING THE BOOL");
             shouldCompress = false;
             Vector2 currentExitForce = new Vector2((1 - (spring.transform.localScale.x - minWidth) / (maxWidth - minWidth)) * (exitForce.x), 0);
             if (pc.IsTouchingPlayer())
@@ -70,12 +66,7 @@ public class SpringController : MonoBehaviour {
     {
         if (spring.transform.localScale.x < maxWidth)
         {
-            Debug.Log("Expanding");
             spring.transform.localScale += cfVector * 10;
-            //spring.transform.localScale += new Vector3(compressFactor * 10, 0, 0);
-            //_springRb.MovePosition(spring.transform.position - (new Vector3((compressFactor * 10 * -compressOrientation) / 2, 0, 0)));
-            //_headRb.MovePosition(head.transform.position - (new Vector3((compressFactor * 10 * -compressOrientation), 0, 0)));
-            //_colRb.MovePosition(this.transform.position - (new Vector3((compressFactor * 10 * -compressOrientation), 0, 0)));
 
             spring.transform.position -= (cfVector * 10 * -compressOrientation / 2);
             head.transform.position -= (cfVector * 10 * - compressOrientation);
@@ -89,12 +80,7 @@ public class SpringController : MonoBehaviour {
 
         if (spring.transform.localScale.x > maxWidth - (maxWidth - minWidth) * bigCompressFactor)
         {
-            Debug.Log("Compressing");
             spring.transform.localScale -= cfVector;
-            //spring.transform.localScale -= new Vector3(compressFactor, 0, 0);
-            //_springRb.MovePosition(spring.transform.position - (new Vector3((compressFactor * compressOrientation) / 2, 0, 0)));
-            //_headRb.MovePosition(head.transform.position - (new Vector3((compressFactor * compressOrientation), 0, 0)));
-            //_colRb.MovePosition(this.transform.position - (new Vector3((compressFactor * compressOrientation), 0, 0)));
 
             spring.transform.position -= (cfVector * compressOrientation / 2);
             head.transform.position -= (cfVector * compressOrientation);
