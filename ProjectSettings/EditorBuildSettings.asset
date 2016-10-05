@@ -5,17 +5,29 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameScreens/Start.unity
   - enabled: 1
     path: Assets/Scenes/level1.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameScreens/AvatarSelectScreen.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameScreens/GameOverScreen.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameScreens/LevelSelectScreen.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameScreens/OptionsScreen.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameScreens/PauseScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/GameScreens/AvatarSelectScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/GameScreens/GameOverScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/GameScreens/LevelSelectScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/GameScreens/OptionsScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/GameScreens/PauseScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/GameScreens/Start.unity
