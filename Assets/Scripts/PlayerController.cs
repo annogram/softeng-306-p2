@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour {
     private float _airDrag = 1;
     private Animator _anim;
 
+    private bool isTouchingPlayer = false;
+
     // Use this for initialization
     void Start() {
         _ball = false;
@@ -47,6 +49,11 @@ public class PlayerController : MonoBehaviour {
             _ball = false;
             _feet.enabled = true;
         }
+
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2")
+        {
+            isTouchingPlayer = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D other) {
@@ -54,6 +61,15 @@ public class PlayerController : MonoBehaviour {
             _ball = false;
             _feet.enabled = true;
         }
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2")
+        {
+            isTouchingPlayer = false;
+        }
+    }
+
+    public bool IsTouchingPlayer()
+    {
+        return isTouchingPlayer;
     }
 
     #region Helper methods
