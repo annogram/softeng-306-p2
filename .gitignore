@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 #ignore thumbnails created by windows
 Thumbs.db
 #Ignore files build by Visual Studio
@@ -30,7 +28,6 @@ Temp/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-=======
 # =============== #
 # Unity generated #
 # =============== #
@@ -66,4 +63,3 @@ sysinfo.txt
 ehthumbs.db
 [Tt]humbs.db
 [Dd]esktop.ini
->>>>>>> b7ef92b8b3e9716b06850907c64e60512f4d6e30
