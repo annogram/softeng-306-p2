@@ -11,4 +11,12 @@ public class LoadScreens : MonoBehaviour {
 	public void loadScreenAdditive(string screenName){
 		SceneManager.LoadScene (screenName, LoadSceneMode.Additive);
 	}
+
+	public void restartCurrentScene()
+	{
+		int scene = SceneManager.GetActiveScene().buildIndex;
+		SceneManager.LoadScene(scene, LoadSceneMode.Single);
+	}
+
+
 }
