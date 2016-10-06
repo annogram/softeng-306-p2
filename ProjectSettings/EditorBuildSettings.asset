@@ -8,6 +8,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/GameScreens/Start.unity
   - enabled: 1
+    path: Assets/Scenes/GameScreens/Start.unity
+  - enabled: 1
     path: Assets/Scenes/level1.unity
   - enabled: 0
     path: Assets/GameScreens/AvatarSelectScreen.unity
@@ -29,5 +31,3 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScreens/OptionsScreen.unity
   - enabled: 1
     path: Assets/Scenes/GameScreens/PauseScreen.unity
-  - enabled: 1
-    path: Assets/Scenes/GameScreens/Start.unity
