@@ -6,7 +6,6 @@ public class SpringController : MonoBehaviour {
     public GameObject spring;
     public GameObject head;
 
-    public float compressFactor = 0.05F;
     public Vector3 cfVector = new Vector3(0.05F, 0, 0);
     public bool compressLeft = true;
     public float minWidth = 10.0F;
