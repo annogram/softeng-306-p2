@@ -1,5 +1,7 @@
 # softeng-306-p2 Team Suicide Squad 
 
+Prototype Repo: https://github.com/Helen-Zhao/softeng-306-p2
+
 ## Team Members
 | Name             | GitHub | UPI |
 | ---------------- | ------------ | ----|
