@@ -1,14 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+/// <summary>
+/// The game controller is a script which manages :
+/// - <list type="responsibilites">
+/// Controlling what music is currently playing
+/// What level is currently loaded
+/// Player save persistence
+/// Including saving settings
+/// Control loading screen and pause screen.
+/// Control non-gameplay button captures.
+///</list>
+/// </summary>
 public class GameController : MonoBehaviour {
-    private static GameController _instance;
+    public static GameController instance { get; private set; }
 
     void Awake() {
-        if (_instance == null) {
-            _instance = this;
-        } 
-
+        if (instance == null) {
+            instance = this;
+        } else if (this != instance) {
+            Destroy(gameObject);
+        }
+        // We dont want the game manager to be destroyed when when we load a new scene since it 
+        // is a game object that manages levels
+        DontDestroyOnLoad(instance);
     }
 
     // Update is called once per frame
