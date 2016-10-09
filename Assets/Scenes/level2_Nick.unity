@@ -2105,7 +2105,7 @@ Prefab:
     - target: {fileID: 114000011575606046, guid: 83fb8e3c2a8803b4d8369c5040af60cc,
         type: 2}
       propertyPath: ChangeWidth
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 114000011575606046, guid: 83fb8e3c2a8803b4d8369c5040af60cc,
         type: 2}
