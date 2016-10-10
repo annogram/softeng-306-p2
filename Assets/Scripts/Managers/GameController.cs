@@ -15,7 +15,23 @@ namespace Managers {
     ///</list>
     /// </summary>
     public class GameController : MonoBehaviour {
-        public static GameController instance { get; private set; }
+        private static GameController instance;
+
+        public static GameController Instance
+        {
+            get
+            {
+                if (instance == null) {
+                    instance = new GameController();
+                }
+                return instance;
+            }
+            private set
+            {
+                instance = value;
+            }
+        }
+        
 
         void Awake() {
             if (instance == null) {
