@@ -30,6 +30,7 @@ namespace Managers {
 
         #region Screen management
         public void loadScreenSingle(string screenName) {
+            Debug.Log("changing screens");
             SceneManager.LoadScene(screenName, LoadSceneMode.Single);
         }
 
