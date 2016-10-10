@@ -753,12 +753,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!114 &978141856 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000013709553640, guid: f13363094962d50448088c81e93dfec8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1809540718}
-  m_Script: {fileID: 11500000, guid: efce48390d57475459324e87822a9201, type: 3}
 --- !u!1 &1136025951
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +915,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 978141856}
+      - m_Target: {fileID: 114000013709553640, guid: f13363094962d50448088c81e93dfec8,
+          type: 2}
         m_MethodName: loadScreenSingle
         m_Mode: 5
         m_Arguments:
