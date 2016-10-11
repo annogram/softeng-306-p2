@@ -1617,6 +1617,16 @@ Prefab:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013709553640, guid: f13363094962d50448088c81e93dfec8,
+        type: 2}
+      propertyPath: menuAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 3668d78fdedd3ba409746f3cf145a984, type: 3}
+    - target: {fileID: 114000013709553640, guid: f13363094962d50448088c81e93dfec8,
+        type: 2}
+      propertyPath: level1Audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a0da99995bb66f4398f9d71242ffe21, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f13363094962d50448088c81e93dfec8, type: 2}
   m_IsPrefabParent: 0

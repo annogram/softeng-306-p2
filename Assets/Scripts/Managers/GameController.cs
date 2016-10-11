@@ -17,6 +17,9 @@ namespace Managers {
     public class GameController : MonoBehaviour {
         private static GameController instance;
 
+		public AudioClip menuAudio;
+		public AudioClip level1Audio;
+
         public static GameController Instance
         {
             get
@@ -34,6 +37,7 @@ namespace Managers {
         
 
         void Awake() {
+			Debug.Log ("Game Controller awake() invoked.");
             if (instance == null) {
                 instance = this;
             } else if (this != instance) {
@@ -47,10 +51,12 @@ namespace Managers {
         #region Screen management
         public void loadScreenSingle(string screenName) {
             Debug.Log("changing screens");
+			ChangeAudio (screenName);
             SceneManager.LoadScene(screenName, LoadSceneMode.Single);
         }
 
         public void loadScreenAdditive(string screenName) {
+			ChangeAudio (screenName);
             SceneManager.LoadScene(screenName, LoadSceneMode.Additive);
         }
 
@@ -63,6 +69,24 @@ namespace Managers {
 		#region Volume management
 		public void adjustMasterVolume(float volume){
 			AudioListener.volume = volume;
+		}
+		#endregion
+
+		#region Audio management
+		private void ChangeAudio(string screenTarget){
+			if (screenTarget.Equals ("AvatarSelectScreen") || screenTarget.Equals ("LevelSelectScreen") || screenTarget.Equals ("OptionsScreen")) {
+				return;
+			}
+
+			AudioClip soundToSwitchTo;
+			if (screenTarget.Equals ("level1")) {
+				Debug.Log ("Requested audio change to " + screenTarget);
+				soundToSwitchTo = level1Audio;
+			} else {
+				soundToSwitchTo = menuAudio;
+			}
+
+			AudioSource.PlayClipAtPoint (soundToSwitchTo, transform.position);
 		}
 		#endregion
 
