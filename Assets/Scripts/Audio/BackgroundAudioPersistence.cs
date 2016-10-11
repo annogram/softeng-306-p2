@@ -19,4 +19,8 @@ public class BackgroundAudioPersistence : MonoBehaviour {
 		}
 		DontDestroyOnLoad (transform.gameObject);
 	}
+
+	public void DestroyManually(){
+		Destroy (this.gameObject);
+	}
 }
