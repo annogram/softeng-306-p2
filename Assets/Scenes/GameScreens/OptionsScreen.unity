@@ -1352,7 +1352,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114000013709553640, guid: f13363094962d50448088c81e93dfec8,
+          type: 2}
         m_MethodName: adjustMasterVolume
         m_Mode: 0
         m_Arguments:

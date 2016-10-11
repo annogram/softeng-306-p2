@@ -60,6 +60,12 @@ namespace Managers {
         }
         #endregion
 
+		#region Volume management
+		public void adjustMasterVolume(float volume){
+			AudioListener.volume = volume;
+		}
+		#endregion
+
         #region Helper methods
         #endregion
     }
