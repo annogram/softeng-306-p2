@@ -141,7 +141,7 @@ Prefab:
     - target: {fileID: 114000010981396244, guid: 4ec2c1b91be43be4a8de824c17b1b411,
         type: 2}
       propertyPath: ChangeHeight
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114000010981396244, guid: 4ec2c1b91be43be4a8de824c17b1b411,
         type: 2}
@@ -819,6 +819,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &1161212048 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013014082134, guid: 4ec2c1b91be43be4a8de824c17b1b411,
+    type: 2}
+  m_PrefabInternal: {fileID: 267088651}
+--- !u!1 &1266819326 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013014082134, guid: 4ec2c1b91be43be4a8de824c17b1b411,
+    type: 2}
+  m_PrefabInternal: {fileID: 566643119}
 --- !u!1001 &1382621506
 Prefab:
   m_ObjectHideFlags: 0
@@ -1003,6 +1013,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000011013734354, guid: 44c331be54977ca44b46f74ac8ce80dc,
+        type: 2}
+      propertyPath: ButtonActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011752143714, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
       propertyPath: m_LocalPosition.x
       value: 44.860306
@@ -1039,6 +1054,16 @@ Prefab:
       propertyPath: m_Name
       value: FirstButton
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011013734354, guid: 44c331be54977ca44b46f74ac8ce80dc,
+        type: 2}
+      propertyPath: ButtonActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1266819326}
+    - target: {fileID: 114000011013734354, guid: 44c331be54977ca44b46f74ac8ce80dc,
+        type: 2}
+      propertyPath: ButtonActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1161212048}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
   m_IsPrefabParent: 0
