@@ -103,7 +103,6 @@ GameObject:
   - 114: {fileID: 2544535}
   - 114: {fileID: 2544539}
   - 114: {fileID: 2544541}
-  - 114: {fileID: 2544540}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -228,17 +227,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &2544540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2544534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efce48390d57475459324e87822a9201, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2544541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,7 +1516,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2544540}
+      - m_Target: {fileID: 114000013709553640, guid: f13363094962d50448088c81e93dfec8,
+          type: 2}
         m_MethodName: loadScreenSingle
         m_Mode: 5
         m_Arguments:
