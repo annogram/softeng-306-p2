@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1909229847}
-  cam: {fileID: 0}
+  cam: {fileID: 1326888718}
 --- !u!114 &120426617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   completedPanel: {fileID: 1886953082}
-  cam: {fileID: 0}
+  cam: {fileID: 1326888718}
 --- !u!114 &120426622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,8 +922,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -515.5172}
-  m_SizeDelta: {x: 599.9999, y: 85.67049}
+  m_AnchoredPosition: {x: 479.99994, y: -515.57605}
+  m_SizeDelta: {x: 599.9999, y: 85.683556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540205032
 MonoBehaviour:
@@ -1349,7 +1349,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 479.99994, y: -90}
-  m_SizeDelta: {x: 599.9999, y: 125.67049}
+  m_SizeDelta: {x: 599.9999, y: 125.683556}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &652612656
 MonoBehaviour:
@@ -1763,7 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1886953082}
-  cam: {fileID: 0}
+  cam: {fileID: 1326888718}
 --- !u!114 &806636206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2026,7 +2026,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 891852599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 299.6, y: 60, z: 0}
+  m_LocalPosition: {x: 301.6, y: 49.7, z: 0}
   m_LocalScale: {x: 50, y: 10, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -2418,8 +2418,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -258.50574}
-  m_SizeDelta: {x: 599.9999, y: 85.67049}
+  m_AnchoredPosition: {x: 479.99994, y: -258.52533}
+  m_SizeDelta: {x: 599.9999, y: 85.683556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1233516418
 MonoBehaviour:
@@ -2433,7 +2433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1909229847}
-  cam: {fileID: 0}
+  cam: {fileID: 1326888718}
 --- !u!114 &1233516419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2760,8 +2760,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -344.1762}
-  m_SizeDelta: {x: 599.9999, y: 85.67049}
+  m_AnchoredPosition: {x: 479.99994, y: -344.2089}
+  m_SizeDelta: {x: 599.9999, y: 85.683556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374611083
 MonoBehaviour:
@@ -2976,8 +2976,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -429.8467}
-  m_SizeDelta: {x: 599.9999, y: 85.67049}
+  m_AnchoredPosition: {x: 479.99994, y: -429.89246}
+  m_SizeDelta: {x: 599.9999, y: 85.683556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1592189417
 MonoBehaviour:
@@ -3324,7 +3324,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011752143714, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 26
+      value: 15.7
       objectReference: {fileID: 0}
     - target: {fileID: 4000011752143714, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
       propertyPath: m_LocalPosition.z
