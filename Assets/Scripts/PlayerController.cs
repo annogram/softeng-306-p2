@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpStrength;
     public LayerMask[] jumpableLayers;
     public float airCtrl;
-
+	public string displayName = "PLAYER";
 
     private bool _ball;
     private Rigidbody2D _rb;
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
         _feet = GetComponent<EdgeCollider2D>();
         _anim = GetComponent<Animator>();
 		_name = GetComponentInChildren<Canvas> ();
+		setPlayerName (displayName);
 
     }
 
@@ -184,6 +185,11 @@ public class PlayerController : MonoBehaviour {
     private void reset() {
 
     }
+
+	void setPlayerName(string name){
+		displayName = name;
+		_name.GetComponentInChildren<Text> ().text = displayName;
+	}
 
     private bool isGrounded() {
         // If its not in the jumping
