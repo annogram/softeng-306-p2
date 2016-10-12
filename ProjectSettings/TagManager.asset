@@ -8,6 +8,8 @@ TagManager:
   - Ramp
   - Player2
   - P1Name
+  - startPage
+  - aboutPage
   layers:
   - Default
   - TransparentFX
