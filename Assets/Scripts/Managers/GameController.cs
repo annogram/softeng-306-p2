@@ -15,11 +15,8 @@ namespace Managers {
     ///</list>
     /// </summary>
     public class GameController : MonoBehaviour {
+        #region Properties
         private static GameController instance;
-
-		public AudioClip menuAudio;
-		public AudioClip level1Audio;
-
         public static GameController Instance
         {
             get
@@ -34,10 +31,21 @@ namespace Managers {
                 instance = value;
             }
         }
-        
+        #endregion
+
+        #region Feilds
+        public AudioClip MenuAudio;
+		public AudioClip[] Playlist;
+        public int LevelToClip;
+
+        private AudioSource _audioSource;
+        private bool _inMenu = true;
+        private int _audioItr = 1;
+        #endregion
+
 
         void Awake() {
-			Debug.Log ("Game Controller awake() invoked.");
+            _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
             } else if (this != instance) {
@@ -50,7 +58,7 @@ namespace Managers {
 
         #region Screen management
         public void loadScreenSingle(string screenName) {
-            Debug.Log("changing screens");
+            Debug.Log(string.Format("changing screens to {0}",screenName));
 			ChangeAudio (screenName);
             SceneManager.LoadScene(screenName, LoadSceneMode.Single);
         }
@@ -66,28 +74,41 @@ namespace Managers {
         }
         #endregion
 
-		#region Volume management
-		public void adjustMasterVolume(float volume){
-			AudioListener.volume = volume;
-		}
-		#endregion
+        #region Audio management
+        public void adjustMasterVolume(float volume) {
+            AudioListener.volume = volume;
+        }
 
-		#region Audio management
-		private void ChangeAudio(string screenTarget){
-			if (screenTarget.Equals ("AvatarSelectScreen") || screenTarget.Equals ("LevelSelectScreen") || screenTarget.Equals ("OptionsScreen")) {
-				return;
-			}
-
+        private void ChangeAudio(string screenTarget){
+            if (!(screenTarget.Equals("AvatarSelectScreen") || screenTarget.Equals("LevelSelectScreen") || screenTarget.Equals("OptionsScreen"))) {
+                _inMenu = false;
+            } else {
+                _inMenu = true;
+                return;
+            }
+            Debug.Log(string.Format("Change Audio called {0}",screenTarget));
 			AudioClip soundToSwitchTo;
-			if (screenTarget.Equals ("level1")) {
+			if (!_inMenu) {
+                Debug.Log("entering active level");
+                int soundIndex = _audioItr / LevelToClip;
+                if (_audioItr % LevelToClip == 0) {
+                    soundIndex--;
+                }
+                if (soundIndex > Playlist.Length) {
+                    _audioItr = 1;
+                    soundIndex = 0;
+                }
 				Debug.Log ("Requested audio change to " + screenTarget);
-				soundToSwitchTo = level1Audio;
-			} else {
-				soundToSwitchTo = menuAudio;
-			}
+                soundToSwitchTo = Playlist[soundIndex];
+                _audioItr++;
+            } else { 
+                soundToSwitchTo = MenuAudio;
+            }
 
-			AudioSource.PlayClipAtPoint (soundToSwitchTo, transform.position);
-		}
+            _audioSource.clip = soundToSwitchTo;
+            _audioSource.Play();
+            /*.PlayClipAtPoint(soundToSwitchTo, transform.position);*/
+        }
 		#endregion
 
         #region Helper methods
