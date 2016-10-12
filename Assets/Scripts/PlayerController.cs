@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     public LayerMask[] jumpableLayers;
     public float airCtrl;
 
+
     private bool _ball;
     private Rigidbody2D _rb;
     private EdgeCollider2D _feet;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     private Vector2 _jump;
     private float _airDrag = 1;
     private Animator _anim;
+	private Canvas _name;
 
     private bool isTouchingPlayer = false;
 
@@ -32,13 +35,15 @@ public class PlayerController : MonoBehaviour {
         _rb = GetComponent<Rigidbody2D>();
         _feet = GetComponent<EdgeCollider2D>();
         _anim = GetComponent<Animator>();
+		_name = GetComponentInChildren<Canvas> ();
+
     }
 
     // Update is called once per frame
     void FixedUpdate() {
         this.movementManager();
         this.HandleLayers();
-        this.reset();
+		this.reset();
     }
 
     void OnCollisionEnter2D(Collision2D other) {
@@ -97,6 +102,7 @@ public class PlayerController : MonoBehaviour {
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.RightArrow)) {
                 forceX = new Vector2(1, 0f);
+
             } else if (Input.GetKey(KeyCode.LeftArrow)) {
                 forceX = new Vector2(-1, 0f);
             }
@@ -163,6 +169,11 @@ public class PlayerController : MonoBehaviour {
     void Flip()
     {
         facingRight = !facingRight;
+		if (!facingRight) {
+			_name.transform.localScale = new Vector3 (-1, 1f, 1f);
+		} else {
+			_name.transform.localScale = new Vector3 (1, 1f, 1f);
+		}
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
