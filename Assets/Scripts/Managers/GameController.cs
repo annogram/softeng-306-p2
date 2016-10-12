@@ -80,11 +80,10 @@ namespace Managers {
         }
 
         private void ChangeAudio(string screenTarget){
-            if (!(screenTarget.Equals("AvatarSelectScreen") || screenTarget.Equals("LevelSelectScreen") || screenTarget.Equals("OptionsScreen"))) {
+            if (!(screenTarget.Equals("AvatarSelectScreen") || screenTarget.Equals("LevelSelectScreen") || screenTarget.Equals("OptionsScreen")||screenTarget.Equals("Start"))) {
                 _inMenu = false;
             } else {
                 _inMenu = true;
-                return;
             }
 			AudioClip soundToSwitchTo;
 			if (!_inMenu) {
@@ -103,6 +102,9 @@ namespace Managers {
                 soundToSwitchTo = MenuAudio;
             }
 
+            if (soundToSwitchTo == _audioSource.clip) {
+                return;
+            }
             _audioSource.clip = soundToSwitchTo;
             _audioSource.Play();
         }

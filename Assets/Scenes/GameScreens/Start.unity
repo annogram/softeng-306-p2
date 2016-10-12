@@ -915,8 +915,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2017114292}
-        m_MethodName: loadScreenSingle
+      - m_Target: {fileID: 1601815817}
+        m_MethodName: Next
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1478,6 +1478,7 @@ GameObject:
   - 114: {fileID: 1601815813}
   - 114: {fileID: 1601815812}
   - 114: {fileID: 1601815816}
+  - 114: {fileID: 1601815817}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1570,6 +1571,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f61de0307eb0d1247b10caf234d618b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1601815817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601815811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c303b3d5a106841a66d525906cdab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1809540718
@@ -1683,12 +1695,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1995107821}
---- !u!114 &2017114292 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000013709553640, guid: f13363094962d50448088c81e93dfec8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1809540718}
-  m_Script: {fileID: 11500000, guid: efce48390d57475459324e87822a9201, type: 3}
 --- !u!1 &2060411083
 GameObject:
   m_ObjectHideFlags: 0
