@@ -226,6 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b96e9c23f183442a94bf5769d8f3455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startAnim: {fileID: 75847991}
+  aboutAnim: {fileID: 240743613}
 --- !u!1 &240743607
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b96e9c23f183442a94bf5769d8f3455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startAnim: {fileID: 75847991}
+  aboutAnim: {fileID: 240743613}
 --- !u!1 &541031421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,7 +1226,6 @@ GameObject:
   - 222: {fileID: 1192868541}
   - 114: {fileID: 1192868540}
   - 114: {fileID: 1192868539}
-  - 114: {fileID: 1192868542}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1288,8 +1291,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1192868542}
-        m_MethodName: togglePage
+      - m_Target: {fileID: 75847992}
+        m_MethodName: showStartPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1334,19 +1337,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1192868537}
---- !u!114 &1192868542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1192868537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf7b0cc27eb964806b280eb6093df46b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  start: {fileID: 75847985}
-  about: {fileID: 240743607}
 --- !u!1 &1310555819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,7 +1742,6 @@ GameObject:
   - 222: {fileID: 1538722223}
   - 114: {fileID: 1538722222}
   - 114: {fileID: 1538722221}
-  - 114: {fileID: 1538722224}
   m_Layer: 5
   m_Name: About
   m_TagString: Untagged
@@ -1818,8 +1807,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1538722224}
-        m_MethodName: togglePage
+      - m_Target: {fileID: 75847992}
+        m_MethodName: showAboutPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1864,19 +1853,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1538722219}
---- !u!114 &1538722224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1538722219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf7b0cc27eb964806b280eb6093df46b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  start: {fileID: 75847985}
-  about: {fileID: 240743607}
 --- !u!1 &1601815811
 GameObject:
   m_ObjectHideFlags: 0
