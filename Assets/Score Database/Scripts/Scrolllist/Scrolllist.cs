@@ -41,7 +41,7 @@ public class Scrolllist : MonoBehaviour {
 
 	public void getScrollEntrys()
 	{
-		//Destroy Objects that exists, because of a possible Call bevore
+		//Destroy Objects that exists, because of a possible Call before
 		foreach (Transform childTransform in ScrollContain.transform) Destroy(childTransform.gameObject);
 
 		int j = 1;
@@ -59,12 +59,12 @@ public class Scrolllist : MonoBehaviour {
 			Transform ThisScorePosition = ScorePanel.transform.Find ("ScorePosition");
 			Text ScorePosition = ThisScorePosition.GetComponent<Text> ();
 
-			//first position is yellow
+			//first position is green
 			if (j==1)
 			{
-				ScoreName.color=Color.yellow;
-				ScorePoints.color=Color.yellow;
-				ScorePosition.color=Color.yellow;
+				ScoreName.color=Color.green;
+				ScorePoints.color=Color.green;
+				ScorePosition.color=Color.green;
 			}
 			ScorePosition.text = j+". ";
 			string helpString = "";

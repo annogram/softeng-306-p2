@@ -26,8 +26,9 @@ public class HSController : MonoBehaviour
 
 	}
 	void Start(){
-		startGetScores ();
 		startPostScores ();
+		startGetScores ();
+
 
 		//
 		//HSController.Instance.startGetScores ();
@@ -59,7 +60,7 @@ public class HSController : MonoBehaviour
 	public void updateOnlineHighscoreData()
 	{
 		// uniqueID,name3 and score will get the actual value before posting score
-		uniqueID = "123456789"; //Replace this TestScript variable into your game-variables
+		uniqueID = "123456799"; //Replace this TestScript variable into your game-variables
 		name3 = "Testname";
 		score = 5000;
 	}
