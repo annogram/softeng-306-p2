@@ -1222,8 +1222,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 75847990}
-        m_MethodName: loadScreenSingle
+      - m_Target: {fileID: 1601815817}
+        m_MethodName: Next
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1623,6 +1623,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013709553640, guid: f13363094962d50448088c81e93dfec8,
+        type: 2}
+      propertyPath: Playlist.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: fa7013e39d3a97d469d6c8e3ba0ac094, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f13363094962d50448088c81e93dfec8, type: 2}
   m_IsPrefabParent: 0
