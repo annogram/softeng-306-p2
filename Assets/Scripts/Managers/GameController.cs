@@ -86,7 +86,6 @@ namespace Managers {
                 _inMenu = true;
                 return;
             }
-            Debug.Log(string.Format("Change Audio called {0}",screenTarget));
 			AudioClip soundToSwitchTo;
 			if (!_inMenu) {
                 Debug.Log("entering active level");
@@ -98,7 +97,6 @@ namespace Managers {
                     _audioItr = 1;
                     soundIndex = 0;
                 }
-				Debug.Log ("Requested audio change to " + screenTarget);
                 soundToSwitchTo = Playlist[soundIndex];
                 _audioItr++;
             } else { 
@@ -107,7 +105,6 @@ namespace Managers {
 
             _audioSource.clip = soundToSwitchTo;
             _audioSource.Play();
-            /*.PlayClipAtPoint(soundToSwitchTo, transform.position);*/
         }
 		#endregion
 
