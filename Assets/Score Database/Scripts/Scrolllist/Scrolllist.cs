@@ -30,6 +30,7 @@ public class Scrolllist : MonoBehaviour {
 	public int yourPosition;
 	public GameObject LoadingText;
 	public bool loading = true;
+	public bool error = false;
 
 	void Update () {
 	
@@ -37,6 +38,9 @@ public class Scrolllist : MonoBehaviour {
 			LoadingText.SetActive (false);
 		else
 			LoadingText.SetActive (true);
+
+		if (error)
+			LoadingText.GetComponentInChildren<Text> ().text = "Error contacting server, please check connection";
 	}
 
 	public void getScrollEntrys()

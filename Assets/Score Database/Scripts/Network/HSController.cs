@@ -120,6 +120,7 @@ public class HSController : MonoBehaviour
 		if (hs_get.error != null)
 		{
 			//Debug.Log("There was an error getting the high score: " + hs_get.error);
+			Scrolllist.Instance.error = true;
 
 		}
 		else
@@ -134,7 +135,9 @@ public class HSController : MonoBehaviour
 			onlineHighscore  = help.Split(";"[0]);
 
 		}
-		Scrolllist.Instance.loading = false;
+		if (!Scrolllist.Instance.error) {
+			Scrolllist.Instance.loading = false;
+		}
 		Scrolllist.Instance.getScrollEntrys ();
 	}
 	
