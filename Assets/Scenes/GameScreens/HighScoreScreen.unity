@@ -735,8 +735,9 @@ MonoBehaviour:
   ScrollEntry: {fileID: 525587178}
   ScrollContain: {fileID: 353402493}
   yourPosition: 0
-  LoadingText: {fileID: 1001509912}
+  LoadingText: {fileID: 1212788725}
   loading: 1
+  error: 0
 --- !u!1 &330928436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,8 +1237,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1993518315}
   m_HandleRect: {fileID: 1993518313}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.5
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1334,7 +1335,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: 0}
+  m_AnchoredPosition: {x: 438, y: 409}
   m_SizeDelta: {x: 876, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &525587180
@@ -1810,10 +1811,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!1 &1001509912 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 160674, guid: e839a314269b6644ca922f2554fd64b0, type: 2}
-  m_PrefabInternal: {fileID: 490058819}
 --- !u!1 &1025167418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,7 +1905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1059952473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2570,7 +2567,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PlayerName
+  m_Text: Do not delete
 --- !u!222 &1524298940
 CanvasRenderer:
   m_ObjectHideFlags: 0
