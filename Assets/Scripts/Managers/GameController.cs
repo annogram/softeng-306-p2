@@ -44,7 +44,7 @@ namespace Managers {
         private AudioSource _audioSource;
         private bool _inMenu = true;
 
-        private int _audioItr = 1;
+        private int _audioTrack = 1;
         #endregion
 
         #region Constructor
@@ -83,13 +83,16 @@ namespace Managers {
         #region Audio management
         internal void adjustMasterVolume(float volume) {
             _volume.Master = volume;
-            AudioListener.volume = _volume.Master;
+            _audioSource.volume = _volume.Master;
             PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
             PlayerPrefs.Save();
         }
 
         internal void adjustMusicVolume(float volume) {
-            throw new NotImplementedException();
+            _volume.Music = volume;
+            AudioListener.volume = _volume.Music;
+            PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
+            PlayerPrefs.Save();
         }
 
         internal void adjustEffectVolume(float volume) {
@@ -105,16 +108,16 @@ namespace Managers {
             AudioClip soundToSwitchTo;
             if (!_inMenu) {
                 //Debug.Log("entering active level");
-                int soundIndex = _audioItr / LevelToClip;
-                if (_audioItr % LevelToClip == 0) {
+                int soundIndex = _audioTrack / LevelToClip;
+                if (_audioTrack % LevelToClip == 0) {
                     soundIndex--;
                 }
                 if (soundIndex > Playlist.Length) {
-                    _audioItr = 1;
+                    _audioTrack = 1;
                     soundIndex = 0;
                 }
                 soundToSwitchTo = Playlist[soundIndex];
-                _audioItr++;
+                _audioTrack++;
             } else {
                 soundToSwitchTo = MenuAudio;
             }
@@ -140,6 +143,8 @@ namespace Managers {
                 (PlayerPrefs.HasKey("MasterVolume")) ? PlayerPrefs.GetFloat("MasterVolume") : 1F,
                 (PlayerPrefs.HasKey("MusicVolume")) ? PlayerPrefs.GetFloat("MusicVolume") : 1F,
                 (PlayerPrefs.HasKey("EffectVolume")) ? PlayerPrefs.GetFloat("EffectVolume") : 1F);
+            _audioSource.volume = this._volume.Master;
+            AudioListener.volume = this._volume.Music;
         }
         #endregion
 
@@ -162,11 +167,12 @@ namespace Managers {
             set
             {
                 master = value;
-                if (iterable == null)
+                if (iterable == null) {
                     iterable = new float[3];
+                    iterable[1] = 1F;
+                    iterable[2] = 1F;
+                }
                 iterable[0] = value;
-                iterable[1] = 1F;
-                iterable[2] = 1F;
             }
         }
         private float music;
@@ -180,11 +186,13 @@ namespace Managers {
             set
             {
                 music = value;
-                if (iterable == null)
+                if (iterable == null) {
                     iterable = new float[3];
-                iterable[1] = value;
-                iterable[0] = 1F;
-                iterable[2] = 1F;
+                    iterable[0] = 1F;
+                    iterable[1] = 1F;
+                }
+                iterable[2] = value;
+                
             }
         }
         private float effects;
@@ -198,11 +206,13 @@ namespace Managers {
             set
             {
                 effects = value;
-                if (iterable == null)
+                if (iterable == null) {
                     iterable = new float[3];
-                iterable[2] = value;
-                iterable[0] = 1F;
-                iterable[1] = 1F;
+                    iterable[0] = 1F;
+                    iterable[2] = 1F;
+                }
+                iterable[1] = value;
+                
             }
         }
 
@@ -213,7 +223,7 @@ namespace Managers {
             this.music = music;
             this.effects = effects;
 
-            float[] temp = { master, music, effects };
+            float[] temp = { master, effects, music };
             this.iterable = temp;
         }
     }
