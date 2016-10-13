@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 using System.Collections;
+using System;
 
 namespace Managers {
     /// <summary>
@@ -35,19 +37,22 @@ namespace Managers {
 
         #region Feilds
         public AudioClip MenuAudio;
-		public AudioClip[] Playlist;
+        public AudioClip[] Playlist;
         public int LevelToClip;
 
+        private OptionValues _volume;
         private AudioSource _audioSource;
         private bool _inMenu = true;
+
         private int _audioItr = 1;
         #endregion
 
-
+        #region Constructor
         void Awake() {
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
+                this.loadPreferences();
             } else if (this != instance) {
                 Destroy(gameObject);
             }
@@ -55,16 +60,17 @@ namespace Managers {
             // is a game object that manages levels
             DontDestroyOnLoad(instance);
         }
+        #endregion
 
         #region Screen management
         public void loadScreenSingle(string screenName) {
-            Debug.Log(string.Format("changing screens to {0}",screenName));
-			ChangeAudio (screenName);
+            //Debug.Log(string.Format("changing screens to {0}", screenName));
+            ChangeAudio(screenName);
             SceneManager.LoadScene(screenName, LoadSceneMode.Single);
         }
 
         public void loadScreenAdditive(string screenName) {
-			ChangeAudio (screenName);
+            ChangeAudio(screenName);
             SceneManager.LoadScene(screenName, LoadSceneMode.Additive);
         }
 
@@ -75,19 +81,30 @@ namespace Managers {
         #endregion
 
         #region Audio management
-        public void adjustMasterVolume(float volume) {
-            AudioListener.volume = volume;
+        internal void adjustMasterVolume(float volume) {
+            _volume.Master = volume;
+            AudioListener.volume = _volume.Master;
+            PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
+            PlayerPrefs.Save();
         }
 
-        private void ChangeAudio(string screenTarget){
-            if (!(screenTarget.Equals("AvatarSelectScreen") || screenTarget.Equals("LevelSelectScreen") || screenTarget.Equals("OptionsScreen")||screenTarget.Equals("Start"))) {
+        internal void adjustMusicVolume(float volume) {
+            throw new NotImplementedException();
+        }
+
+        internal void adjustEffectVolume(float volume) {
+            throw new NotImplementedException();
+        }
+
+        private void ChangeAudio(string screenTarget) {
+            if (!(screenTarget.Equals("AvatarSelectScreen") || screenTarget.Equals("LevelSelectScreen") || screenTarget.Equals("OptionsScreen") || screenTarget.Equals("Start"))) {
                 _inMenu = false;
             } else {
                 _inMenu = true;
             }
-			AudioClip soundToSwitchTo;
-			if (!_inMenu) {
-                Debug.Log("entering active level");
+            AudioClip soundToSwitchTo;
+            if (!_inMenu) {
+                //Debug.Log("entering active level");
                 int soundIndex = _audioItr / LevelToClip;
                 if (_audioItr % LevelToClip == 0) {
                     soundIndex--;
@@ -98,7 +115,7 @@ namespace Managers {
                 }
                 soundToSwitchTo = Playlist[soundIndex];
                 _audioItr++;
-            } else { 
+            } else {
                 soundToSwitchTo = MenuAudio;
             }
 
@@ -108,9 +125,96 @@ namespace Managers {
             _audioSource.clip = soundToSwitchTo;
             _audioSource.Play();
         }
-		#endregion
+        #endregion
+
+        #region Persistence
+        public OptionValues LoadOptions() {
+            return _volume;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected internal void loadPreferences() {
+            _volume = new OptionValues(
+                (PlayerPrefs.HasKey("MasterVolume")) ? PlayerPrefs.GetFloat("MasterVolume") : 1F,
+                (PlayerPrefs.HasKey("MusicVolume")) ? PlayerPrefs.GetFloat("MusicVolume") : 1F,
+                (PlayerPrefs.HasKey("EffectVolume")) ? PlayerPrefs.GetFloat("EffectVolume") : 1F);
+        }
+        #endregion
 
         #region Helper methods
         #endregion
+    }
+
+    /// <summary>
+    /// Struct that holds all the values that can be in options
+    /// </summary>
+    public struct OptionValues {
+        private float master;
+        public float Master
+        {
+            get
+            {
+                return master;
+            }
+
+            set
+            {
+                master = value;
+                if (iterable == null)
+                    iterable = new float[3];
+                iterable[0] = value;
+                iterable[1] = 1F;
+                iterable[2] = 1F;
+            }
+        }
+        private float music;
+        public float Music
+        {
+            get
+            {
+                return music;
+            }
+
+            set
+            {
+                music = value;
+                if (iterable == null)
+                    iterable = new float[3];
+                iterable[1] = value;
+                iterable[0] = 1F;
+                iterable[2] = 1F;
+            }
+        }
+        private float effects;
+        public float Effects
+        {
+            get
+            {
+                return effects;
+            }
+
+            set
+            {
+                effects = value;
+                if (iterable == null)
+                    iterable = new float[3];
+                iterable[2] = value;
+                iterable[0] = 1F;
+                iterable[1] = 1F;
+            }
+        }
+
+        public float[] iterable;
+
+        public OptionValues(float master, float music, float effects) {
+            this.master = master;
+            this.music = music;
+            this.effects = effects;
+
+            float[] temp = { master, music, effects };
+            this.iterable = temp;
+        }
     }
 }
