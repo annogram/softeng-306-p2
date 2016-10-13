@@ -136,7 +136,8 @@ namespace Managers {
         }
 
         /// <summary>
-        /// 
+        /// This will load ALL saved player data into this GameController 
+        /// instance from wherver the users browsersaves data.
         /// </summary>
         protected internal void loadPreferences() {
             _volume = new OptionValues(
@@ -163,7 +164,6 @@ namespace Managers {
             {
                 return master;
             }
-
             set
             {
                 master = value;
@@ -182,7 +182,6 @@ namespace Managers {
             {
                 return music;
             }
-
             set
             {
                 music = value;
@@ -192,7 +191,6 @@ namespace Managers {
                     iterable[1] = 1F;
                 }
                 iterable[2] = value;
-                
             }
         }
         private float effects;
@@ -202,7 +200,6 @@ namespace Managers {
             {
                 return effects;
             }
-
             set
             {
                 effects = value;
@@ -212,7 +209,6 @@ namespace Managers {
                     iterable[2] = 1F;
                 }
                 iterable[1] = value;
-                
             }
         }
 

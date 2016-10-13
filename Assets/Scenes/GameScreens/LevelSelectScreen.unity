@@ -620,8 +620,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117933430}
-        m_MethodName: loadScreenSingle
+      - m_Target: {fileID: 1207837951}
+        m_MethodName: Next
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1201,6 +1201,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 779795536}
+--- !u!1001 &806940276
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000011737091980, guid: f13363094962d50448088c81e93dfec8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011737091980, guid: f13363094962d50448088c81e93dfec8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011737091980, guid: f13363094962d50448088c81e93dfec8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011737091980, guid: f13363094962d50448088c81e93dfec8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011737091980, guid: f13363094962d50448088c81e93dfec8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011737091980, guid: f13363094962d50448088c81e93dfec8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011737091980, guid: f13363094962d50448088c81e93dfec8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011737091980, guid: f13363094962d50448088c81e93dfec8, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f13363094962d50448088c81e93dfec8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &839372654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,8 +2012,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117933430}
-        m_MethodName: loadScreenSingle
+      - m_Target: {fileID: 1207837951}
+        m_MethodName: Next
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
