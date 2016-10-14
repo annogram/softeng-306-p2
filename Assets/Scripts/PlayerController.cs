@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour {
     public float airCtrl;
 	public string displayName = "PLAYER";
 
+    public AudioSource movementAudio;
+    public AudioClip playerRunningClip;
+    public AudioSource jumpAudio;
+    public AudioClip playerJumpingClip;
+
     private bool _ball;
     private Rigidbody2D _rb;
     private EdgeCollider2D _feet;
@@ -30,8 +35,11 @@ public class PlayerController : MonoBehaviour {
 	private Canvas _name;
     private GameController _controller;
     private float _sfxVolume;
+    private float _player1Speed;
+    private float _player2Speed;
 
     private bool isTouchingPlayer = false;
+    bool isMoving = false;
 
     // Use this for initialization
     void Start() {
@@ -42,13 +50,14 @@ public class PlayerController : MonoBehaviour {
 		_name = GetComponentInChildren<Canvas> ();
 		setPlayerName (displayName);
         _controller = GameController.Instance;
-        _sfxVolume = _controller.GetSFXVolume();
+        //_sfxVolume = _controller.GetSFXVolume();
     
     }
 
     // Update is called once per frame
     void FixedUpdate() {
         this.movementManager();
+        this.movementAudioManager();
         this.HandleLayers();
 		this.reset();
     }
@@ -89,11 +98,21 @@ public class PlayerController : MonoBehaviour {
     private void movementManager() {
 
         // Updates the speed parameter in the animator to animate the walk
-        float speed1 = Input.GetAxis("Player1Horizontal");
-        _anim.SetFloat("Speed1", Mathf.Abs(speed1));
+        _player1Speed = Input.GetAxis("Player1Horizontal");
+        _anim.SetFloat("Speed1", Mathf.Abs(_player1Speed));
 
-        float speed2 = Input.GetAxis("Player2Horizontal");
-        _anim.SetFloat("Speed2", Mathf.Abs(speed2));
+        _player2Speed = Input.GetAxis("Player2Horizontal");
+        _anim.SetFloat("Speed2", Mathf.Abs(_player2Speed));
+//=======
+//        _player1Speed = Input.GetAxis("Horizontal");
+//        _anim.SetFloat("Speed", Mathf.Abs(_player1Speed));
+
+//        // Deals with flippin the player left or right
+//        if (_player1Speed > 0 && !facingRight)
+//            Flip();
+//        else if (_player1Speed < 0 && facingRight)
+//            Flip();
+//>>>>>>> origin/Gabby
 
         if (_rb.velocity.y < 0)
         {
@@ -109,14 +128,14 @@ public class PlayerController : MonoBehaviour {
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.RightArrow)) {
                 forceX = new Vector2(1, 0f);
-                if (speed1 > 0 && !facingRight)
+                if (_player1Speed > 0 && !facingRight)
                 {
                     Flip();
                 }
 
             } else if (Input.GetKey(KeyCode.LeftArrow)) {
                 forceX = new Vector2(-1, 0f);
-                if (speed1 < 0 && facingRight)
+                if (_player1Speed < 0 && facingRight)
                 {
                     Flip();
                 }
@@ -131,6 +150,9 @@ public class PlayerController : MonoBehaviour {
                     _jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
 
+                    jumpAudio.clip = playerJumpingClip;
+                    jumpAudio.Play();
+
                     // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
@@ -144,13 +166,13 @@ public class PlayerController : MonoBehaviour {
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.D)) {
                 forceX = new Vector2(1, 0f);
-                if (speed2 > 0 && !facingRight)
+                if (_player2Speed > 0 && !facingRight)
                 {
                     Flip();
                 }
             } else if (Input.GetKey(KeyCode.A)) {
                 forceX = new Vector2(-1, 0f);
-                if (speed2 < 0 && facingRight)
+                if (_player2Speed < 0 && facingRight)
                 {
                     Flip();
                 }
@@ -163,6 +185,9 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.W)) {
                     Vector2 jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(jump, ForceMode2D.Impulse);
+
+                    jumpAudio.clip = playerJumpingClip;
+                    jumpAudio.Play();
 
                     _anim.SetTrigger("Jump");
                 }
@@ -230,6 +255,30 @@ public class PlayerController : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    private void movementAudioManager()
+    {
+        if (_player1Speed != 0)
+        {
+            this.isMoving = true;
+        }
+        else
+        {
+            this.isMoving = false;
+        }
+        if (this.isMoving && isGrounded())
+        {
+            movementAudio.clip = playerRunningClip;
+            if (!movementAudio.isPlaying)
+            {
+                movementAudio.Play();
+            }
+        }
+        else
+        {
+            movementAudio.Stop();
+        }
     }
     #endregion
 }
