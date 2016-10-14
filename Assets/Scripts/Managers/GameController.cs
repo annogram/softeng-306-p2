@@ -151,6 +151,7 @@ namespace Managers {
 
             // Tokens
             _tokens = (PlayerPrefs.HasKey("Tokens")) ? PlayerPrefs.GetInt("Tokens") : 0;
+            Debug.Log(string.Format("Tokens: {0}",_tokens));
         }
 
         void OnDestroy() {
