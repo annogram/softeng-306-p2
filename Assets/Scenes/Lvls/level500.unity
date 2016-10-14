@@ -1082,6 +1082,11 @@ Prefab:
       propertyPath: ButtonActions.Array.data[1]
       value: 
       objectReference: {fileID: 1161212048}
+    - target: {fileID: 114000011013734354, guid: 44c331be54977ca44b46f74ac8ce80dc,
+        type: 2}
+      propertyPath: CanPress.Array.data[0].m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
   m_IsPrefabParent: 0
@@ -1835,6 +1840,11 @@ Prefab:
         type: 2}
       propertyPath: m_Anchor.x
       value: -1.0946932
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014113611892, guid: 2e0e265da80d1e247841fd0985323de2,
+        type: 2}
+      propertyPath: HitPwr
+      value: -1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e0e265da80d1e247841fd0985323de2, type: 2}
