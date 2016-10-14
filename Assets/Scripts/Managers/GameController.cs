@@ -63,15 +63,6 @@ namespace Managers {
         }
         #endregion
 
-        #region Deconstructor
-        void OnDestroy() {
-            PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
-            PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
-            PlayerPrefs.SetInt("Tokens", _tokens);
-            PlayerPrefs.Save();
-        }
-        #endregion
-
         #region Screen management
         public void loadScreenSingle(string screenName) {
             //Debug.Log(string.Format("changing screens to {0}", screenName));
@@ -160,6 +151,14 @@ namespace Managers {
 
             // Tokens
             _tokens = (PlayerPrefs.HasKey("Tokens")) ? PlayerPrefs.GetInt("Tokens") : 0;
+        }
+
+        void OnDestroy() {
+            PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
+            PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
+            PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
+            PlayerPrefs.SetInt("Tokens", _tokens);
+            PlayerPrefs.Save();
         }
         #endregion
 
