@@ -42,6 +42,12 @@ namespace Managers {
 
         private OptionValues _volume;
         private AudioSource _audioSource;
+
+        internal float GetSFXVolume()
+        {
+            throw new NotImplementedException();
+        }
+
         private bool _inMenu = true;
 
         private int _audioTrack = 1;
