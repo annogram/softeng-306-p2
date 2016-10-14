@@ -43,8 +43,8 @@ namespace Managers {
         private OptionValues _volume;
         private AudioSource _audioSource;
         private bool _inMenu = true;
-
         private int _audioTrack = 1;
+        private int _tokens = 0;
         #endregion
 
         #region Constructor
@@ -52,6 +52,7 @@ namespace Managers {
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
+                // Load persistent values from machine
                 this.loadPreferences();
             } else if (this != instance) {
                 Destroy(gameObject);
@@ -59,6 +60,15 @@ namespace Managers {
             // We dont want the game manager to be destroyed when when we load a new scene since it 
             // is a game object that manages levels
             DontDestroyOnLoad(instance);
+        }
+        #endregion
+
+        #region Deconstructor
+        void OnDestroy() {
+            PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
+            PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
+            PlayerPrefs.SetInt("Tokens", _tokens);
+            PlayerPrefs.Save();
         }
         #endregion
 
@@ -84,15 +94,15 @@ namespace Managers {
         internal void adjustMasterVolume(float volume) {
             _volume.Master = volume;
             _audioSource.volume = _volume.Master;
-            PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
+            //PlayerPrefs.Save();
         }
 
         internal void adjustMusicVolume(float volume) {
             _volume.Music = volume;
             AudioListener.volume = _volume.Music;
-            PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
+            //PlayerPrefs.Save();
         }
 
         internal void adjustEffectVolume(float volume) {
@@ -140,21 +150,28 @@ namespace Managers {
         /// instance from wherver the users browsersaves data.
         /// </summary>
         protected internal void loadPreferences() {
+            // Audio
             _volume = new OptionValues(
                 (PlayerPrefs.HasKey("MasterVolume")) ? PlayerPrefs.GetFloat("MasterVolume") : 1F,
                 (PlayerPrefs.HasKey("MusicVolume")) ? PlayerPrefs.GetFloat("MusicVolume") : 1F,
                 (PlayerPrefs.HasKey("EffectVolume")) ? PlayerPrefs.GetFloat("EffectVolume") : 1F);
             _audioSource.volume = this._volume.Master;
             AudioListener.volume = this._volume.Music;
+
+            // Tokens
+            _tokens = (PlayerPrefs.HasKey("Tokens")) ? PlayerPrefs.GetInt("Tokens") : 0;
         }
         #endregion
 
         #region Helper methods
+        public void AddToken() {
+            this._tokens++;
+        }
         #endregion
     }
 
     /// <summary>
-    /// Struct that holds all the values that can be in options
+    /// Struct that holds all the values that can be in volume options
     /// </summary>
     public struct OptionValues {
         private float master;
