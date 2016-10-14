@@ -17,7 +17,13 @@ class FloatingBumperScript : BumperScript {
     }
 
     void FixedUpdate() {
-        moveBumper();
+        if (_translate && _increment != ChangeHeight) {
+            this.transform.Translate(Vector2.up * MoveSpeed);
+            _increment++;
+        } else if(!_translate && _increment != 0) {
+            this.transform.Translate(Vector2.down * MoveSpeed);
+            _increment--;
+        }
     }
 
     public override bool Trigger() {
@@ -31,39 +37,6 @@ class FloatingBumperScript : BumperScript {
     }
 
     #region Helper methods
-
-    private void moveBumper()
-    {
-        if (ChangeHeight > 0)
-        {
-            if (_translate && _increment != ChangeHeight)
-            {
-                this.transform.Translate(Vector2.up * MoveSpeed);
-                _increment++;
-            }
-            else if (!_translate && _increment != 0)
-            {
-                this.transform.Translate(Vector2.down * MoveSpeed);
-                _increment--;
-            }
-        }
-        else
-        {
-            if (_translate && _increment != ChangeHeight)
-            {
-                this.transform.Translate(Vector2.down * MoveSpeed);
-                _increment--;
-            }
-            else if (!_translate && _increment != 0)
-            {
-                this.transform.Translate(Vector2.up * MoveSpeed);
-                _increment++;
-            }
-        }
-
-        
-    }
-
     #endregion
 }
 
