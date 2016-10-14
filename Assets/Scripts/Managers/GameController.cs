@@ -7,8 +7,8 @@ using System;
 namespace Managers {
     /// <summary>
     /// The game controller is a script which manages :
-    /// - <list type="responsibilites">
-    /// Controlling what music is currently playing
+    /// <list type="responsibilites">
+    /// <item>Controlling what music is currently playing</item>
     /// What level is currently loaded
     /// Player save persistence
     /// Including saving settings
