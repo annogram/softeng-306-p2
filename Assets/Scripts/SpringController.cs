@@ -56,7 +56,6 @@ public class SpringController : MonoBehaviour {
 
     private void ExpandSpring() {
 
-        Debug.Log("Expanding from: " + spring.transform.localScale.x + "to: " + maxWidth);
         if (spring.transform.localScale.x < maxWidth)
         {
             spring.transform.localScale += cfVector * 10;
@@ -72,7 +71,6 @@ public class SpringController : MonoBehaviour {
 
         bigCompressFactor = pc.IsTouchingPlayer() ? 1F : 0.3F;
 
-        Debug.Log("Compressing from: " + spring.transform.localScale.x + "to: " + (maxWidth - (maxWidth - minWidth) * bigCompressFactor));
 
         if (spring.transform.localScale.x > maxWidth - (maxWidth - minWidth) * bigCompressFactor) {
             spring.transform.localScale -= cfVector;

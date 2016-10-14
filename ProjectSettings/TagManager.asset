@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - ShowOnPause
+  - Ramp
+  - Player2
+  - P1Name
+  - startPage
+  - aboutPage
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+[System.Obsolete("Gamemanager now changes scenes")]
 public class LoadScreens : MonoBehaviour {
 
 	public void loadScreenSingle(string screenName){
