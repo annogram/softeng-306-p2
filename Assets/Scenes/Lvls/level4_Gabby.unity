@@ -1306,6 +1306,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 572244583}
+      value: 30.5
 --- !u!1 &637176932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,6 +1428,11 @@ Transform:
   - {fileID: 372715139}
   m_Father: {fileID: 0}
   m_RootOrder: 11
+    - target: {fileID: 114000010981396244, guid: 4ec2c1b91be43be4a8de824c17b1b411,
+        type: 2}
+      propertyPath: OverChargeMultiplier
+      value: 3
+      objectReference: {fileID: 0}
 --- !u!1 &765888295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,7 +1677,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011752143714, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 91
+      value: 30.5
       objectReference: {fileID: 0}
     - target: {fileID: 4000011752143714, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1853,6 +1859,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+    - target: {fileID: 114000010981396244, guid: 4ec2c1b91be43be4a8de824c17b1b411,
+        type: 2}
+      propertyPath: OverChargeMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010981396244, guid: 4ec2c1b91be43be4a8de824c17b1b411,
+        type: 2}
+      propertyPath: OverChargeMultiplier
+      value: 3
+      objectReference: {fileID: 0}
 --- !u!1001 &1009374585
 Prefab:
   m_ObjectHideFlags: 0
@@ -1871,7 +1887,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011752143714, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 36.4
+      value: 35.5
       objectReference: {fileID: 0}
     - target: {fileID: 4000011752143714, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2059,11 +2075,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 61.1
+      value: 19.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 40.5
+      value: 12.4
       objectReference: {fileID: 0}
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2356,6 +2372,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f13363094962d50448088c81e93dfec8, type: 2}
   m_IsPrefabParent: 0
+      value: 5.5
 --- !u!1 &1522543200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3527,6 +3544,11 @@ Prefab:
       propertyPath: MoveSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010981396244, guid: 4ec2c1b91be43be4a8de824c17b1b411,
+        type: 2}
+      propertyPath: OverChargeMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ec2c1b91be43be4a8de824c17b1b411, type: 2}
   m_IsPrefabParent: 0
@@ -3787,11 +3809,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 101
+      value: 60.2
       objectReference: {fileID: 0}
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 13.7
+      value: 38.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.z
