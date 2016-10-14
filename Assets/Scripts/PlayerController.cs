@@ -36,9 +36,11 @@ public class PlayerController : MonoBehaviour {
     private GameController _controller;
     private float _sfxVolume;
     private float _playerSpeed;
+    private float _player2Speed;
 
     private bool isTouchingPlayer = false;
     bool isMoving = false;
+    
 
     // Use this for initialization
     void Start() {
@@ -97,14 +99,10 @@ public class PlayerController : MonoBehaviour {
     private void movementManager() {
 
         // Updates the speed parameter in the animator to animate the walk
-        _playerSpeed = Input.GetAxis("Horizontal");
+        _playerSpeed = Input.GetAxis("Player1Horizontal");
         _anim.SetFloat("Speed", Mathf.Abs(_playerSpeed));
-
-        // Deals with flippin the player left or right
-        if (_playerSpeed > 0 && !facingRight)
-            Flip();
-        else if (_playerSpeed < 0 && facingRight)
-            Flip();
+        _player2Speed = Input.GetAxis("Player2Horizontal");
+        _anim.SetFloat("Speed2", Mathf.Abs(_player2Speed));
 
         if(_rb.velocity.y < 0)
         {
