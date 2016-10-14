@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
 		_name = GetComponentInChildren<Canvas> ();
 		setPlayerName (displayName);
         _controller = GameController.Instance;
-        _sfxVolume = _controller.GetSFXVolume();
+        //_sfxVolume = _controller.GetSFXVolume();
     
     }
 
