@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Managers;
+
 
 public class PlayerController : MonoBehaviour {
 
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour {
     private float _airDrag = 1;
     private Animator _anim;
 	private Canvas _name;
+    private GameController _controller;
+    private float _sfxVolume;
 
     private bool isTouchingPlayer = false;
 
@@ -37,7 +41,9 @@ public class PlayerController : MonoBehaviour {
         _anim = GetComponent<Animator>();
 		_name = GetComponentInChildren<Canvas> ();
 		setPlayerName (displayName);
-
+        _controller = GameController.Instance;
+        _sfxVolume = _controller.GetSFXVolume();
+    
     }
 
     // Update is called once per frame
