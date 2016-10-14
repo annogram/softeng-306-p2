@@ -42,12 +42,6 @@ namespace Managers {
 
         private OptionValues _volume;
         private AudioSource _audioSource;
-
-        internal float GetSFXVolume()
-        {
-            throw new NotImplementedException();
-        }
-
         private bool _inMenu = true;
         private int _audioTrack = 1;
         private int _tokens = 0;
@@ -97,22 +91,22 @@ namespace Managers {
         #endregion
 
         #region Audio management
-        internal void adjustMasterVolume(float volume) {
+        internal void AdjustMasterVolume(float volume) {
             _volume.Master = volume;
             _audioSource.volume = _volume.Master;
             //PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
             //PlayerPrefs.Save();
         }
 
-        internal void adjustMusicVolume(float volume) {
+        internal void AdjustMusicVolume(float volume) {
             _volume.Music = volume;
             AudioListener.volume = _volume.Music;
             //PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
             //PlayerPrefs.Save();
         }
 
-        internal void adjustEffectVolume(float volume) {
-            throw new NotImplementedException();
+        internal void AdjustEffectVolume(float volume) {
+            _volume.Effects = volume;
         }
 
         private void ChangeAudio(string screenTarget) {
@@ -173,6 +167,11 @@ namespace Managers {
         public void AddToken() {
             this._tokens++;
         }
+
+        internal float GetSFXVolume() {
+            return _volume.Effects;
+        }
+
         #endregion
     }
 
