@@ -7,8 +7,8 @@ using System;
 namespace Managers {
     /// <summary>
     /// The game controller is a script which manages :
-    /// - <list type="responsibilites">
-    /// Controlling what music is currently playing
+    /// <list type="responsibilites">
+    /// <item>Controlling what music is currently playing</item>
     /// What level is currently loaded
     /// Player save persistence
     /// Including saving settings
@@ -42,15 +42,9 @@ namespace Managers {
 
         private OptionValues _volume;
         private AudioSource _audioSource;
-
-        internal float GetSFXVolume()
-        {
-            throw new NotImplementedException();
-        }
-
         private bool _inMenu = true;
-
         private int _audioTrack = 1;
+        private int _tokens = 0;
         #endregion
 
         #region Constructor
@@ -58,6 +52,7 @@ namespace Managers {
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
+                // Load persistent values from machine
                 this.loadPreferences();
             } else if (this != instance) {
                 Destroy(gameObject);
@@ -87,22 +82,22 @@ namespace Managers {
         #endregion
 
         #region Audio management
-        internal void adjustMasterVolume(float volume) {
+        internal void AdjustMasterVolume(float volume) {
             _volume.Master = volume;
             _audioSource.volume = _volume.Master;
-            PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
+            //PlayerPrefs.Save();
         }
 
-        internal void adjustMusicVolume(float volume) {
+        internal void AdjustMusicVolume(float volume) {
             _volume.Music = volume;
             AudioListener.volume = _volume.Music;
-            PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
+            //PlayerPrefs.Save();
         }
 
-        internal void adjustEffectVolume(float volume) {
-            throw new NotImplementedException();
+        internal void AdjustEffectVolume(float volume) {
+            _volume.Effects = volume;
         }
 
         private void ChangeAudio(string screenTarget) {
@@ -146,21 +141,41 @@ namespace Managers {
         /// instance from wherver the users browsersaves data.
         /// </summary>
         protected internal void loadPreferences() {
+            // Audio
             _volume = new OptionValues(
                 (PlayerPrefs.HasKey("MasterVolume")) ? PlayerPrefs.GetFloat("MasterVolume") : 1F,
                 (PlayerPrefs.HasKey("MusicVolume")) ? PlayerPrefs.GetFloat("MusicVolume") : 1F,
                 (PlayerPrefs.HasKey("EffectVolume")) ? PlayerPrefs.GetFloat("EffectVolume") : 1F);
             _audioSource.volume = this._volume.Master;
             AudioListener.volume = this._volume.Music;
+
+            // Tokens
+            _tokens = (PlayerPrefs.HasKey("Tokens")) ? PlayerPrefs.GetInt("Tokens") : 0;
+        }
+
+        void OnDestroy() {
+            PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
+            PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
+            PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
+            PlayerPrefs.SetInt("Tokens", _tokens);
+            PlayerPrefs.Save();
         }
         #endregion
 
         #region Helper methods
+        public void AddToken() {
+            this._tokens++;
+        }
+
+        internal float GetSFXVolume() {
+            return _volume.Effects;
+        }
+
         #endregion
     }
 
     /// <summary>
-    /// Struct that holds all the values that can be in options
+    /// Struct that holds all the values that can be in volume options
     /// </summary>
     public struct OptionValues {
         private float master;

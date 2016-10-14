@@ -27,15 +27,15 @@ namespace Managers {
 
         #region Controller Calls
         public void UpdateMaster(float volume) {
-            _controller.adjustMasterVolume(volume);
+            _controller.AdjustMasterVolume(volume);
         }
 
         public void UpdateMusic(float volume) {
-            _controller.adjustMusicVolume(volume);
+            _controller.AdjustMusicVolume(volume);
         }
 
         public void UpdateEffect(float volume) {
-            _controller.adjustEffectVolume(volume);
+            _controller.AdjustEffectVolume(volume);
         }
         #endregion
     }
