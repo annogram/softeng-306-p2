@@ -89,29 +89,38 @@ public class PlayerController : MonoBehaviour {
     private void movementManager() {
 
         // Updates the speed parameter in the animator to animate the walk
-        float speed = Input.GetAxis("Horizontal");
-        _anim.SetFloat("Speed", Mathf.Abs(speed));
+        float speed1 = Input.GetAxis("Player1Horizontal");
+        _anim.SetFloat("Speed1", Mathf.Abs(speed1));
 
-        // Deals with flippin the player left or right
-        if (speed > 0 && !facingRight)
-            Flip();
-        else if (speed < 0 && facingRight)
-            Flip();
+        float speed2 = Input.GetAxis("Player2Horizontal");
+        _anim.SetFloat("Speed2", Mathf.Abs(speed2));
 
-        if(_rb.velocity.y < 0)
+        if (_rb.velocity.y < 0)
         {
             _anim.SetBool("Land", true);
         }
 
         // Check if we need to do player 1 or player 2 controls
         if (gameObject.tag == "Player" && !_ball) {
+
+            _anim.SetBool("IsPlayer1", true);
+
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.RightArrow)) {
                 forceX = new Vector2(1, 0f);
+                if (speed1 > 0 && !facingRight)
+                {
+                    Flip();
+                }
 
             } else if (Input.GetKey(KeyCode.LeftArrow)) {
                 forceX = new Vector2(-1, 0f);
+                if (speed1 < 0 && facingRight)
+                {
+                    Flip();
+                }
+
             }
             if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
                 _rb.AddForce(forceX * (accl * _airDrag));
@@ -129,12 +138,22 @@ public class PlayerController : MonoBehaviour {
                 _airDrag = 1/airCtrl;
             }
         } else if(gameObject.tag == "Player2" && !_ball) {
+
+            _anim.SetBool("IsPlayer1", false);
             // Player 2 keys
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.D)) {
                 forceX = new Vector2(1, 0f);
+                if (speed2 > 0 && !facingRight)
+                {
+                    Flip();
+                }
             } else if (Input.GetKey(KeyCode.A)) {
                 forceX = new Vector2(-1, 0f);
+                if (speed2 < 0 && facingRight)
+                {
+                    Flip();
+                }
             }
             if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
                 _rb.AddForce(forceX * (accl * _airDrag));
