@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpTime = 0;
     public float jumpDelay = .5f;
     public bool jumped;
+    public bool isMoving = false;
 
     public float accl;
     public float maxSpeed;
@@ -17,6 +18,11 @@ public class PlayerController : MonoBehaviour {
     public LayerMask[] jumpableLayers;
     public float airCtrl;
 	public string displayName = "PLAYER";
+
+    public AudioSource movementAudio;
+    public AudioClip playerRunningClip;
+    public AudioSource jumpAudio;
+    public AudioClip playerJumpingClip;
 
     private bool _ball;
     private Rigidbody2D _rb;
@@ -52,6 +58,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate() {
         this.movementManager();
+        this.movementAudioManager();
         this.HandleLayers();
 		this.reset();
     }
@@ -207,7 +214,6 @@ public class PlayerController : MonoBehaviour {
         transform.localScale = theScale;
     }
 
-
     // Resets values after processing
     private void reset() {
 
@@ -232,6 +238,30 @@ public class PlayerController : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    private void movementAudioManager()
+    {
+        movementAudio.clip = playerRunningClip;
+        if (_player1Speed != 0 || _player2Speed != 0)
+        {
+            this.isMoving = true;
+        }
+        else
+        {
+            this.isMoving = false;
+        }
+        if (this.isMoving && isGrounded())
+        {
+            if (!movementAudio.isPlaying)
+            {
+                movementAudio.Play();
+            }
+        }
+        else
+        {
+            movementAudio.Stop();
+        }
     }
     #endregion
 }
