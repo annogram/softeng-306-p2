@@ -90,6 +90,11 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &27410369 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013014082134, guid: 4ec2c1b91be43be4a8de824c17b1b411,
+    type: 2}
+  m_PrefabInternal: {fileID: 1302884951}
 --- !u!1001 &417054789
 Prefab:
   m_ObjectHideFlags: 0
@@ -348,6 +353,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1,
     type: 2}
   m_PrefabInternal: {fileID: 1983337354}
+--- !u!1 &1547201340 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012689417076, guid: e91b4061111e7b84f9242ae4f5eadbdb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1607845687}
 --- !u!1001 &1607845687
 Prefab:
   m_ObjectHideFlags: 0
@@ -487,6 +497,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1504808904}
   m_RootOrder: 0
+--- !u!1 &1716776890 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012187477360, guid: 2e0e265da80d1e247841fd0985323de2,
+    type: 2}
+  m_PrefabInternal: {fileID: 417054789}
 --- !u!1 &1921103615
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +513,7 @@ GameObject:
   - 212: {fileID: 1921103616}
   - 95: {fileID: 1921103618}
   - 60: {fileID: 1921103619}
+  - 114: {fileID: 1921103620}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -545,7 +561,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1921103615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 56.7, y: -5.2, z: 26.976562}
+  m_LocalPosition: {x: 56.52, y: -5.52, z: 26.976562}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -582,26 +598,29 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 2.7929688, y: 0.0390625}
-      - {x: 0.2734375, y: 0.0390625}
-      - {x: 0.3125, y: 0.25390625}
-      - {x: -0.83984375, y: 1.6210938}
-      - {x: -1.3476562, y: 2.1289062}
-      - {x: -1.640625, y: 2.109375}
-      - {x: -1.71875, y: 2.7929688}
-      - {x: -2.734375, y: 2.7929688}
-      - {x: -2.7929688, y: 2.734375}
-      - {x: -2.8125, y: 1.7382812}
-      - {x: -2.0507812, y: 1.4453125}
-      - {x: -0.8203125, y: 0.234375}
-      - {x: -0.56640625, y: 0.05859375}
-      - {x: -3.0078125, y: 0.078125}
-      - {x: -3.28125, y: -0.1953125}
-      - {x: -3.28125, y: -0.7421875}
-      - {x: -3.2421875, y: -0.78125}
-      - {x: 2.9882812, y: -0.78125}
-      - {x: 3.0273438, y: -0.7421875}
-      - {x: 3.0273438, y: -0.1953125}
+    - - {x: 0.57765454, y: -0.3353653}
+      - {x: 0.14303336, y: 1.2232645}
+      - {x: 0.033047996, y: 2.0118976}
+      - {x: -0.51121014, y: 1.99731}
+      - {x: -0.519132, y: 1.5042638}
+      - {x: -0.55306756, y: 1.117688}
+      - {x: -0.8706309, y: -0.31583342}
+--- !u!114 &1921103620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921103615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad19a3a14b7576488d1a298b37167a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonActions:
+  - {fileID: 1716776890}
+  - {fileID: 1547201340}
+  - {fileID: 27410369}
+  CanPress: []
 --- !u!1001 &1983337354
 Prefab:
   m_ObjectHideFlags: 0
