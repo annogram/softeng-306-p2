@@ -80,11 +80,13 @@ namespace Managers {
 
         public void loadScreenAdditive(string screenName) {
             ChangeAudio(screenName);
+			ResetTokenCollectionOnCurrentLevel ();
             SceneManager.LoadScene(screenName, LoadSceneMode.Additive);
         }
 
         public void restartCurrentScene() {
             int scene = SceneManager.GetActiveScene().buildIndex;
+			ResetTokenCollectionOnCurrentLevel ();
             SceneManager.LoadScene(scene, LoadSceneMode.Single);
         }
         #endregion
