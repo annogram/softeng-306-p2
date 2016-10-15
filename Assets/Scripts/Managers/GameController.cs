@@ -132,6 +132,10 @@ namespace Managers {
         #endregion
 
         #region Persistence
+        /// <summary>
+        /// Used in <code>OptionsBehavior</code> to load in persistent values
+        /// </summary>
+        /// <returns>Structure holding volume values</returns>
         public OptionValues LoadOptions() {
             return _volume;
         }
