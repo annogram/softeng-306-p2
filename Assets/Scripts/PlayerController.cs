@@ -30,8 +30,11 @@ public class PlayerController : MonoBehaviour {
 	private Canvas _name;
     private GameController _controller;
     private float _sfxVolume;
+    private float _player1Speed;
+    private float _player2Speed;
 
     private bool isTouchingPlayer = false;
+    
 
     // Use this for initialization
     void Start() {
@@ -89,11 +92,10 @@ public class PlayerController : MonoBehaviour {
     private void movementManager() {
 
         // Updates the speed parameter in the animator to animate the walk
-        float speed1 = Input.GetAxis("Player1Horizontal");
-        _anim.SetFloat("Speed1", Mathf.Abs(speed1));
-
-        float speed2 = Input.GetAxis("Player2Horizontal");
-        _anim.SetFloat("Speed2", Mathf.Abs(speed2));
+        _player1Speed = Input.GetAxis("Player1Horizontal");
+        _anim.SetFloat("Speed1", Mathf.Abs(_player1Speed));
+        _player2Speed = Input.GetAxis("Player2Horizontal");
+        _anim.SetFloat("Speed2", Mathf.Abs(_player2Speed));
 
         if (_rb.velocity.y < 0)
         {
@@ -109,14 +111,14 @@ public class PlayerController : MonoBehaviour {
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.RightArrow)) {
                 forceX = new Vector2(1, 0f);
-                if (speed1 > 0 && !facingRight)
+                if (_player1Speed > 0 && !facingRight)
                 {
                     Flip();
                 }
 
             } else if (Input.GetKey(KeyCode.LeftArrow)) {
                 forceX = new Vector2(-1, 0f);
-                if (speed1 < 0 && facingRight)
+                if (_player1Speed < 0 && facingRight)
                 {
                     Flip();
                 }
@@ -144,13 +146,13 @@ public class PlayerController : MonoBehaviour {
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.D)) {
                 forceX = new Vector2(1, 0f);
-                if (speed2 > 0 && !facingRight)
+                if (_player2Speed > 0 && !facingRight)
                 {
                     Flip();
                 }
             } else if (Input.GetKey(KeyCode.A)) {
                 forceX = new Vector2(-1, 0f);
-                if (speed2 < 0 && facingRight)
+                if (_player2Speed < 0 && facingRight)
                 {
                     Flip();
                 }
