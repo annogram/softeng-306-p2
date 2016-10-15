@@ -166,7 +166,7 @@ namespace Managers {
 
 			if (PlayerPrefs.HasKey ("TokensCollectedAcrossGame")) {
 				string persistedTokenString = PlayerPrefs.GetString ("TokensCollectedAcrossGame");
-				this.LoadTokenPersistenceArray (persistedTokenString);
+				this.ConvertStringToTokensCollected (persistedTokenString);
 			} else {
 				this.LoadInitialTokenPersistenceArray();
 			}
@@ -178,7 +178,7 @@ namespace Managers {
             PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
             PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
             PlayerPrefs.SetInt("Tokens", _tokens);
-			PlayerPrefs.SetString ("TokensCollectedAcrossGame", SaveTokenPersistenceArray());
+			PlayerPrefs.SetString ("TokensCollectedAcrossGame", ConvertTokensCollectedToString());
             PlayerPrefs.Save();
         }
         #endregion
@@ -219,13 +219,13 @@ namespace Managers {
 			_currentLevelTokens = 0;
 		}
 
-		private void LoadTokenPersistenceArray(string marshalledArray){
+		private void ConvertStringToTokensCollected(string marshalledArray){
 			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
 				this._tokensCollectedAcrossGame [i] = (int)marshalledArray.ElementAt(i);
 			}
 		}
 
-		private string SaveTokenPersistenceArray(){
+		private string ConvertTokensCollectedToString(){
 			char[] tokenCharArray = new char[TOTAL_NUMBER_OF_LEVELS];
 			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
 				tokenCharArray [i] = (char)_tokensCollectedAcrossGame [i];
