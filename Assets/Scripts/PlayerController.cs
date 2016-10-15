@@ -52,7 +52,12 @@ public class PlayerController : MonoBehaviour {
 		setPlayerName (displayName);
         _controller = GameController.Instance;
         _sfxVolume = _controller.GetSFXVolume();
-    
+        AudioSource[] aSources = GetComponents<AudioSource>();
+        movementAudio = aSources[0];
+        movementAudio.clip = playerRunningClip;
+        jumpAudio = aSources[1];
+        jumpAudio.clip = playerJumpingClip;
+
     }
 
     // Update is called once per frame
@@ -139,7 +144,7 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.UpArrow)) {
                     _jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
-
+                    jumpAudio.Play();
                     // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
@@ -172,7 +177,8 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.W)) {
                     Vector2 jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(jump, ForceMode2D.Impulse);
-
+                    jumpAudio.Play();
+                    // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
             } else {
