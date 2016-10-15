@@ -165,9 +165,12 @@ namespace Managers {
 			_currentLevelTokens = 0;
 
 			if (PlayerPrefs.HasKey ("TokensCollectedAcrossGame")) {
+				Debug.Log ("Tokens collected across game being loaded from persistence.");
 				string persistedTokenString = PlayerPrefs.GetString ("TokensCollectedAcrossGame");
+				Debug.Log ("Persistence token string found :" + persistedTokenString);
 				this.ConvertStringToTokensCollected (persistedTokenString);
 			} else {
+				Debug.Log ("No persistence found for tokens collected. Re-initalising instead!");
 				this.LoadInitialTokenPersistenceArray();
 			}
 
@@ -213,14 +216,20 @@ namespace Managers {
 			if (level >= _tokensCollectedAcrossGame.Length || level < 0) {
 				return;
 			}
-			_tokensCollectedAcrossGame[level] = tokensCollectedValue;
+
+			if (_tokensCollectedAcrossGame [level] < tokensCollectedValue) {
+				Debug.Log (string.Format("Updating tokens collected for Level {0} to {1}", level, tokensCollectedValue));
+				_tokensCollectedAcrossGame[level] = tokensCollectedValue;
+			}
 		}
 
 		private void ResetTokenCollectionOnCurrentLevel(){
+			Debug.Log ("Resetting tokens collected for current level to 0");
 			_currentLevelTokens = 0;
 		}
 
 		private void ConvertStringToTokensCollected(string marshalledArray){
+			Debug.Log ("Converting " + marshalledArray + " to tokens array.");
 			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
 				this._tokensCollectedAcrossGame [i] = (int)marshalledArray.ElementAt(i);
 			}
@@ -231,10 +240,13 @@ namespace Managers {
 			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
 				tokenCharArray [i] = (char)_tokensCollectedAcrossGame [i];
 			}
-			return new string (tokenCharArray);
+			string tokensString = new string (tokenCharArray);
+			Debug.Log ("Converted tokens array to string: " + tokensString);
+			return tokensString;
 		}
 
 		private void LoadInitialTokenPersistenceArray(){
+			Debug.Log ("Re-initialising token array to 0s");
 			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
 				this._tokensCollectedAcrossGame [i] = 0;
 			}
