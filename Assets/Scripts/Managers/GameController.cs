@@ -34,6 +34,7 @@ namespace Managers {
             private set
             {
                 instance = value;
+
             }
         }
         #endregion
@@ -55,7 +56,6 @@ namespace Managers {
 
         #region Constructor
         void Awake() {
-//			PlayerPrefs.DeleteAll ();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
