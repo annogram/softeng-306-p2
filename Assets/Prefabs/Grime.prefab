@@ -24,6 +24,7 @@ GameObject:
   - 50: {fileID: 50000013384639080}
   - 114: {fileID: 114000014068467598}
   - 247: {fileID: 247000012581468368}
+  - 95: {fileID: 95000013314371294}
   m_Layer: 0
   m_Name: Grime
   m_TagString: Grime
@@ -94,6 +95,23 @@ PolygonCollider2D:
       - {x: 7.52, y: -1.5999999}
       - {x: 7.4197693, y: -0.51861286}
       - {x: 6.415169, y: 0.11794472}
+--- !u!95 &95000013314371294
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013253196220}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef647b2275c7ef146827ca5e88b85044, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000014068467598
 MonoBehaviour:
   m_ObjectHideFlags: 1

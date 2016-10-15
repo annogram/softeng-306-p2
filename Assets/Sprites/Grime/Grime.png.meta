@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 525191c5f60c88b4c915960eb030bae8
-timeCreated: 1476528094
+timeCreated: 1476528784
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,10 @@ TextureImporter:
     21300006: Grime_3
     21300008: Grime_4
     21300010: Grime_5
+    21300012: Grime_6
+    21300014: Grime_7
+    21300016: Grime_8
+    21300018: Grime_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -63,7 +67,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 400
         width: 1600
         height: 400
       alignment: 0
@@ -76,7 +80,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1600
-        y: 0
+        y: 400
         width: 1600
         height: 400
       alignment: 0
@@ -89,7 +93,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3200
-        y: 0
+        y: 400
         width: 1600
         height: 400
       alignment: 0
@@ -102,7 +106,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4800
-        y: 0
+        y: 400
         width: 1600
         height: 400
       alignment: 0
@@ -115,7 +119,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6400
-        y: 0
+        y: 400
         width: 1600
         height: 400
       alignment: 0
@@ -127,7 +131,59 @@ TextureImporter:
       name: Grime_5
       rect:
         serializedVersion: 2
-        x: 8000
+        x: 0
+        y: 0
+        width: 1600
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Grime_6
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 1600
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Grime_7
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 0
+        width: 1600
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Grime_8
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 0
+        width: 1600
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Grime_9
+      rect:
+        serializedVersion: 2
+        x: 6400
         y: 0
         width: 1600
         height: 400
