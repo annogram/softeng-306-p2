@@ -100,23 +100,24 @@ public class PlayerController : MonoBehaviour {
     {
         if (other.tag == "Grime")
         {
-            this._inGrime = true;
-            this._rb.velocity = Vector2.zero;
-            this._grimeController = other.GetComponent<GrimeController>();
+            _inGrime = true;
+            _rb.velocity = Vector2.zero;
+            _grimeController = other.GetComponent<GrimeController>();
+            _anim.SetBool("InGrime", true);
         }
     }
 
     void ApplySlow()
     {
-        float playerSpeed = this._rb.velocity.x;
-        this.jumpStrength = 50;
+        float playerSpeed = _rb.velocity.x;
+        jumpStrength = 50;
         if (playerSpeed > 0)
         {
-            this._rb.AddForce(Vector2.left * _grimeController.Stickiness);
+            _rb.AddForce(Vector2.left * _grimeController.Stickiness);
         }
         else if (playerSpeed < 0)
         {
-            this._rb.AddForce(Vector2.right * _grimeController.Stickiness);
+            _rb.AddForce(Vector2.right * _grimeController.Stickiness);
         }
 
     }
@@ -125,8 +126,9 @@ public class PlayerController : MonoBehaviour {
     {
         if (other.tag == "Grime")
         {
-            this.jumpStrength = _originalJumpStrength;
-            this._inGrime = false;
+            jumpStrength = _originalJumpStrength;
+            _inGrime = false;
+            _anim.SetBool("InGrime", false);
         }
     }
     #endregion
