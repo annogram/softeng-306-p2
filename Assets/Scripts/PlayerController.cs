@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour {
     private float _player1Speed;
     private float _player2Speed;
 
+    private float _originalJumpStrength;
+    private GrimeController _grimeController;
+    private bool _inGrime;
+
     private bool isTouchingPlayer = false;
     
 
@@ -46,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 		setPlayerName (displayName);
         _controller = GameController.Instance;
         _sfxVolume = _controller.GetSFXVolume();
-    
+        _originalJumpStrength = jumpStrength;    
     }
 
     // Update is called once per frame
@@ -54,6 +58,10 @@ public class PlayerController : MonoBehaviour {
         this.movementManager();
         this.HandleLayers();
 		this.reset();
+        if (_inGrime)
+        {
+            this.ApplySlow();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other) {
@@ -86,6 +94,43 @@ public class PlayerController : MonoBehaviour {
     {
         return isTouchingPlayer;
     }
+
+    #region Grime Methods
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Grime")
+        {
+            this._inGrime = true;
+            this._rb.velocity = Vector2.zero;
+            this._grimeController = other.GetComponent<GrimeController>();
+        }
+    }
+
+    void ApplySlow()
+    {
+        float playerSpeed = this._rb.velocity.x;
+        this.jumpStrength = 50;
+        if (playerSpeed > 0)
+        {
+            this._rb.AddForce(Vector2.left * _grimeController.Stickiness);
+        }
+        else if (playerSpeed < 0)
+        {
+            this._rb.AddForce(Vector2.right * _grimeController.Stickiness);
+        }
+
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Grime")
+        {
+            this.jumpStrength = _originalJumpStrength;
+            this._inGrime = false;
+        }
+    }
+    #endregion
+
 
     #region Helper methods
     // Helper method that deals with movement.
