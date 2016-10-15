@@ -55,6 +55,7 @@ namespace Managers {
 
         #region Constructor
         void Awake() {
+//			PlayerPrefs.DeleteAll ();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
@@ -194,6 +195,7 @@ namespace Managers {
         }
 
 		public void AddToken(int level){
+			Debug.Log (string.Format ("Token collected by player on level {0}", level));
 			this._tokens++;
 			this._currentLevelTokens++;
 			UpdateTokenPersistenceArray (this._currentLevelTokens, level);
@@ -214,9 +216,12 @@ namespace Managers {
 		#region Token Management
 		private void UpdateTokenPersistenceArray(int tokensCollectedValue, int level){
 			if (level >= _tokensCollectedAcrossGame.Length || level < 0) {
+				Debug.LogError ("Level out of bounds!");
 				return;
 			}
 
+			level = level - 1;
+				
 			if (_tokensCollectedAcrossGame [level] < tokensCollectedValue) {
 				Debug.Log (string.Format("Updating tokens collected for Level {0} to {1}", level, tokensCollectedValue));
 				_tokensCollectedAcrossGame[level] = tokensCollectedValue;
@@ -233,8 +238,10 @@ namespace Managers {
 			_tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
 
 			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
-				this._tokensCollectedAcrossGame [i] = (int)marshalledArray.ElementAt(i);
+				this._tokensCollectedAcrossGame [i] = int.Parse("" + marshalledArray.ElementAt(i));
 			}
+
+			Debug.Log (_tokensCollectedAcrossGame[0]);
 		}
 
 		private string ConvertTokensCollectedToString(){
