@@ -2,8 +2,9 @@
 using System.Collections;
 
 namespace Managers{
-
 	public class CoinController : MonoBehaviour {
+        public int Level;
+
         private Animator _anim;
 		private GameController _gameController;
         private BoxCollider2D _collider;
@@ -22,7 +23,7 @@ namespace Managers{
 		}
 
 		void CoinPickup(){
-			_gameController.AddToken ();
+			_gameController.AddToken(Level);
             _anim.SetTrigger("Collected_Coin");
             Destroy(this.gameObject, 1);
 		}

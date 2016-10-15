@@ -184,6 +184,7 @@ namespace Managers {
         #endregion
 
         #region Externally called handler methods
+        [System.Obsolete("Use AddToken(int Level)")]
         public void AddToken() {
 			this._tokens++;
 			this._currentLevelTokens++;
