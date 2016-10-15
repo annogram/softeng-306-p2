@@ -55,7 +55,6 @@ namespace Managers {
 
         #region Constructor
         void Awake() {
-			PlayerPrefs.DeleteAll ();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
