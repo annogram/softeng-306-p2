@@ -28,12 +28,14 @@ Temp/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+Library/UnityAssemblies/version.txt
 # =============== #
 # Unity generated #
 # =============== #
 [Tt]emp/
 [Oo]bj/
 [Bb]uild
+
 /[Ll]ibrary/
 sysinfo.txt
 *.stackdump

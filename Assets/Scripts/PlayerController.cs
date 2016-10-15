@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using Managers;
 
 
@@ -18,15 +17,15 @@ public class PlayerController : MonoBehaviour {
     public float airCtrl;
 	public string displayName = "PLAYER";
 
-    private bool _ball;
-    private Rigidbody2D _rb;
+    protected bool _ball;
+    protected Rigidbody2D _rb;
     private EdgeCollider2D _feet;
     private float _moveX;
     private float _moveY;
     private bool _canJump;
-    private Vector2 _jump;
-    private float _airDrag = 1;
-    private Animator _anim;
+    protected Vector2 _jump;
+    protected float _airDrag = 1;
+    protected Animator _anim;
 	private Canvas _name;
     private GameController _controller;
     private float _sfxVolume;
@@ -173,7 +172,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Flips the player's orientation
-    void Flip()
+    protected void Flip()
     {
         facingRight = !facingRight;
 		if (!facingRight) {
@@ -197,7 +196,7 @@ public class PlayerController : MonoBehaviour {
 		_name.GetComponentInChildren<Text> ().text = displayName;
 	}
 
-    private bool isGrounded() {
+    protected bool isGrounded() {
         // If its not in the jumping
         if (_rb.velocity.y <= 0) {
             foreach (LayerMask lm in jumpableLayers) {
