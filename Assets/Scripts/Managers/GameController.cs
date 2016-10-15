@@ -56,6 +56,7 @@ namespace Managers {
 
         #region Constructor
         void Awake() {
+            //PlayerPrefs.DeleteAll();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
@@ -73,7 +74,10 @@ namespace Managers {
         #region Screen management
         public void loadScreenSingle(string screenName) {
             //Debug.Log(string.Format("changing screens to {0}", screenName));
-            ChangeAudio(screenName);
+            if (SceneManager.GetActiveScene().name != screenName) {
+                ChangeAudio(screenName);
+            }
+            
 			ResetTokenCollectionOnCurrentLevel ();
             SceneManager.LoadScene(screenName, LoadSceneMode.Single);
         }
