@@ -429,7 +429,6 @@ GameObject:
   - 124: {fileID: 197219263}
   - 92: {fileID: 197219262}
   - 81: {fileID: 197219261}
-  - 114: {fileID: 197219260}
   - 114: {fileID: 197219259}
   m_Layer: 0
   m_Name: MapCamera
@@ -452,22 +451,6 @@ MonoBehaviour:
   iterations: 3
   blurSpread: 0.363
   blurShader: {fileID: 4800000, guid: 57e6deea7c2924e22a5138e2b70bb4dc, type: 3}
---- !u!114 &197219260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 197219258}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d17fa4cfb81c6ba4485a3ab03adafb22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1: {fileID: 1917073484}
-  player2: {fileID: 912779368}
-  minSizeY: 5
-  horizontalPadding: 10
-  verticalPadding: 30
 --- !u!81 &197219261
 AudioListener:
   m_ObjectHideFlags: 0

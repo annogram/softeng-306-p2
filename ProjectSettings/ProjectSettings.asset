@@ -530,7 +530,7 @@ PlayerSettings:
   XboxOne::VR::enabledDevices: []
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
-  cloudProjectId: a18c36ca-61e2-45b3-8856-09be668cbb55
-  projectName: softeng306project2_SucideSquad (1)
-  organizationId: pbangia
+  cloudProjectId: 63e1c148-d8b6-4c18-a6fe-1636516ee9f7
+  projectName: softeng306project2_SucideSquad
+  organizationId: annogram
   cloudEnabled: 0
