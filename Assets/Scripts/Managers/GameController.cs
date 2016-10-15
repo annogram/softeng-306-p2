@@ -55,6 +55,7 @@ namespace Managers {
 
         #region Constructor
         void Awake() {
+			PlayerPrefs.DeleteAll ();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
@@ -230,23 +231,22 @@ namespace Managers {
 
 		private void ConvertStringToTokensCollected(string marshalledArray){
 			Debug.Log ("Converting " + marshalledArray + " to tokens array.");
+			_tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
+
 			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
 				this._tokensCollectedAcrossGame [i] = (int)marshalledArray.ElementAt(i);
 			}
 		}
 
 		private string ConvertTokensCollectedToString(){
-			char[] tokenCharArray = new char[TOTAL_NUMBER_OF_LEVELS];
-			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
-				tokenCharArray [i] = (char)_tokensCollectedAcrossGame [i];
-			}
+			char[] tokenCharArray = _tokensCollectedAcrossGame.Select (s => ("" + s).ToCharArray().First()).ToArray ();
 			string tokensString = new string (tokenCharArray);
 			Debug.Log ("Converted tokens array to string: " + tokensString);
 			return tokensString;
 		}
 
 		private void LoadInitialTokenPersistenceArray(){
-			Debug.Log ("Re-initialising token array to 0s");
+			Debug.Log ("Re-initialising token array to " + TOTAL_NUMBER_OF_LEVELS + " zeros.");
 			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
 				this._tokensCollectedAcrossGame [i] = 0;
 			}
