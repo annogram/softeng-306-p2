@@ -19,9 +19,7 @@ public class PlayerController : MonoBehaviour {
     public float airCtrl;
 	public string displayName = "PLAYER";
 
-    public AudioSource movementAudio;
     public AudioClip playerRunningClip;
-    public AudioSource jumpAudio;
     public AudioClip playerJumpingClip;
 
     private bool _ball;
@@ -38,6 +36,9 @@ public class PlayerController : MonoBehaviour {
     private float _sfxVolume;
     private float _player1Speed;
     private float _player2Speed;
+
+    private AudioSource _movementAudio;
+    private AudioSource _jumpAudio;
 
     private float _originalJumpStrength;
     private GrimeController _grimeController;
@@ -57,10 +58,10 @@ public class PlayerController : MonoBehaviour {
         _controller = GameController.Instance;
         _sfxVolume = _controller.GetSFXVolume();
         AudioSource[] aSources = GetComponents<AudioSource>();
-        movementAudio = aSources[0];
-        movementAudio.clip = playerRunningClip;
-        jumpAudio = aSources[1];
-        jumpAudio.clip = playerJumpingClip;
+        _movementAudio = aSources[0];
+        _movementAudio.clip = playerRunningClip;
+        _jumpAudio = aSources[1];
+        _jumpAudio.clip = playerJumpingClip;
 
     }
 
@@ -191,7 +192,7 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.UpArrow)) {
                     _jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
-                    jumpAudio.Play();
+                    _jumpAudio.Play();
                     // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
@@ -224,7 +225,7 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.W)) {
                     Vector2 jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(jump, ForceMode2D.Impulse);
-                    jumpAudio.Play();
+                    _jumpAudio.Play();
                     // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
@@ -295,7 +296,7 @@ public class PlayerController : MonoBehaviour {
 
     private void movementAudioManager()
     {
-        movementAudio.clip = playerRunningClip;
+        _movementAudio.clip = playerRunningClip;
         if (_player1Speed != 0 || _player2Speed != 0)
         {
             this.isMoving = true;
@@ -306,14 +307,14 @@ public class PlayerController : MonoBehaviour {
         }
         if (this.isMoving && isGrounded())
         {
-            if (!movementAudio.isPlaying)
+            if (!_movementAudio.isPlaying)
             {
-                movementAudio.Play();
+                _movementAudio.Play();
             }
         }
         else
         {
-            movementAudio.Stop();
+            _movementAudio.Stop();
         }
     }
     #endregion
