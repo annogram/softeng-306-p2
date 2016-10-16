@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class FlapdoorController : MonoBehaviour
+public class PowerupGiverController : MonoBehaviour
 {
     private PowerupPlayerController ppc;
     // Use this for initialization
@@ -19,10 +19,10 @@ public class FlapdoorController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Pl   ayer" || col.gameObject.tag == "Player2")
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Player2")
         {
             ppc = col.gameObject.GetComponent<PowerupPlayerController>();
-                ppc.becomeBalloon();
+                ppc.isBalloon = true;
         }
 
             //Some event here

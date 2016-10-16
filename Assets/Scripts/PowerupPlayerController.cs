@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Managers;
-using System;
+using System.Collections;
 
 
 public class PowerupPlayerController : MonoBehaviour
@@ -18,23 +18,29 @@ public class PowerupPlayerController : MonoBehaviour
     public LayerMask[] jumpableLayers;
     public float airCtrl;
     public string displayName = "PLAYER";
-    public Vector2 floatForce = new Vector2(0, 1000F);
-
-    protected bool _ball;
-    protected Rigidbody2D _rb;
-    protected EdgeCollider2D _feet;
-    protected float _moveX;
-    protected float _moveY;
-    protected bool _canJump;
-    protected Vector2 _jump;
-    protected float _airDrag = 1;
-    protected Animator _anim;
-    protected Canvas _name;
-    protected GameController _controller;
-    protected float _sfxVolume;
-
-    protected bool isTouchingPlayer = false;
     public bool isBalloon = false;
+
+    private bool _ball;
+    private Rigidbody2D _rb;
+    private EdgeCollider2D _feet;
+    private float _moveX;
+    private float _moveY;
+    private bool _canJump;
+    private Vector2 _jump;
+    private float _airDrag = 1;
+    private Animator _anim;
+    private Canvas _name;
+    private GameController _controller;
+    private float _sfxVolume;
+    private float _player1Speed;
+    private float _player2Speed;
+    private float floatGravity = -20;
+
+    private float _originalJumpStrength;
+    private GrimeController _grimeController;
+    private bool _inGrime;
+
+    private bool isTouchingPlayer = false;
 
     // Use this for initialization
     void Start()
@@ -47,16 +53,19 @@ public class PowerupPlayerController : MonoBehaviour
         setPlayerName(displayName);
         _controller = GameController.Instance;
         _sfxVolume = _controller.GetSFXVolume();
-
+        _originalJumpStrength = jumpStrength;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-       
         this.movementManager();
         this.HandleLayers();
         this.reset();
+        if (_inGrime)
+        {
+            this.ApplySlow();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -95,25 +104,55 @@ public class PowerupPlayerController : MonoBehaviour
         return isTouchingPlayer;
     }
 
-    public void becomeBalloon()
+    #region Grime Methods
+    void OnTriggerEnter2D(Collider2D other)
     {
-        isBalloon = true;
+        if (other.tag == "Grime")
+        {
+            _inGrime = true;
+            _rb.velocity = Vector2.zero;
+            _grimeController = other.GetComponent<GrimeController>();
+            _anim.SetBool("InGrime", true);
+        }
     }
+
+    void ApplySlow()
+    {
+        float playerSpeed = _rb.velocity.x;
+        jumpStrength = 50;
+        if (playerSpeed > 0)
+        {
+            _rb.AddForce(Vector2.left * _grimeController.Stickiness);
+        }
+        else if (playerSpeed < 0)
+        {
+            _rb.AddForce(Vector2.right * _grimeController.Stickiness);
+        }
+
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Grime")
+        {
+            jumpStrength = _originalJumpStrength;
+            _inGrime = false;
+            _anim.SetBool("InGrime", false);
+        }
+    }
+    #endregion
+
 
     #region Helper methods
     // Helper method that deals with movement.
     protected void movementManager()
     {
-       
-        // Updates the speed parameter in the animator to animate the walk
-        float speed = Input.GetAxis("Horizontal");
-        _anim.SetFloat("Speed", Mathf.Abs(speed));
 
-        // Deals with flippin the player left or right
-        if (speed > 0 && !facingRight)
-            Flip();
-        else if (speed < 0 && facingRight)
-            Flip();
+        // Updates the speed parameter in the animator to animate the walk
+        _player1Speed = Input.GetAxis("Player1Horizontal");
+        _anim.SetFloat("Speed1", Mathf.Abs(_player1Speed));
+        _player2Speed = Input.GetAxis("Player2Horizontal");
+        _anim.SetFloat("Speed2", Mathf.Abs(_player2Speed));
 
         if (_rb.velocity.y < 0)
         {
@@ -123,20 +162,36 @@ public class PowerupPlayerController : MonoBehaviour
         // Check if we need to do player 1 or player 2 controls
         if (gameObject.tag == "Player" && !_ball)
         {
+           
+            _anim.SetBool("IsPlayer1", true);
             if (isBalloon)
             {
-                _rb.gravityScale = -20;
+                _rb.gravityScale = floatGravity;
             }
+            else
+            {
+                _rb.gravityScale = 20F;
+            }
+
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 forceX = new Vector2(1, 0f);
+                if (_player1Speed > 0 && !facingRight)
+                {
+                    Flip();
+                }
 
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 forceX = new Vector2(-1, 0f);
+                if (_player1Speed < 0 && facingRight)
+                {
+                    Flip();
+                }
+
             }
             if (Mathf.Abs(_rb.velocity.x) <= maxSpeed)
             {
@@ -154,25 +209,39 @@ public class PowerupPlayerController : MonoBehaviour
                     _anim.SetTrigger("Jump");
                 }
             }
-            else {
+            else if (!isBalloon)
+            {
                 _airDrag = 1 / airCtrl;
             }
         }
         else if (gameObject.tag == "Player2" && !_ball)
         {
+
+            _anim.SetBool("IsPlayer1", false);
+            // Player 2 keys
             if (isBalloon)
             {
-                _rb.gravityScale = -20;
+                _rb.gravityScale = floatGravity;
+            } else
+            {
+                _rb.gravityScale = 20F;
             }
-            // Player 2 keys
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.D))
             {
                 forceX = new Vector2(1, 0f);
+                if (_player2Speed > 0 && !facingRight)
+                {
+                    Flip();
+                }
             }
             else if (Input.GetKey(KeyCode.A))
             {
                 forceX = new Vector2(-1, 0f);
+                if (_player2Speed < 0 && facingRight)
+                {
+                    Flip();
+                }
             }
             if (Mathf.Abs(_rb.velocity.x) <= maxSpeed)
             {
@@ -189,7 +258,8 @@ public class PowerupPlayerController : MonoBehaviour
                     _anim.SetTrigger("Jump");
                 }
             }
-            else {
+            else if (!isBalloon)
+            {
                 _airDrag = 1 / airCtrl;
             }
         }
@@ -246,7 +316,7 @@ public class PowerupPlayerController : MonoBehaviour
     protected bool isGrounded()
     {
         // If its not in the jumping
-        if (_rb.velocity.y <= 0)
+        if (_rb.velocity.y <= 0 && !isBalloon)
         {
             foreach (LayerMask lm in jumpableLayers)
             {
