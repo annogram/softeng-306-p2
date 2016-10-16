@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
 using UnityEditor.SceneManagement;
@@ -15,6 +16,7 @@ public class LevelExit : MonoBehaviour {
     private bool Playa2IsInDaHouse = false;
 	public GameObject completedPanel;
 	public Camera cam;
+	public int currentLevel;
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
@@ -26,7 +28,7 @@ public class LevelExit : MonoBehaviour {
 			completedPanel.SetActive (true);
 			cam.GetComponent<Blur>().enabled = true;
 			Time.timeScale = 0.0f;
-
+			updateScores ();
            // GameController controller = GameController.Instance;
             //controller.loadScreenSingle(nextScene);
         }
@@ -46,9 +48,32 @@ public class LevelExit : MonoBehaviour {
 		Time.timeScale = 1.0f;
 	}
 
-	public void loadLevelSelect(){
+	public void loadNextScene(string nextScene){
 		resume ();
 		GameController controller = GameController.Instance;
-		controller.loadScreenSingle("LevelSelectScreen");
+		controller.loadScreenSingle(nextScene);
+	}
+
+	private void updateScores() {
+		int level = 0;
+		//int totalScore = 0;
+	
+		Transform scores = completedPanel.transform.GetChild(1);
+		Transform currentHS = scores.transform.Find ("LevelScorePoints");
+		int levelScore = GameController.Instance.GetTokensCollectedOnLevel (currentLevel-1);
+			
+		Text ScorePoints = currentHS.GetComponent<Text> ();
+		ScorePoints.text = levelScore.ToString();
+		//totalScore += levelScore;
+
+
+
+
+		/*Transform totalEntry = ScrollContain.transform.GetChild (0);
+		Transform total = totalEntry.transform.Find ("ScorePoints");
+		Text totalText = total.GetComponent<Text> ();
+		totalText.text = totalScore.ToString ();*/
+
+
 	}
 }
