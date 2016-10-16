@@ -214,6 +214,14 @@ namespace Managers {
 			return _tokensCollectedAcrossGame [level];
 		}
 
+		public int GetTotalTokens() {
+			int total = 0;
+			foreach (int score in _tokensCollectedAcrossGame) {
+				total += score;
+			}
+			return total;
+		}
+
         internal float GetSFXVolume() {
             return _volume.Effects;
         }
