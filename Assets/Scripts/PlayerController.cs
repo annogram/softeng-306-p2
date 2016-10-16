@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour {
 		_name = GetComponentInChildren<Canvas> ();
 		setPlayerName (displayName);
         _controller = GameController.Instance;
-        _sfxVolume = _controller.GetSFXVolume();
         AudioSource[] aSources = GetComponents<AudioSource>();
         _movementAudio = aSources[0];
         _movementAudio.clip = playerRunningClip;
@@ -67,6 +66,7 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
+        _sfxVolume = _controller.GetSFXVolume();
         this.movementManager();
         this.movementAudioManager();
         this.HandleLayers();
@@ -192,6 +192,7 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.UpArrow)) {
                     _jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
+                    _jumpAudio.volume = _sfxVolume;
                     _jumpAudio.Play();
                     // Animation for jump
                     _anim.SetTrigger("Jump");
@@ -225,6 +226,7 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.W)) {
                     Vector2 jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(jump, ForceMode2D.Impulse);
+                    _jumpAudio.volume = _sfxVolume;
                     _jumpAudio.Play();
                     // Animation for jump
                     _anim.SetTrigger("Jump");
@@ -309,6 +311,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (!_movementAudio.isPlaying)
             {
+                _movementAudio.volume = _sfxVolume;
                 _movementAudio.Play();
             }
         }
