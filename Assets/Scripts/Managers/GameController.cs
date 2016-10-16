@@ -98,14 +98,14 @@ namespace Managers {
         #region Audio management
         internal void AdjustMasterVolume(float volume) {
             _volume.Master = volume;
-            AudioListener.volume = _volume.Master;
+            _audioSource.volume = _volume.Master;
             //PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
             //PlayerPrefs.Save();
         }
 
         internal void AdjustMusicVolume(float volume) {
             _volume.Music = volume;
-            _audioSource.volume = _volume.Music;
+            AudioListener.volume = _volume.Music;
             //PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
             //PlayerPrefs.Save();
         }
@@ -212,14 +212,6 @@ namespace Managers {
 				return -1;
 			}
 			return _tokensCollectedAcrossGame [level];
-		}
-
-		public int GetTotalTokens() {
-			int total = 0;
-			foreach (int score in _tokensCollectedAcrossGame) {
-				total += score;
-			}
-			return total;
 		}
 
         internal float GetSFXVolume() {

@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
 
     private bool isTouchingPlayer = false;
     
+
     // Use this for initialization
     void Start() {
         _ball = false;
@@ -270,7 +271,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Resets values after processing
-    void reset() {
+    private void reset() {
 
     }
 

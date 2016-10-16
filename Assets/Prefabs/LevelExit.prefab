@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010483696228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 67.9, y: 1.2, z: 0.51}
+  m_LocalPosition: {x: 405.59, y: 66.7, z: 0.51}
   m_LocalScale: {x: 22.611616, y: 12.93778, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -104,5 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ce2f24ea7acb041971fc7692f42144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completedPanel: {fileID: 0}
-  cam: {fileID: 0}
+  nextScene: LevelSelectScreen
