@@ -10,7 +10,6 @@ namespace Managers{
 		private GameController _gameController;
         private BoxCollider2D _collider;
         private AudioSource _coinAudio;
-        private float _sfxVolume;
 
 		void Start(){
 			_gameController = GameController.Instance;
@@ -28,6 +27,7 @@ namespace Managers{
 		}
 
 		void CoinPickup(){
+            _coinAudio.volume = _gameController.GetSFXVolume();
             _coinAudio.Play();
 			_gameController.AddToken(Level);
             _anim.SetTrigger("Collected_Coin");
