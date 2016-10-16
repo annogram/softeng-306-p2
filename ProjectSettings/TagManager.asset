@@ -10,6 +10,7 @@ TagManager:
   - P1Name
   - startPage
   - aboutPage
+  - Grime
   layers:
   - Default
   - TransparentFX
