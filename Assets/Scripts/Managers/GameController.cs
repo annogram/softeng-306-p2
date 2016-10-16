@@ -17,6 +17,9 @@ namespace Managers {
     ///</list>
     /// </summary>
     public class GameController : MonoBehaviour {
+
+		private const int TOTAL_NUMBER_OF_LEVELS = 6; 
+
         #region Properties
         private static GameController instance;
         public static GameController Instance
@@ -31,6 +34,7 @@ namespace Managers {
             private set
             {
                 instance = value;
+
             }
         }
         #endregion
@@ -44,11 +48,15 @@ namespace Managers {
         private AudioSource _audioSource;
         private bool _inMenu = true;
         private int _audioTrack = 1;
-        private int _tokens = 0;
+		private int _tokens = 0;
+		private int _currentLevelTokens = 0;
+		private int[] _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
+
         #endregion
 
         #region Constructor
         void Awake() {
+            //PlayerPrefs.DeleteAll();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
@@ -66,17 +74,23 @@ namespace Managers {
         #region Screen management
         public void loadScreenSingle(string screenName) {
             //Debug.Log(string.Format("changing screens to {0}", screenName));
-            ChangeAudio(screenName);
+            if (SceneManager.GetActiveScene().name != screenName) {
+                ChangeAudio(screenName);
+            }
+            
+			ResetTokenCollectionOnCurrentLevel ();
             SceneManager.LoadScene(screenName, LoadSceneMode.Single);
         }
 
         public void loadScreenAdditive(string screenName) {
             ChangeAudio(screenName);
+			ResetTokenCollectionOnCurrentLevel ();
             SceneManager.LoadScene(screenName, LoadSceneMode.Additive);
         }
 
         public void restartCurrentScene() {
             int scene = SceneManager.GetActiveScene().buildIndex;
+			ResetTokenCollectionOnCurrentLevel ();
             SceneManager.LoadScene(scene, LoadSceneMode.Single);
         }
         #endregion
@@ -132,6 +146,10 @@ namespace Managers {
         #endregion
 
         #region Persistence
+        /// <summary>
+        /// Used in <code>OptionsBehavior</code> to load in persistent values
+        /// </summary>
+        /// <returns>Structure holding volume values</returns>
         public OptionValues LoadOptions() {
             return _volume;
         }
@@ -141,37 +159,112 @@ namespace Managers {
         /// instance from wherver the users browsersaves data.
         /// </summary>
         protected internal void loadPreferences() {
-            // Audio
-            _volume = new OptionValues(
-                (PlayerPrefs.HasKey("MasterVolume")) ? PlayerPrefs.GetFloat("MasterVolume") : 1F,
-                (PlayerPrefs.HasKey("MusicVolume")) ? PlayerPrefs.GetFloat("MusicVolume") : 1F,
-                (PlayerPrefs.HasKey("EffectVolume")) ? PlayerPrefs.GetFloat("EffectVolume") : 1F);
-            _audioSource.volume = this._volume.Master;
-            AudioListener.volume = this._volume.Music;
+			// Audio
+			_volume = new OptionValues (
+				(PlayerPrefs.HasKey ("MasterVolume")) ? PlayerPrefs.GetFloat ("MasterVolume") : 1F,
+				(PlayerPrefs.HasKey ("MusicVolume")) ? PlayerPrefs.GetFloat ("MusicVolume") : 1F,
+				(PlayerPrefs.HasKey ("EffectVolume")) ? PlayerPrefs.GetFloat ("EffectVolume") : 1F);
+			_audioSource.volume = this._volume.Master;
+			AudioListener.volume = this._volume.Music;
 
-            // Tokens
-            _tokens = (PlayerPrefs.HasKey("Tokens")) ? PlayerPrefs.GetInt("Tokens") : 0;
-        }
+			// Tokens
+			_tokens = (PlayerPrefs.HasKey ("Tokens")) ? PlayerPrefs.GetInt ("Tokens") : 0;
+			_currentLevelTokens = 0;
+
+			if (PlayerPrefs.HasKey ("TokensCollectedAcrossGame")) {
+				Debug.Log ("Tokens collected across game being loaded from persistence.");
+				string persistedTokenString = PlayerPrefs.GetString ("TokensCollectedAcrossGame");
+				Debug.Log ("Persistence token string found :" + persistedTokenString);
+				this.ConvertStringToTokensCollected (persistedTokenString);
+			} else {
+				Debug.Log ("No persistence found for tokens collected. Re-initalising instead!");
+				this.LoadInitialTokenPersistenceArray();
+			}
+
+		}
 
         void OnDestroy() {
             PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
             PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
             PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
             PlayerPrefs.SetInt("Tokens", _tokens);
+			PlayerPrefs.SetString ("TokensCollectedAcrossGame", ConvertTokensCollectedToString());
             PlayerPrefs.Save();
         }
         #endregion
 
-        #region Helper methods
+        #region Externally called handler methods
+        [System.Obsolete("Use AddToken(int Level)")]
         public void AddToken() {
-            this._tokens++;
+			this._tokens++;
+			this._currentLevelTokens++;
         }
+
+		public void AddToken(int level){
+			Debug.Log (string.Format ("Token collected by player on level {0}", level));
+			this._tokens++;
+			this._currentLevelTokens++;
+			UpdateTokenPersistenceArray (this._currentLevelTokens, level);
+		}
+
+		public int GetTokensCollectedOnLevel(int level){
+			if (level >= _tokensCollectedAcrossGame.Length || level < 0) {
+				return -1;
+			}
+			return _tokensCollectedAcrossGame [level];
+		}
 
         internal float GetSFXVolume() {
             return _volume.Effects;
         }
-
         #endregion
+
+		#region Token Management
+		private void UpdateTokenPersistenceArray(int tokensCollectedValue, int level){
+			if (level >= _tokensCollectedAcrossGame.Length || level < 0) {
+				Debug.LogError ("Level out of bounds!");
+				return;
+			}
+
+			level = level - 1;
+				
+			if (_tokensCollectedAcrossGame [level] < tokensCollectedValue) {
+				Debug.Log (string.Format("Updating tokens collected for Level {0} to {1}", level, tokensCollectedValue));
+				_tokensCollectedAcrossGame[level] = tokensCollectedValue;
+			}
+		}
+
+		private void ResetTokenCollectionOnCurrentLevel(){
+			Debug.Log ("Resetting tokens collected for current level to 0");
+			_currentLevelTokens = 0;
+		}
+
+		private void ConvertStringToTokensCollected(string marshalledArray){
+			Debug.Log ("Converting " + marshalledArray + " to tokens array.");
+			_tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
+
+			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
+				this._tokensCollectedAcrossGame [i] = int.Parse("" + marshalledArray.ElementAt(i));
+			}
+
+			Debug.Log (_tokensCollectedAcrossGame[0]);
+		}
+
+		private string ConvertTokensCollectedToString(){
+			char[] tokenCharArray = _tokensCollectedAcrossGame.Select (s => ("" + s).ToCharArray().First()).ToArray ();
+			string tokensString = new string (tokenCharArray);
+			Debug.Log ("Converted tokens array to string: " + tokensString);
+			return tokensString;
+		}
+
+		private void LoadInitialTokenPersistenceArray(){
+			Debug.Log ("Re-initialising token array to " + TOTAL_NUMBER_OF_LEVELS + " zeros.");
+			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
+				this._tokensCollectedAcrossGame [i] = 0;
+			}
+		}
+
+		#endregion
     }
 
     /// <summary>

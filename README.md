@@ -3,7 +3,7 @@
 Prototype Repo: https://github.com/Helen-Zhao/softeng-306-p2
 
 Instructions for executables:  
-	1. (Prefered method) [Download](https://drive.google.com/file/d/0B2k6wet2gP7rSkw3UnFvZVJTZUE), extract and execute the .exe, select the 1080x1920 option (if present) and play.  
+	1. (Preferred method) [Download](https://drive.google.com/file/d/0B2k6wet2gP7rSkw3UnFvZVJTZUE), extract and execute the .exe, select the 1080x1920 option (if present) and play.  
 	2. Or [download](https://drive.google.com/file/d/0B3QL-c25-1uySGE0Y3d0MzI3Z0k), extract and launch index.html in **firefox** to play in a web browser.  
 
 ## Team Members

@@ -8,7 +8,7 @@ public class BumperScript : MonoBehaviour, IButtonPress {
 
     public float Power;
     public bool OverCharge;
-    public float OverChargeMultiplier;
+    public float OverChargeMultiplier = 3;
 
     protected Rigidbody2D _rb;
     protected Sprite _currentSprite;
