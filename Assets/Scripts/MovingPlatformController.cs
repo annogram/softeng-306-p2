@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MovingPlatformController : MonoBehaviour {
 
-    private float baseValue = 0f;
+    public float baseValue = 0f;
     private Vector3 moveDown = new Vector3(0, -0.1F, 0);
     private Vector3 moveUp = new Vector3(0, 0.1F, 0);
     private Vector3 move = new Vector3(0, 0.1F, 0);
