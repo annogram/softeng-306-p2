@@ -55,24 +55,19 @@ public class LevelExit : MonoBehaviour {
 	}
 
 	private void updateScores() {
-		int level = 0;
-		//int totalScore = 0;
-	
-		Transform scores = completedPanel.transform.GetChild(1);
-		Transform currentHS = scores.transform.Find ("LevelScorePoints");
+		
 		int levelScore = GameController.Instance.GetTokensCollectedOnLevel (currentLevel-1);
-			
-		Text ScorePoints = currentHS.GetComponent<Text> ();
-		ScorePoints.text = levelScore.ToString();
-		//totalScore += levelScore;
+		int totalScore = GameController.Instance.GetTotalTokens ();
 
+		Transform scores = completedPanel.transform.GetChild(1);
+		Transform levelEntry = scores.transform.Find ("LevelScorePoints");
+		Transform totalEntry = scores.transform.Find ("TotalScorePoints");
 
+		Text LevelScorePoints = levelEntry.GetComponent<Text> ();
+		Text TotalScorePoints = totalEntry.GetComponent<Text> ();
 
-
-		/*Transform totalEntry = ScrollContain.transform.GetChild (0);
-		Transform total = totalEntry.transform.Find ("ScorePoints");
-		Text totalText = total.GetComponent<Text> ();
-		totalText.text = totalScore.ToString ();*/
+		LevelScorePoints.text = levelScore.ToString ();
+		TotalScorePoints.text = totalScore.ToString ();
 
 
 	}
