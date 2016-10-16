@@ -18,7 +18,7 @@ public class PowerupPlayerController : MonoBehaviour
     public LayerMask[] jumpableLayers;
     public float airCtrl;
     public string displayName = "PLAYER";
-    public Vector2 floatForce = new Vector2(0, 1F);
+    public Vector2 floatForce = new Vector2(0, 1000F);
 
     protected bool _ball;
     protected Rigidbody2D _rb;
@@ -97,7 +97,6 @@ public class PowerupPlayerController : MonoBehaviour
 
     public void becomeBalloon()
     {
-        Console.Write("becoming balloon");
         isBalloon = true;
     }
 
@@ -126,8 +125,7 @@ public class PowerupPlayerController : MonoBehaviour
         {
             if (isBalloon)
             {
-                Console.Write("adding float force");
-                _rb.AddForce(floatForce);
+                _rb.gravityScale = -20;
             }
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
@@ -162,6 +160,10 @@ public class PowerupPlayerController : MonoBehaviour
         }
         else if (gameObject.tag == "Player2" && !_ball)
         {
+            if (isBalloon)
+            {
+                _rb.gravityScale = -20;
+            }
             // Player 2 keys
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.D))

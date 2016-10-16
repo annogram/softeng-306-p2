@@ -19,8 +19,7 @@ public class FlapdoorController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Console.WriteLine("on trigger entered");
-        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Player2")
+        if (col.gameObject.tag == "Pl   ayer" || col.gameObject.tag == "Player2")
         {
             ppc = col.gameObject.GetComponent<PowerupPlayerController>();
                 ppc.becomeBalloon();
