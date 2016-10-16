@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpTime = 0;
     public float jumpDelay = .5f;
     public bool jumped;
+    public bool isMoving = false;
 
     public float accl;
     public float maxSpeed;
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour {
     public LayerMask[] jumpableLayers;
     public float airCtrl;
 	public string displayName = "PLAYER";
+
+    public AudioClip playerRunningClip;
+    public AudioClip playerJumpingClip;
 
     private bool _ball;
     private Rigidbody2D _rb;
@@ -33,6 +37,9 @@ public class PlayerController : MonoBehaviour {
     private float _player1Speed;
     private float _player2Speed;
 
+    private AudioSource _movementAudio;
+    private AudioSource _jumpAudio;
+
     private float _originalJumpStrength;
     private GrimeController _grimeController;
     private bool _inGrime;
@@ -48,13 +55,19 @@ public class PlayerController : MonoBehaviour {
 		_name = GetComponentInChildren<Canvas> ();
 		setPlayerName (displayName);
         _controller = GameController.Instance;
-        _sfxVolume = _controller.GetSFXVolume();
-        _originalJumpStrength = jumpStrength;    
+        AudioSource[] aSources = GetComponents<AudioSource>();
+        _movementAudio = aSources[0];
+        _movementAudio.clip = playerRunningClip;
+        _jumpAudio = aSources[1];
+        _jumpAudio.clip = playerJumpingClip;
+
     }
 
     // Update is called once per frame
     void FixedUpdate() {
+        _sfxVolume = _controller.GetSFXVolume();
         this.movementManager();
+        this.movementAudioManager();
         this.HandleLayers();
 		this.reset();
         if (_inGrime)
@@ -178,7 +191,8 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.UpArrow)) {
                     _jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
-
+                    _jumpAudio.volume = _sfxVolume;
+                    _jumpAudio.Play();
                     // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
@@ -211,7 +225,9 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.W)) {
                     Vector2 jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(jump, ForceMode2D.Impulse);
-
+                    _jumpAudio.volume = _sfxVolume;
+                    _jumpAudio.Play();
+                    // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
             } else {
@@ -253,7 +269,6 @@ public class PlayerController : MonoBehaviour {
         transform.localScale = theScale;
     }
 
-
     // Resets values after processing
     void reset() {
 
@@ -278,6 +293,31 @@ public class PlayerController : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    private void movementAudioManager()
+    {
+        _movementAudio.clip = playerRunningClip;
+        if (_player1Speed != 0 || _player2Speed != 0)
+        {
+            this.isMoving = true;
+        }
+        else
+        {
+            this.isMoving = false;
+        }
+        if (this.isMoving && isGrounded())
+        {
+            if (!_movementAudio.isPlaying)
+            {
+                _movementAudio.volume = _sfxVolume;
+                _movementAudio.Play();
+            }
+        }
+        else
+        {
+            _movementAudio.Stop();
+        }
     }
     #endregion
 }

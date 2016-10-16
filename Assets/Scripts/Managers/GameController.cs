@@ -98,14 +98,14 @@ namespace Managers {
         #region Audio management
         internal void AdjustMasterVolume(float volume) {
             _volume.Master = volume;
-            _audioSource.volume = _volume.Master;
+            AudioListener.volume = _volume.Master;
             //PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
             //PlayerPrefs.Save();
         }
 
         internal void AdjustMusicVolume(float volume) {
             _volume.Music = volume;
-            AudioListener.volume = _volume.Music;
+            _audioSource.volume = _volume.Music;
             //PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
             //PlayerPrefs.Save();
         }
