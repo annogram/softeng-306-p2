@@ -34,6 +34,7 @@ class FloatingBumperScript : BumperScript {
 
     private void moveBumper()
     {
+        // Moves bumper up if ChangeHeight is positive
         if (ChangeHeight > 0)
         {
             if (_translate && _increment != ChangeHeight)
@@ -47,6 +48,7 @@ class FloatingBumperScript : BumperScript {
                 _increment--;
             }
         }
+        // Moves bumper down if ChangeHeight is negative
         else
         {
             if (_translate && _increment != ChangeHeight)
