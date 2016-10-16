@@ -1,26 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using Managers;
+using System.Collections;
 
 
-public class PlayerController : MonoBehaviour {
+public class PowerupPlayerController : MonoBehaviour
+{
 
     public bool facingRight = true;
     public float jumpTime = 0;
     public float jumpDelay = .5f;
     public bool jumped;
-    public bool isMoving = false;
 
     public float accl;
     public float maxSpeed;
     public float jumpStrength;
     public LayerMask[] jumpableLayers;
     public float airCtrl;
-	public string displayName = "PLAYER";
-
-    public AudioClip playerRunningClip;
-    public AudioClip playerJumpingClip;
+    public string displayName = "PLAYER";
+    public bool isBalloon = false;
 
     private bool _ball;
     private Rigidbody2D _rb;
@@ -31,56 +29,53 @@ public class PlayerController : MonoBehaviour {
     private Vector2 _jump;
     private float _airDrag = 1;
     private Animator _anim;
-	private Canvas _name;
+    private Canvas _name;
     private GameController _controller;
     private float _sfxVolume;
     private float _player1Speed;
     private float _player2Speed;
-
-    private AudioSource _movementAudio;
-    private AudioSource _jumpAudio;
+    private float floatGravity = -20;
 
     private float _originalJumpStrength;
     private GrimeController _grimeController;
     private bool _inGrime;
 
     private bool isTouchingPlayer = false;
-    
+
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         _ball = false;
         _rb = GetComponent<Rigidbody2D>();
         _feet = GetComponent<EdgeCollider2D>();
         _anim = GetComponent<Animator>();
-		_name = GetComponentInChildren<Canvas> ();
-		setPlayerName (displayName);
+        _name = GetComponentInChildren<Canvas>();
+        setPlayerName(displayName);
         _controller = GameController.Instance;
-        AudioSource[] aSources = GetComponents<AudioSource>();
-        _movementAudio = aSources[0];
-        _movementAudio.clip = playerRunningClip;
-        _jumpAudio = aSources[1];
-        _jumpAudio.clip = playerJumpingClip;
-
+        _sfxVolume = _controller.GetSFXVolume();
+        _originalJumpStrength = jumpStrength;
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
-        _sfxVolume = _controller.GetSFXVolume();
+    void FixedUpdate()
+    {
         this.movementManager();
-        this.movementAudioManager();
         this.HandleLayers();
-		this.reset();
+        this.reset();
         if (_inGrime)
         {
             this.ApplySlow();
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Ramp") {
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ramp")
+        {
             _ball = true;
             _feet.enabled = false;
-        } else {
+        }
+        else {
             _ball = false;
             _feet.enabled = true;
         }
@@ -91,8 +86,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.tag == "Ramp") {
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ramp")
+        {
             _ball = false;
             _feet.enabled = true;
         }
@@ -148,7 +145,8 @@ public class PlayerController : MonoBehaviour {
 
     #region Helper methods
     // Helper method that deals with movement.
-    private void movementManager() {
+    protected void movementManager()
+    {
 
         // Updates the speed parameter in the animator to animate the walk
         _player1Speed = Input.GetAxis("Player1Horizontal");
@@ -162,20 +160,32 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Check if we need to do player 1 or player 2 controls
-        if (gameObject.tag == "Player" && !_ball) {
-
+        if (gameObject.tag == "Player" && !_ball)
+        {
+           
             _anim.SetBool("IsPlayer1", true);
+            if (isBalloon)
+            {
+                _rb.gravityScale = floatGravity;
+            }
+            else
+            {
+                _rb.gravityScale = 20F;
+            }
 
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
-            if (Input.GetKey(KeyCode.RightArrow)) {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
                 forceX = new Vector2(1, 0f);
                 if (_player1Speed > 0 && !facingRight)
                 {
                     Flip();
                 }
 
-            } else if (Input.GetKey(KeyCode.LeftArrow)) {
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
                 forceX = new Vector2(-1, 0f);
                 if (_player1Speed < 0 && facingRight)
                 {
@@ -183,69 +193,88 @@ public class PlayerController : MonoBehaviour {
                 }
 
             }
-            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
+            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed)
+            {
                 _rb.AddForce(forceX * (accl * _airDrag));
             }
-            if (isGrounded()) {
+            if (isGrounded())
+            {
                 _airDrag = 1;
-                if (Input.GetKey(KeyCode.UpArrow)) {
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
                     _jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
-                    _jumpAudio.volume = _sfxVolume;
-                    _jumpAudio.Play();
+
                     // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
-            } else {
-                _airDrag = 1/airCtrl;
             }
-        } else if(gameObject.tag == "Player2" && !_ball) {
+            else if (!isBalloon)
+            {
+                _airDrag = 1 / airCtrl;
+            }
+        }
+        else if (gameObject.tag == "Player2" && !_ball)
+        {
 
             _anim.SetBool("IsPlayer1", false);
             // Player 2 keys
+            if (isBalloon)
+            {
+                _rb.gravityScale = floatGravity;
+            } else
+            {
+                _rb.gravityScale = 20F;
+            }
             Vector2 forceX = Vector2.zero;
-            if (Input.GetKey(KeyCode.D)) {
+            if (Input.GetKey(KeyCode.D))
+            {
                 forceX = new Vector2(1, 0f);
                 if (_player2Speed > 0 && !facingRight)
                 {
                     Flip();
                 }
-            } else if (Input.GetKey(KeyCode.A)) {
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
                 forceX = new Vector2(-1, 0f);
                 if (_player2Speed < 0 && facingRight)
                 {
                     Flip();
                 }
             }
-            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
+            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed)
+            {
                 _rb.AddForce(forceX * (accl * _airDrag));
             }
-            if (isGrounded()) {
+            if (isGrounded())
+            {
                 _airDrag = 1;
-                if (Input.GetKey(KeyCode.W)) {
+                if (Input.GetKey(KeyCode.W))
+                {
                     Vector2 jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(jump, ForceMode2D.Impulse);
-                    _jumpAudio.volume = _sfxVolume;
-                    _jumpAudio.Play();
-                    // Animation for jump
+
                     _anim.SetTrigger("Jump");
                 }
-            } else {
+            }
+            else if (!isBalloon)
+            {
                 _airDrag = 1 / airCtrl;
             }
         }
 
         //moveX = (Mathf.Abs(rb.velocity.x) >= maxSpeed) ? 0 : Input.GetAxis("Horizontal");
         //Vector2 forceX = new Vector2(moveX, 0f);
-        
+
         // Horizontal movement to player object
 
     }
 
     // Handles animator Layers
-    private void HandleLayers()
+    protected void HandleLayers()
     {
-        if (! this.isGrounded())
+        if (!this.isGrounded())
         {
             _anim.SetLayerWeight(1, 1);
         }
@@ -256,68 +285,52 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Flips the player's orientation
-    void Flip()
+    protected void Flip()
     {
         facingRight = !facingRight;
-		if (!facingRight) {
-			_name.transform.localScale = new Vector3 (-1, 1f, 1f);
-		} else {
-			_name.transform.localScale = new Vector3 (1, 1f, 1f);
-		}
+        if (!facingRight)
+        {
+            _name.transform.localScale = new Vector3(-1, 1f, 1f);
+        }
+        else {
+            _name.transform.localScale = new Vector3(1, 1f, 1f);
+        }
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
     }
 
+
     // Resets values after processing
-    void reset() {
+    protected void reset()
+    {
 
     }
 
-	void setPlayerName(string name){
-		displayName = name;
-		_name.GetComponentInChildren<Text> ().text = displayName;
-	}
+    void setPlayerName(string name)
+    {
+        displayName = name;
+        _name.GetComponentInChildren<Text>().text = displayName;
+    }
 
-    private bool isGrounded() {
+    protected bool isGrounded()
+    {
         // If its not in the jumping
-        if (_rb.velocity.y <= 0) {
-            foreach (LayerMask lm in jumpableLayers) {
-				if (_feet.IsTouchingLayers (lm)) {
+        if (_rb.velocity.y <= 0 && !isBalloon)
+        {
+            foreach (LayerMask lm in jumpableLayers)
+            {
+                if (_feet.IsTouchingLayers(lm))
+                {
 
                     _anim.ResetTrigger("Jump");
                     _anim.SetBool("Land", false);
 
-					return true;
-				}
+                    return true;
+                }
             }
         }
         return false;
-    }
-
-    private void movementAudioManager()
-    {
-        _movementAudio.clip = playerRunningClip;
-        if (_player1Speed != 0 || _player2Speed != 0)
-        {
-            this.isMoving = true;
-        }
-        else
-        {
-            this.isMoving = false;
-        }
-        if (this.isMoving && isGrounded())
-        {
-            if (!_movementAudio.isPlaying)
-            {
-                _movementAudio.volume = _sfxVolume;
-                _movementAudio.Play();
-            }
-        }
-        else
-        {
-            _movementAudio.Stop();
-        }
     }
     #endregion
 }
