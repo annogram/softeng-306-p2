@@ -3,10 +3,10 @@ using System.Collections;
 
 public class MovingPlatformController : MonoBehaviour {
 
-    private int baseValue = 0;
-    private Vector3 moveDown = new Vector3(0, -0.3F, 0);
-    private Vector3 moveUp = new Vector3(0, 0.3F, 0);
-    private Vector3 move = new Vector3(0, 0.3F, 0);
+    private float baseValue = 0f;
+    private Vector3 moveDown = new Vector3(0, -0.1F, 0);
+    private Vector3 moveUp = new Vector3(0, 0.1F, 0);
+    private Vector3 move = new Vector3(0, 0.1F, 0);
 
     // Use this for initialization
     void Start () {
@@ -16,11 +16,12 @@ public class MovingPlatformController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         this.transform.position += move;
-	    if(this.transform.position.y > 10)
+        baseValue += move.y;
+	    if(baseValue > 10)
         {
             move = moveDown;
         } 
-        if(this.transform.position.y < -10)
+        if(baseValue < -30)
         {
             move = moveUp;
         }

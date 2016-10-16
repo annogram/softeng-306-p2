@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Managers;
-using System.Collections;
+using System;
 
 
-public class PlayerController : MonoBehaviour {
+public class PowerupPlayerController : MonoBehaviour
+{
 
     public bool facingRight = true;
     public float jumpTime = 0;
@@ -16,7 +17,8 @@ public class PlayerController : MonoBehaviour {
     public float jumpStrength;
     public LayerMask[] jumpableLayers;
     public float airCtrl;
-	public string displayName = "PLAYER";
+    public string displayName = "PLAYER";
+    public Vector2 floatForce = new Vector2(0, 1F);
 
     protected bool _ball;
     protected Rigidbody2D _rb;
@@ -27,37 +29,44 @@ public class PlayerController : MonoBehaviour {
     protected Vector2 _jump;
     protected float _airDrag = 1;
     protected Animator _anim;
-	protected Canvas _name;
+    protected Canvas _name;
     protected GameController _controller;
     protected float _sfxVolume;
 
     protected bool isTouchingPlayer = false;
+    public bool isBalloon = false;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         _ball = false;
         _rb = GetComponent<Rigidbody2D>();
         _feet = GetComponent<EdgeCollider2D>();
         _anim = GetComponent<Animator>();
-		_name = GetComponentInChildren<Canvas> ();
-		setPlayerName (displayName);
+        _name = GetComponentInChildren<Canvas>();
+        setPlayerName(displayName);
         _controller = GameController.Instance;
         _sfxVolume = _controller.GetSFXVolume();
-    
+
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
+       
         this.movementManager();
         this.HandleLayers();
-		this.reset();
+        this.reset();
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Ramp") {
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ramp")
+        {
             _ball = true;
             _feet.enabled = false;
-        } else {
+        }
+        else {
             _ball = false;
             _feet.enabled = true;
         }
@@ -68,8 +77,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.tag == "Ramp") {
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ramp")
+        {
             _ball = false;
             _feet.enabled = true;
         }
@@ -84,10 +95,17 @@ public class PlayerController : MonoBehaviour {
         return isTouchingPlayer;
     }
 
+    public void becomeBalloon()
+    {
+        Console.Write("becoming balloon");
+        isBalloon = true;
+    }
+
     #region Helper methods
     // Helper method that deals with movement.
-    protected void movementManager() {
-
+    protected void movementManager()
+    {
+       
         // Updates the speed parameter in the animator to animate the walk
         float speed = Input.GetAxis("Horizontal");
         _anim.SetFloat("Speed", Mathf.Abs(speed));
@@ -98,63 +116,85 @@ public class PlayerController : MonoBehaviour {
         else if (speed < 0 && facingRight)
             Flip();
 
-        if(_rb.velocity.y < 0)
+        if (_rb.velocity.y < 0)
         {
             _anim.SetBool("Land", true);
         }
 
         // Check if we need to do player 1 or player 2 controls
-        if (gameObject.tag == "Player" && !_ball) {
+        if (gameObject.tag == "Player" && !_ball)
+        {
+            if (isBalloon)
+            {
+                Console.Write("adding float force");
+                _rb.AddForce(floatForce);
+            }
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
-            if (Input.GetKey(KeyCode.RightArrow)) {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
                 forceX = new Vector2(1, 0f);
 
-            } else if (Input.GetKey(KeyCode.LeftArrow)) {
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
                 forceX = new Vector2(-1, 0f);
             }
-            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
+            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed)
+            {
                 _rb.AddForce(forceX * (accl * _airDrag));
             }
-            if (isGrounded()) {
+            if (isGrounded())
+            {
                 _airDrag = 1;
-                if (Input.GetKey(KeyCode.UpArrow)) {
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
                     _jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(_jump, ForceMode2D.Impulse);
 
                     // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
-            } else {
-                _airDrag = 1/airCtrl;
             }
-        } else if(gameObject.tag == "Player2" && !_ball) {
+            else {
+                _airDrag = 1 / airCtrl;
+            }
+        }
+        else if (gameObject.tag == "Player2" && !_ball)
+        {
             // Player 2 keys
             Vector2 forceX = Vector2.zero;
-            if (Input.GetKey(KeyCode.D)) {
+            if (Input.GetKey(KeyCode.D))
+            {
                 forceX = new Vector2(1, 0f);
-            } else if (Input.GetKey(KeyCode.A)) {
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
                 forceX = new Vector2(-1, 0f);
             }
-            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed) {
+            if (Mathf.Abs(_rb.velocity.x) <= maxSpeed)
+            {
                 _rb.AddForce(forceX * (accl * _airDrag));
             }
-            if (isGrounded()) {
+            if (isGrounded())
+            {
                 _airDrag = 1;
-                if (Input.GetKey(KeyCode.W)) {
+                if (Input.GetKey(KeyCode.W))
+                {
                     Vector2 jump = new Vector2(0f, jumpStrength);
                     _rb.AddForce(jump, ForceMode2D.Impulse);
 
                     _anim.SetTrigger("Jump");
                 }
-            } else {
+            }
+            else {
                 _airDrag = 1 / airCtrl;
             }
         }
 
         //moveX = (Mathf.Abs(rb.velocity.x) >= maxSpeed) ? 0 : Input.GetAxis("Horizontal");
         //Vector2 forceX = new Vector2(moveX, 0f);
-        
+
         // Horizontal movement to player object
 
     }
@@ -162,7 +202,7 @@ public class PlayerController : MonoBehaviour {
     // Handles animator Layers
     protected void HandleLayers()
     {
-        if (! this.isGrounded())
+        if (!this.isGrounded())
         {
             _anim.SetLayerWeight(1, 1);
         }
@@ -176,11 +216,13 @@ public class PlayerController : MonoBehaviour {
     protected void Flip()
     {
         facingRight = !facingRight;
-		if (!facingRight) {
-			_name.transform.localScale = new Vector3 (-1, 1f, 1f);
-		} else {
-			_name.transform.localScale = new Vector3 (1, 1f, 1f);
-		}
+        if (!facingRight)
+        {
+            _name.transform.localScale = new Vector3(-1, 1f, 1f);
+        }
+        else {
+            _name.transform.localScale = new Vector3(1, 1f, 1f);
+        }
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
@@ -188,26 +230,32 @@ public class PlayerController : MonoBehaviour {
 
 
     // Resets values after processing
-    protected void reset() {
+    protected void reset()
+    {
 
     }
 
-	void setPlayerName(string name){
-		displayName = name;
-		_name.GetComponentInChildren<Text> ().text = displayName;
-	}
+    void setPlayerName(string name)
+    {
+        displayName = name;
+        _name.GetComponentInChildren<Text>().text = displayName;
+    }
 
-    protected bool isGrounded() {
+    protected bool isGrounded()
+    {
         // If its not in the jumping
-        if (_rb.velocity.y <= 0) {
-            foreach (LayerMask lm in jumpableLayers) {
-				if (_feet.IsTouchingLayers (lm)) {
+        if (_rb.velocity.y <= 0)
+        {
+            foreach (LayerMask lm in jumpableLayers)
+            {
+                if (_feet.IsTouchingLayers(lm))
+                {
 
                     _anim.ResetTrigger("Jump");
                     _anim.SetBool("Land", false);
 
-					return true;
-				}
+                    return true;
+                }
             }
         }
         return false;
