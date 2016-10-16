@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Managers;
 using System.Collections;
+using Managers;
 
 
 public class PlayerController : MonoBehaviour {
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour {
 
     #region Helper methods
     // Helper method that deals with movement.
-    protected void movementManager() {
+    private void movementManager() {
 
         // Updates the speed parameter in the animator to animate the walk
         _player1Speed = Input.GetAxis("Player1Horizontal");
@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Handles animator Layers
-    protected void HandleLayers()
+    private void HandleLayers()
     {
         if (! this.isGrounded())
         {
@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Flips the player's orientation
-    protected void Flip()
+    void Flip()
     {
         facingRight = !facingRight;
 		if (!facingRight) {
@@ -255,7 +255,7 @@ public class PlayerController : MonoBehaviour {
 
 
     // Resets values after processing
-    protected void reset() {
+    void reset() {
 
     }
 
@@ -264,7 +264,7 @@ public class PlayerController : MonoBehaviour {
 		_name.GetComponentInChildren<Text> ().text = displayName;
 	}
 
-    protected bool isGrounded() {
+    private bool isGrounded() {
         // If its not in the jumping
         if (_rb.velocity.y <= 0) {
             foreach (LayerMask lm in jumpableLayers) {
