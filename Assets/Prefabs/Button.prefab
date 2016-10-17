@@ -250,7 +250,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 723d5478e275d5f4ca0d85c80ca81bb5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -330,4 +330,4 @@ MonoBehaviour:
   CanPress:
   - serializedVersion: 2
     m_Bits: 512
-  ButtonPressClip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  ButtonPressClip: {fileID: 8300000, guid: 723d5478e275d5f4ca0d85c80ca81bb5, type: 3}

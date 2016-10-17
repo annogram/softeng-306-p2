@@ -85,7 +85,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8d7147d210632a542afcf6f0935bae91, type: 3}
+  m_audioClip: {fileID: 8300000, guid: beb23966696d65842ab8d33f02492661, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 0
-  CoinCollectedClip: {fileID: 8300000, guid: 8d7147d210632a542afcf6f0935bae91, type: 3}
+  CoinCollectedClip: {fileID: 8300000, guid: beb23966696d65842ab8d33f02492661, type: 3}
 --- !u!212 &212000011461624710
 SpriteRenderer:
   m_ObjectHideFlags: 1

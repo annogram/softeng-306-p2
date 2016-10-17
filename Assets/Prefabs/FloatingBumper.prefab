@@ -131,7 +131,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e7190544259eb334ea129ad00d79a25d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 63b6a754bcd39a244a022530a0273243, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -301,7 +301,7 @@ MonoBehaviour:
   Power: 5000
   OverCharge: 0
   OverChargeMultiplier: 3
-  BumperBumpClip: {fileID: 8300000, guid: e7190544259eb334ea129ad00d79a25d, type: 3}
+  BumperBumpClip: {fileID: 8300000, guid: 63b6a754bcd39a244a022530a0273243, type: 3}
   ChangeHeight: 0
   MoveSpeed: 1
 --- !u!212 &212000010927835330
