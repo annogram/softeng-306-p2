@@ -9,9 +9,20 @@ using Managers;
 /// </summary>
 public class LevelExit : MonoBehaviour {
     public string nextScene;
+    public AudioClip ExitClip;
 
     private bool Playa1IsInDaHouse = false;
     private bool Playa2IsInDaHouse = false;
+    private GameController _gameController;
+    private AudioSource _exitAudio;
+
+    // Use this for initialization
+    void Start()
+    {
+        _gameController = GameController.Instance;
+        _exitAudio = GetComponent<AudioSource>();
+        _exitAudio.clip = ExitClip;
+    }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
@@ -20,6 +31,8 @@ public class LevelExit : MonoBehaviour {
             Playa2IsInDaHouse = true;
         }
         if (Playa1IsInDaHouse && Playa2IsInDaHouse) {
+            _exitAudio.volume = _gameController.GetSFXVolume();
+            _exitAudio.Play();
             GameController controller = GameController.Instance;
             controller.loadScreenSingle(nextScene);
         }
