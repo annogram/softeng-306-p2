@@ -18,7 +18,7 @@ namespace Managers {
     /// </summary>
     public class GameController : MonoBehaviour {
 
-		private const int TOTAL_NUMBER_OF_LEVELS = 6; 
+		private const int TOTAL_NUMBER_OF_LEVELS = 7; 
 
         #region Properties
         private static GameController instance;
