@@ -6,8 +6,8 @@ public class TeleporterScript : MonoBehaviour {
 	public GameObject teleportDestination;
 
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log ("Teleporter touched.");
-		if (other.tag != "Player" || other.tag != "Player2") {
+		Debug.Log ("Teleporter touched by " + other.tag);
+		if (!(other.tag == "Player" || other.tag == "Player2")) {
 			return;
 		}
 
