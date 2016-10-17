@@ -214,6 +214,10 @@ namespace Managers {
 			return _tokensCollectedAcrossGame [level];
 		}
 
+		public int GetTokensCollectedOnCurrentLevel(){
+			return _currentLevelTokens;
+		}
+
 		public int GetTotalTokens() {
 			int total = 0;
 			foreach (int score in _tokensCollectedAcrossGame) {
