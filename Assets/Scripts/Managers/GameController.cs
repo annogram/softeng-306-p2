@@ -233,15 +233,15 @@ namespace Managers {
 
 		#region Token Management
 		private void UpdateTokenPersistenceArray(int tokensCollectedValue, int level){
-			if (level >= _tokensCollectedAcrossGame.Length || level < 0) {
-				Debug.LogError ("Level out of bounds!");
+			if (level > _tokensCollectedAcrossGame.Length || level < 0) {
+				Debug.LogError ("Level " + level + " out of bounds! Must be between 0 and " + _tokensCollectedAcrossGame.Length);
 				return;
 			}
 
 			level = level - 1;
 				
 			if (_tokensCollectedAcrossGame [level] < tokensCollectedValue) {
-				Debug.Log (string.Format("Updating tokens collected for Level {0} to {1}", level, tokensCollectedValue));
+				Debug.Log (string.Format("Updating tokens collected for Level {0} to {1}", level + 1, tokensCollectedValue));
 				_tokensCollectedAcrossGame[level] = tokensCollectedValue;
 			}
 		}
