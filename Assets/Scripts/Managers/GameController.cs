@@ -53,8 +53,8 @@ namespace Managers {
 		private int[] _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
 
 		// TODO set to default skins when skin colours have been finalized
-		private SkinColour _player1Skin { get; }
-		private SkinColour _player2Skin { get; }
+		public SkinColour _player1Skin { get; private set; }
+		public SkinColour _player2Skin { get; private set; }
 
         #endregion
 
