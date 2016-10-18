@@ -179,10 +179,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ce2f24ea7acb041971fc7692f42144, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-<<<<<<< HEAD
-  nextScene: LevelSelectScreen
-  ExitClip: {fileID: 8300000, guid: 7581c29be7c014c43995c53803aeebae, type: 3}
-=======
   completedPanel: {fileID: 0}
   cam: {fileID: 0}
->>>>>>> 27f9972d3a7e9a903470589c2023e4f559f9a8c0
