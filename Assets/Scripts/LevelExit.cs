@@ -38,8 +38,6 @@ public class LevelExit : MonoBehaviour {
         if (Playa1IsInDaHouse && Playa2IsInDaHouse) {
             _exitAudio.volume = _gameController.GetSFXVolume();
             _exitAudio.Play();
-            GameController controller = GameController.Instance;
-            controller.loadScreenSingle(nextScene);
 			completedPanel.SetActive (true);
 			cam.GetComponent<Blur>().enabled = true;
 			Time.timeScale = 0.0f;
