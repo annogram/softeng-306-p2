@@ -348,7 +348,7 @@ MonoBehaviour:
   jumpDelay: 0.5
   jumped: 0
   isMoving: 0
-  accl: 200
+  accl: 160
   maxSpeed: 300
   jumpStrength: 80
   jumpableLayers:
