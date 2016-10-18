@@ -35,5 +35,14 @@ namespace Managers {
 		public void SubmitSkinsToController(){
 			// call game controller to notify of selection
 		}
+
+		private void NextSkin(SkinColour current){
+
+		}
+
+		private void PrevSkin(SkinColour current){
+
+
+		}
 	}
 }
