@@ -570,7 +570,7 @@ RectTransform:
   m_Father: {fileID: 663371511}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0.95}
-  m_AnchorMax: {x: 1, y: 1.15}
+  m_AnchorMax: {x: 1, y: 1.1}
   m_AnchoredPosition: {x: -0.00018310547, y: 0}
   m_SizeDelta: {x: -359.99988, y: 0}
   m_Pivot: {x: 0.5, y: 1}
@@ -1028,10 +1028,10 @@ RectTransform:
   - {fileID: 206820356}
   m_Father: {fileID: 2544538}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.25, y: 0.2}
+  m_AnchorMin: {x: 0.25, y: 0.1}
   m_AnchorMax: {x: 0.75, y: 0.8}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0.000015258789}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0.0000076293945}
+  m_SizeDelta: {x: 0, y: 0.000015258789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &663371512
 MonoBehaviour:
@@ -2160,7 +2160,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Leaderboard
+  m_Text: Global Leaderboard
 --- !u!222 &2024967497
 CanvasRenderer:
   m_ObjectHideFlags: 0
