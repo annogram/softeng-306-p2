@@ -26,6 +26,7 @@ public class LevelExit : MonoBehaviour {
         _gameController = GameController.Instance;
         _exitAudio = GetComponent<AudioSource>();
         _exitAudio.clip = ExitClip;
+        _gameController.LevelsUnlocked = currentLevel+1;
     }
 
 
