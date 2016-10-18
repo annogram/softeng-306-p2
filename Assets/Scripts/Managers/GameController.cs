@@ -271,6 +271,7 @@ namespace Managers
         {
             _teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
             _teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
+            _currentLevelTokens = 0;
             if (!PlayerPrefs.HasKey(_teamTokenPersistenceKey))
             {
                 Debug.Log("Team name doesn't exist! Can't load game with this name: " + teamName);
