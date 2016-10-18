@@ -71,6 +71,7 @@ namespace Managers
         private int[] _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
         private string _teamTokenPersistenceKey;
         private string _teamLevelsPersistenceKey;
+		private string _teamName = "testteam";
 
         // TODO set to default skins when skin colours have been finalized
         public SkinColour _player1Skin { get; private set; }
@@ -300,6 +301,11 @@ namespace Managers
             this.LoadInitialTokenPersistenceArray();
             return true;
         }
+
+		public string getCurrentTeam ()
+		{
+			return _teamName;
+		}
 
         internal float GetSFXVolume()
         {

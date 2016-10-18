@@ -13,7 +13,7 @@ namespace Managers{
         private BoxCollider2D _collider;
         private AudioSource _coinAudio;
 		private GameObject _scoreHUD;
-		private GameObject _infoHUD;
+
 
 		void Start(){
 			_gameController = GameController.Instance;
@@ -22,7 +22,7 @@ namespace Managers{
             _coinAudio = GetComponent<AudioSource>();
             _coinAudio.clip = CoinCollectedClip;
 			_scoreHUD = GameObject.FindGameObjectWithTag ("ScoreHUD");
-			_infoHUD = GameObject.FindGameObjectWithTag ("InfoHUD");
+
         }
 
 		void OnTriggerEnter2D(Collider2D other){
