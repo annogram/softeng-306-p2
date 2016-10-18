@@ -18,7 +18,7 @@ namespace Managers {
     /// </summary>
     public class GameController : MonoBehaviour {
 
-		private const int TOTAL_NUMBER_OF_LEVELS = 6; 
+		private const int TOTAL_NUMBER_OF_LEVELS = 7; 
 
         #region Properties
         private static GameController instance;
@@ -98,14 +98,14 @@ namespace Managers {
         #region Audio management
         internal void AdjustMasterVolume(float volume) {
             _volume.Master = volume;
-            _audioSource.volume = _volume.Master;
+            AudioListener.volume = _volume.Master;
             //PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
             //PlayerPrefs.Save();
         }
 
         internal void AdjustMusicVolume(float volume) {
             _volume.Music = volume;
-            AudioListener.volume = _volume.Music;
+            _audioSource.volume = _volume.Music;
             //PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
             //PlayerPrefs.Save();
         }
@@ -214,6 +214,18 @@ namespace Managers {
 			return _tokensCollectedAcrossGame [level];
 		}
 
+		public int GetTokensCollectedOnCurrentLevel(){
+			return _currentLevelTokens;
+		}
+
+		public int GetTotalTokens() {
+			int total = 0;
+			foreach (int score in _tokensCollectedAcrossGame) {
+				total += score;
+			}
+			return total;
+		}
+
         internal float GetSFXVolume() {
             return _volume.Effects;
         }
@@ -221,15 +233,15 @@ namespace Managers {
 
 		#region Token Management
 		private void UpdateTokenPersistenceArray(int tokensCollectedValue, int level){
-			if (level >= _tokensCollectedAcrossGame.Length || level < 0) {
-				Debug.LogError ("Level out of bounds!");
+			if (level > _tokensCollectedAcrossGame.Length || level < 0) {
+				Debug.LogError ("Level " + level + " out of bounds! Must be between 0 and " + _tokensCollectedAcrossGame.Length);
 				return;
 			}
 
 			level = level - 1;
 				
 			if (_tokensCollectedAcrossGame [level] < tokensCollectedValue) {
-				Debug.Log (string.Format("Updating tokens collected for Level {0} to {1}", level, tokensCollectedValue));
+				Debug.Log (string.Format("Updating tokens collected for Level {0} to {1}", level + 1, tokensCollectedValue));
 				_tokensCollectedAcrossGame[level] = tokensCollectedValue;
 			}
 		}

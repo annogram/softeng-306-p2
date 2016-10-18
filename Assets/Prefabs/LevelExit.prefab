@@ -58,7 +58,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 28a2a20d53f0fa540babc1b1f76ddb7a, type: 2}
-  m_SubsetIndices: 
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -177,7 +177,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7ce2f24ea7acb041971fc7692f42144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
+<<<<<<< HEAD
   nextScene: LevelSelectScreen
   ExitClip: {fileID: 8300000, guid: 7581c29be7c014c43995c53803aeebae, type: 3}
+=======
+  completedPanel: {fileID: 0}
+  cam: {fileID: 0}
+>>>>>>> 27f9972d3a7e9a903470589c2023e4f559f9a8c0
