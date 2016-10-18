@@ -10,7 +10,6 @@ namespace Managers {
 		private SkinColour player1;
 		private SkinColour player2;
 
-
 		void Start() {
 			this.controller = GameController.Instance;
 		}

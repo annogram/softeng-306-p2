@@ -39,7 +39,7 @@ namespace Managers {
         }
         #endregion
 
-        #region Feilds
+        #region Fields
         public AudioClip MenuAudio;
         public AudioClip[] Playlist;
         public int LevelToClip;
