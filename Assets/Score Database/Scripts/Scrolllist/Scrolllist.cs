@@ -40,7 +40,7 @@ public class Scrolllist : MonoBehaviour {
 			LoadingText.SetActive (true);
 
 		if (error)
-			LoadingText.GetComponentInChildren<Text> ().text = "Could not contacting server, please check connection";
+			LoadingText.GetComponentInChildren<Text> ().text = "Could not contact server, please check connection";
 	}
 
 	public void getScrollEntrys()
