@@ -2546,6 +2546,7 @@ GameObject:
   - 222: {fileID: 1658786130}
   - 114: {fileID: 1658786129}
   - 114: {fileID: 1658786128}
+  - 114: {fileID: 1658786131}
   m_Layer: 5
   m_Name: ShareButton
   m_TagString: Untagged
@@ -2592,7 +2593,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.75735295, g: 0.77910745, b: 1, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.6544118, g: 0.6688473, b: 0.6688473, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2610,9 +2611,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2544540}
-        m_MethodName: Next
-        m_Mode: 5
+      - m_Target: {fileID: 1658786131}
+        m_MethodName: ShareScoreOnFB
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2656,6 +2657,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1658786126}
+--- !u!114 &1658786131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1658786126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30bc865d52466423684530bc6d7fdd26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AppID: 1399925576886522
+  Link: https://play.google.com/store/apps/developer?id=Gamestoodio
+  Picture: http://i65.tinypic.com/35hiigw.jpg
+  Name: PINSCAPE
+  Caption: SuicideSquad
+  Description: My High Score on Pinscape is 100! Can you beat it?
 --- !u!1 &1839651524
 GameObject:
   m_ObjectHideFlags: 0
