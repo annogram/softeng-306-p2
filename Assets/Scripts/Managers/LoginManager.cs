@@ -20,14 +20,14 @@ namespace Managers {
 		void NewGame() {
 			bool attempt = instance.attemptTeamNewGame (inputField.text);
 			if (attempt) {
-				GUISceneSwap.Next (NEXT_SCENE_FOLLOWING_LOGIN);
+				instance.loadScreenSingle(NEXT_SCENE_FOLLOWING_LOGIN);
 			}
 		}
 
 		void LoadGame() {
 			bool attempt = instance.attemptTeamLoadGame (inputField.text);
 			if (attempt) {
-				GUISceneSwap.Next (NEXT_SCENE_FOLLOWING_LOGIN);
+				instance.loadScreenSingle(NEXT_SCENE_FOLLOWING_LOGIN);
 			}
 		}
 
