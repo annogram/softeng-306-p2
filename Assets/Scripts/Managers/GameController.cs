@@ -52,6 +52,10 @@ namespace Managers {
 		private int _currentLevelTokens = 0;
 		private int[] _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
 
+		// TODO set to default skins when skin colours have been finalized
+		private SkinColour _player1Skin { get; }
+		private SkinColour _player2Skin { get; }
+
         #endregion
 
         #region Constructor
@@ -276,6 +280,13 @@ namespace Managers {
 			}
 		}
 
+		#endregion
+
+		#region Avatar management
+		public void SaveAvatarSelection(SkinColour player1, SkinColour player2){
+			_player1Skin = player1;
+			_player2Skin = player2;
+		}
 		#endregion
     }
 

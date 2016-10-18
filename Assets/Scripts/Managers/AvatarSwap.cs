@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum SkinColour {
+
+	RED,
+	WHITE,
+	BLUE,
+	GREEN,
+	YELLOW
+
+}
+
 namespace Managers {
 	public class AvatarSwap : MonoBehaviour {
-
-		private enum SkinColour { RED, WHITE, BLUE, GREEN, YELLOW };
 
 		private GameController controller;
 		private SkinColour player1;
