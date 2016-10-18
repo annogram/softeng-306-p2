@@ -59,6 +59,7 @@ GameObject:
   - 114: {fileID: 114000010800965150}
   - 50: {fileID: 50000013783373474}
   - 61: {fileID: 61000011425027086}
+  - 82: {fileID: 82000012591879192}
   m_Layer: 8
   m_Name: Edge
   m_TagString: Untagged
@@ -293,6 +294,80 @@ EdgeCollider2D:
   m_Points:
   - {x: -17.69383, y: -2.8388443}
   - {x: -17.874449, y: 5.281821}
+--- !u!82 &82000012591879192
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012001526664}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8421435838fdaa945b10f4d8e71529e8, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114000010800965150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,12 +381,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spring: {fileID: 1000012354654074}
   head: {fileID: 1000010018610210}
-  compressFactor: 0.05
   cfVector: {x: 0.095, y: 0, z: 0}
   compressLeft: 0
   minWidth: 10
   maxWidth: 30
   exitForce: {x: 8500, y: 0}
+  SpringLaunchClip: {fileID: 8300000, guid: 8421435838fdaa945b10f4d8e71529e8, type: 3}
 --- !u!212 &212000011366358568
 SpriteRenderer:
   m_ObjectHideFlags: 1
