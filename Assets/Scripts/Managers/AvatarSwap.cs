@@ -16,20 +16,19 @@ namespace Managers {
 		}
 			
 		public void NextPlayerOne() {
-			// toggle to next avatar
+			this.NextSkin (player1);
 		}
 			
 		public void PreviousPlayerOne(){
-			// go back to previous avatar
+			this.PrevSkin (player1);
 		}
 
 		public void NextPlayerTwo() {
-
-
+			this.NextSkin (player2);
 		}
 
 		public void PreviousPlayerTwo(){
-
+			this.PrevSkin (player2);
 		}
 
 		public void SubmitSkinsToController(){
@@ -37,12 +36,11 @@ namespace Managers {
 		}
 
 		private void NextSkin(SkinColour current){
-
+			// switch case to determine next skin in list of skins
 		}
 
 		private void PrevSkin(SkinColour current){
-
-
+			// switch case to determine prev skin in list of skins
 		}
 	}
 }
