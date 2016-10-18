@@ -37,6 +37,20 @@ namespace Managers {
 
             }
         }
+
+        private int _levelsUnlocked;
+        public int LevelsUnlocked
+        {
+            get
+            {
+                return _levelsUnlocked;
+            }
+            set
+            {
+                _levelsUnlocked = (value >= TOTAL_NUMBER_OF_LEVELS) ? TOTAL_NUMBER_OF_LEVELS : value;
+                Debug.Log(_levelsUnlocked);
+            }
+        }
         #endregion
 
         #region Feilds
@@ -56,7 +70,7 @@ namespace Managers {
 
         #region Constructor
         void Awake() {
-            //PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteAll();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null) {
                 instance = this;
@@ -181,7 +195,10 @@ namespace Managers {
 				this.LoadInitialTokenPersistenceArray();
 			}
 
-		}
+            // Levels
+            _levelsUnlocked = (PlayerPrefs.HasKey("LevelsUnlocked")) ? PlayerPrefs.GetInt("LevelsUnlocked") : 1;
+
+        }
 
         void OnDestroy() {
             PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
@@ -189,6 +206,7 @@ namespace Managers {
             PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
             PlayerPrefs.SetInt("Tokens", _tokens);
 			PlayerPrefs.SetString ("TokensCollectedAcrossGame", ConvertTokensCollectedToString());
+            PlayerPrefs.SetInt("LevelsUnlocked", _levelsUnlocked);
             PlayerPrefs.Save();
         }
         #endregion
