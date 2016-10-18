@@ -38,6 +38,7 @@ public class EndlessMovement : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
         if (cam.orthographicSize > maxCamSize) {
+            // Level complete screen here
             _controller.loadScreenSingle(SceneManager.GetActiveScene().name);
         }
 
