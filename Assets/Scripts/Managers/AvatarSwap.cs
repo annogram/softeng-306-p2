@@ -3,11 +3,10 @@ using System.Collections;
 
 public enum SkinColour {
 
-	RED,
-	WHITE,
 	BLUE,
+	RED,
 	GREEN,
-	YELLOW
+	PURPLE
 
 }
 
@@ -22,32 +21,18 @@ namespace Managers {
 			this.controller = GameController.Instance;
 		}
 			
-		public void NextPlayerOne() {
-			this.NextSkin (player1);
+		public void TogglePlayerOne() {
+			player1 = player1 == SkinColour.BLUE ? SkinColour.GREEN : SkinColour.BLUE;
+		}
+
+		public void TogglePlayerTwo() {
+			player2 = player2 == SkinColour.RED ? SkinColour.PURPLE : SkinColour.RED;
 		}
 			
-		public void PreviousPlayerOne(){
-			this.PrevSkin (player1);
-		}
-
-		public void NextPlayerTwo() {
-			this.NextSkin (player2);
-		}
-
-		public void PreviousPlayerTwo(){
-			this.PrevSkin (player2);
-		}
 
 		public void SubmitSkinsToController(){
-			// call game controller to notify of selection
+			controller.SaveAvatarSelection (player1, player2);
 		}
-
-		private void NextSkin(SkinColour current){
-			// switch case to determine next skin in list of skins
-		}
-
-		private void PrevSkin(SkinColour current){
-			// switch case to determine prev skin in list of skins
-		}
+			
 	}
 }
