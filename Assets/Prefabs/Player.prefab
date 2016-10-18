@@ -357,7 +357,7 @@ MonoBehaviour:
   - serializedVersion: 2
     m_Bits: 512
   airCtrl: 3
-  displayName: PLAYER 2
+  displayName: PLAYER 1
   playerRunningClip: {fileID: 8300000, guid: 49b6d86b05116ed41b535d441773b07c, type: 3}
   playerJumpingClip: {fileID: 8300000, guid: 72b291636d64d904ab016ceb851fd20e, type: 3}
 --- !u!114 &114000014183333936

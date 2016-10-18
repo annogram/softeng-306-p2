@@ -74,7 +74,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9e9263f419e200143a9ae805a8ea5e47, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ButtonActions: []
   CanPress: []
-  LeverSwitchClip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  LeverSwitchClip: {fileID: 8300000, guid: 9e9263f419e200143a9ae805a8ea5e47, type: 3}
 --- !u!212 &212000013867514854
 SpriteRenderer:
   m_ObjectHideFlags: 1
