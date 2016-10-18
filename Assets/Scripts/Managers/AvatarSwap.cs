@@ -4,7 +4,11 @@ using System.Collections;
 namespace Managers {
 	public class AvatarSwap : MonoBehaviour {
 
+		private enum SkinColour { RED, WHITE, BLUE, GREEN, YELLOW };
+
 		private GameController controller;
+		private SkinColour player1;
+		private SkinColour player2;
 
 
 		void Start() {
@@ -26,6 +30,10 @@ namespace Managers {
 
 		public void PreviousPlayerTwo(){
 
+		}
+
+		public void SubmitSkinsToController(){
+			// call game controller to notify of selection
 		}
 	}
 }
