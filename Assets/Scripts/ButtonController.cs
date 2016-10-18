@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.Scripts;
+using Managers;
 
 public class ButtonController : MonoBehaviour {
     private Rigidbody2D _rb;
     private bool _pressed;
+    private AudioSource _buttonAudio;
+    private GameController _gameController;
 
     public GameObject[] ButtonActions;
     public LayerMask[] CanPress;
+    public AudioClip ButtonPressClip;
 	// Use this for initialization
 	void Start () {
+        _gameController = GameController.Instance;
         _rb = this.GetComponent<Rigidbody2D>();
         _pressed = false;
+        _buttonAudio = GetComponent<AudioSource>();
+        _buttonAudio.clip = ButtonPressClip;
 	}
 	
 	// Update is called once per frame
@@ -23,6 +30,8 @@ public class ButtonController : MonoBehaviour {
         foreach (var layer in CanPress) {
             // If the component that colided with this object is allowed to interact with it then do this
             if (this.GetComponent<Collider2D>().IsTouchingLayers(layer) && !_pressed) {
+                _buttonAudio.volume = _gameController.GetSFXVolume();
+                _buttonAudio.Play();
                 _pressed = true;
                 this.transform.position = this.transform.position + (Vector3.down * 0.7f);
                 // Now that we know the button has been pressed we will go through all the objects

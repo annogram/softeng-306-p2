@@ -13,7 +13,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level2_Nick.unity
   - enabled: 1
     path: Assets/Scenes/Levels/Level3_Nick.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels/Level5.unity
   - enabled: 0
     path: Assets/Scenes/Lvls/level1.unity
@@ -44,6 +44,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScreens/OptionsScreen.unity
   - enabled: 1
+    path: Assets/Scenes/GameScreens/HSScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/GameScreens/LeaderboardScreen.unity
+  - enabled: 0
     path: Assets/Scenes/GameScreens/PauseScreen.unity
   - enabled: 0
     path: Assets/GameScreens/Start.unity
