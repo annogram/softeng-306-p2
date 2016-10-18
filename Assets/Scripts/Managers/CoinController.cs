@@ -8,12 +8,11 @@ namespace Managers{
         public int Level;
         public AudioClip CoinCollectedClip;
 
-        private Animator _anim;
-		private GameController _gameController;
-        private BoxCollider2D _collider;
-        private AudioSource _coinAudio;
+        protected Animator _anim;
+        protected GameController _gameController;
+        protected BoxCollider2D _collider;
+        protected AudioSource _coinAudio;
 		private GameObject _scoreHUD;
-
 
 		void Start(){
 			_gameController = GameController.Instance;
@@ -25,14 +24,14 @@ namespace Managers{
 
         }
 
-		void OnTriggerEnter2D(Collider2D other){
+		protected virtual void OnTriggerEnter2D(Collider2D other){
 			if (other.tag == "Player" || other.tag == "Player2") {
 				CoinPickup ();
                 _collider.enabled = false;
 			}
 		}
 
-		void CoinPickup(){
+		protected virtual void CoinPickup(){
             _coinAudio.volume = _gameController.GetSFXVolume();
             _coinAudio.Play();
 			_gameController.AddToken(Level);
