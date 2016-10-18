@@ -18,7 +18,8 @@ namespace Managers {
     /// </summary>
     public class GameController : MonoBehaviour {
 
-		private const int TOTAL_NUMBER_OF_LEVELS = 7; 
+		private const int TOTAL_NUMBER_OF_LEVELS = 7;
+		private const string TOKEN_PERSISTENCE_KEY_SUFFIX = "-TokensCollectedAcrossGame";
 
         #region Properties
         private static GameController instance;
@@ -51,6 +52,7 @@ namespace Managers {
 		private int _tokens = 0;
 		private int _currentLevelTokens = 0;
 		private int[] _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
+		private string _teamNamePersistenceKey;
 
 		// TODO set to default skins when skin colours have been finalized
 		public SkinColour _player1Skin { get; private set; }
@@ -171,28 +173,13 @@ namespace Managers {
 			_audioSource.volume = this._volume.Master;
 			AudioListener.volume = this._volume.Music;
 
-			// Tokens
-			_tokens = (PlayerPrefs.HasKey ("Tokens")) ? PlayerPrefs.GetInt ("Tokens") : 0;
-			_currentLevelTokens = 0;
-
-			if (PlayerPrefs.HasKey ("TokensCollectedAcrossGame")) {
-				Debug.Log ("Tokens collected across game being loaded from persistence.");
-				string persistedTokenString = PlayerPrefs.GetString ("TokensCollectedAcrossGame");
-				Debug.Log ("Persistence token string found :" + persistedTokenString);
-				this.ConvertStringToTokensCollected (persistedTokenString);
-			} else {
-				Debug.Log ("No persistence found for tokens collected. Re-initalising instead!");
-				this.LoadInitialTokenPersistenceArray();
-			}
-
 		}
 
         void OnDestroy() {
             PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
             PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
             PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
-            PlayerPrefs.SetInt("Tokens", _tokens);
-			PlayerPrefs.SetString ("TokensCollectedAcrossGame", ConvertTokensCollectedToString());
+			PlayerPrefs.SetString (_teamNamePersistenceKey, ConvertTokensCollectedToString());
             PlayerPrefs.Save();
         }
         #endregion
@@ -230,6 +217,39 @@ namespace Managers {
 			return total;
 		}
 
+		public bool attemptTeamLoadGame(string teamName){
+			string teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
+			if (!PlayerPrefs.HasKey (teamTokenPersistenceKey)) {
+				Debug.Log ("Team name doesn't exist! Can't load game with this name: " + teamName);
+				return false;
+			}
+
+			commonLogicBetweenNewAndLoadGame (teamTokenPersistenceKey);
+			Debug.Log ("Tokens collected across game being loaded from persistence.");
+			string persistedTokenString = PlayerPrefs.GetString (teamTokenPersistenceKey);
+			Debug.Log ("Persistence token string found :" + persistedTokenString);
+			this.ConvertStringToTokensCollected (persistedTokenString);
+
+			return true;
+		}
+
+		public bool attemptTeamNewGame(string teamName){
+			string teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
+			if (PlayerPrefs.HasKey (teamTokenPersistenceKey)) {
+				Debug.Log ("Team name already exists! Can't create a new game with this name: " + teamName);
+				return false;
+			}
+
+			commonLogicBetweenNewAndLoadGame (teamTokenPersistenceKey);
+			this.LoadInitialTokenPersistenceArray();
+			return true;
+		}
+
+		private void commonLogicBetweenNewAndLoadGame(string teamNameKey){
+			_currentLevelTokens = 0;
+			_teamNamePersistenceKey = teamNameKey;
+		}
+
         internal float GetSFXVolume() {
             return _volume.Effects;
         }
@@ -262,8 +282,6 @@ namespace Managers {
 			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
 				this._tokensCollectedAcrossGame [i] = int.Parse("" + marshalledArray.ElementAt(i));
 			}
-
-			Debug.Log (_tokensCollectedAcrossGame[0]);
 		}
 
 		private string ConvertTokensCollectedToString(){
