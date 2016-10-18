@@ -11,6 +11,8 @@ TagManager:
   - startPage
   - aboutPage
   - Grime
+  - ScoreHUD
+  - InfoHUD
   layers:
   - Default
   - TransparentFX

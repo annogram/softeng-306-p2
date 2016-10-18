@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System;
 
 namespace Managers{
 	public class CoinController : MonoBehaviour {
@@ -10,6 +12,7 @@ namespace Managers{
         protected GameController _gameController;
         protected BoxCollider2D _collider;
         protected AudioSource _coinAudio;
+		private GameObject _scoreHUD;
 
 		void Start(){
 			_gameController = GameController.Instance;
@@ -17,6 +20,8 @@ namespace Managers{
             _collider = GetComponent<BoxCollider2D>();
             _coinAudio = GetComponent<AudioSource>();
             _coinAudio.clip = CoinCollectedClip;
+			_scoreHUD = GameObject.FindGameObjectWithTag ("ScoreHUD");
+
         }
 
 		protected virtual void OnTriggerEnter2D(Collider2D other){
@@ -31,7 +36,17 @@ namespace Managers{
             _coinAudio.Play();
 			_gameController.AddToken(Level);
             _anim.SetTrigger("Collected_Coin");
+			updateScore ();
             Destroy(this.gameObject, 1);
+		}
+
+		private void updateScore() {
+
+			Transform score = _scoreHUD.transform.Find ("Score");
+			Text scoreText = score.GetComponent<Text> ();
+			int newScore = Int32.Parse(scoreText.text) + 1;
+			scoreText.text = newScore.ToString ();
+
 		}
 			
 
