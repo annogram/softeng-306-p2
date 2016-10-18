@@ -4,7 +4,7 @@ using System.Collections;
 namespace Managers{
 	public class CoinController : MonoBehaviour {
         public int Level;
-        public AudioClip coinCollectedClip;
+        public AudioClip CoinCollectedClip;
 
         private Animator _anim;
 		private GameController _gameController;
@@ -16,7 +16,7 @@ namespace Managers{
             _anim = GetComponent<Animator>();
             _collider = GetComponent<BoxCollider2D>();
             _coinAudio = GetComponent<AudioSource>();
-            _coinAudio.clip = coinCollectedClip;
+            _coinAudio.clip = CoinCollectedClip;
         }
 
 		void OnTriggerEnter2D(Collider2D other){
