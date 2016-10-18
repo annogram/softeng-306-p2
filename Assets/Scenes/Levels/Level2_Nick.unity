@@ -3103,7 +3103,7 @@ GameObject:
   - 68: {fileID: 2038015433}
   - 68: {fileID: 2038015432}
   m_Layer: 0
-  m_Name: OutOfBoundsQuad
+  m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
