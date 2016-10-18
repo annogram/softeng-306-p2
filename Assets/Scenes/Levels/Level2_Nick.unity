@@ -103,7 +103,7 @@ GameObject:
   - 23: {fileID: 39807460}
   - 50: {fileID: 39807459}
   - 61: {fileID: 39807458}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Platform (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   - 23: {fileID: 352654034}
   - 50: {fileID: 352654033}
   - 61: {fileID: 352654032}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Platform (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1116,7 +1116,7 @@ GameObject:
   - 23: {fileID: 643731965}
   - 50: {fileID: 643731964}
   - 61: {fileID: 643731963}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Platform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1397,7 @@ GameObject:
   - 23: {fileID: 713643399}
   - 50: {fileID: 713643398}
   - 61: {fileID: 713643397}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Platform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1638,7 +1638,7 @@ GameObject:
   - 23: {fileID: 748451333}
   - 50: {fileID: 748451332}
   - 61: {fileID: 748451331}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Platform (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1806,7 +1806,7 @@ GameObject:
   - 23: {fileID: 891852603}
   - 50: {fileID: 891852602}
   - 61: {fileID: 891852601}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Platform (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2129,25 +2129,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1075661978 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000014150413068, guid: 44c331be54977ca44b46f74ac8ce80dc,
-    type: 2}
-  m_PrefabInternal: {fileID: 1075661977}
---- !u!114 &1075661979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1075661978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4ff2d6b90a2fe544b0416a4bccafa1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ButtonActions:
-  - {fileID: 172221369}
-  CanPress: []
 --- !u!1 &1326888714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,7 +2679,7 @@ GameObject:
   - 23: {fileID: 1509189207}
   - 50: {fileID: 1509189206}
   - 61: {fileID: 1509189205}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Platform (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2992,7 +2973,7 @@ GameObject:
   - 23: {fileID: 1778210945}
   - 50: {fileID: 1778210944}
   - 61: {fileID: 1778210943}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Platform (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
