@@ -3,7 +3,7 @@
 --- !u!29 &1
 SceneSettings:
   m_ObjectHideFlags: 0
-  m_PVSData:
+  m_PVSData: 
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
@@ -141,17 +141,17 @@ Prefab:
     - target: {fileID: 114000011013734354, guid: 44c331be54977ca44b46f74ac8ce80dc,
         type: 2}
       propertyPath: ButtonActions.Array.data[0]
-      value:
+      value: 
       objectReference: {fileID: 362416002}
     - target: {fileID: 114000011013734354, guid: 44c331be54977ca44b46f74ac8ce80dc,
         type: 2}
       propertyPath: ButtonActions.Array.data[1]
-      value:
+      value: 
       objectReference: {fileID: 1141601513}
     - target: {fileID: 114000011013734354, guid: 44c331be54977ca44b46f74ac8ce80dc,
         type: 2}
       propertyPath: ButtonActions.Array.data[2]
-      value:
+      value: 
       objectReference: {fileID: 1362647784}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
@@ -238,8 +238,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb3b702aa55bf43e5b3fe9118e102787, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   pausePanel: {fileID: 1909229847}
   cam: {fileID: 1326888718}
 --- !u!114 &120426617
@@ -251,8 +251,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -267,8 +267,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -328,8 +328,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74c27e134c9b2486faea275e2d32deb2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   completedPanel: {fileID: 0}
   cam: {fileID: 1326888718}
 --- !u!114 &120426622
@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53c303b3d5a106841a66d525906cdab1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &131626660
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,8 +387,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -417,12 +417,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 131626660}
---- !u!43 &184211426
+--- !u!43 &185206802
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -440,7 +440,7 @@ Mesh:
     channels: []
     fullWeights: []
   m_BindPose: []
-  m_BoneNameHashes:
+  m_BoneNameHashes: 
   m_RootBoneNameHash: 0
   m_MeshCompression: 0
   m_IsReadable: 1
@@ -491,59 +491,59 @@ Mesh:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_UV:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Normals:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Tangents:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Weights:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_NormalSigns:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_TangentSigns:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_FloatColors:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_BoneIndices:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Triangles:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 21.775251, y: 16.44462, z: 0}
     m_Extent: {x: 13.224749, y: 16.44462, z: 0}
   m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh:
-  m_BakedTriangleCollisionMesh:
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
 --- !u!1 &197219258
 GameObject:
@@ -563,7 +563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &197219259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,8 +573,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34382083ad114a07d000fbfb8d76c639, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   iterations: 3
   blurSpread: 0.363
   blurShader: {fileID: 4800000, guid: 57e6deea7c2924e22a5138e2b70bb4dc, type: 3}
@@ -612,7 +612,7 @@ Camera:
   far clip plane: 509.68
   field of view: 60
   orthographic: 1
-  orthographic size: 114.21861
+  orthographic size: 192.35255
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -633,7 +633,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 197219258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 189, y: 52, z: -453}
+  m_LocalPosition: {x: 208.3, y: 50.2, z: -453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -888,7 +888,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -963,12 +963,12 @@ Prefab:
     - target: {fileID: 114000010242645360, guid: 4e9131a96c3c52c4b9c8559e198c96f9,
         type: 2}
       propertyPath: completedPanel
-      value:
+      value: 
       objectReference: {fileID: 492662148}
     - target: {fileID: 114000010242645360, guid: 4e9131a96c3c52c4b9c8559e198c96f9,
         type: 2}
       propertyPath: cam
-      value:
+      value: 
       objectReference: {fileID: 1326888718}
     - target: {fileID: 114000010242645360, guid: 4e9131a96c3c52c4b9c8559e198c96f9,
         type: 2}
@@ -1128,7 +1128,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -1165,7 +1165,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name:
+  m_Name: 
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -1183,7 +1183,7 @@ Mesh:
     channels: []
     fullWeights: []
   m_BindPose: []
-  m_BoneNameHashes:
+  m_BoneNameHashes: 
   m_RootBoneNameHash: 0
   m_MeshCompression: 0
   m_IsReadable: 1
@@ -1234,59 +1234,59 @@ Mesh:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_UV:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Normals:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Tangents:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Weights:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_NormalSigns:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_TangentSigns:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_FloatColors:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_BoneIndices:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Triangles:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 17.5, y: 17.5, z: 0}
     m_Extent: {x: 17.5, y: 17.5, z: 0}
   m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh:
-  m_BakedTriangleCollisionMesh:
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
 --- !u!4 &912779368 stripped
 Transform:
@@ -1355,7 +1355,7 @@ Prefab:
     - target: {fileID: 61000011876600238, guid: a500d15780d02ef44b615302e5d34636,
         type: 2}
       propertyPath: m_Material
-      value:
+      value: 
       objectReference: {fileID: 6200000, guid: ec03339b208e3454b95e45c9c05939e2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a500d15780d02ef44b615302e5d34636, type: 2}
@@ -1386,8 +1386,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -1404,8 +1404,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
@@ -1560,7 +1560,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -1665,7 +1665,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -1796,7 +1796,7 @@ Prefab:
     - target: {fileID: 114000011013734354, guid: 44c331be54977ca44b46f74ac8ce80dc,
         type: 2}
       propertyPath: ButtonActions.Array.data[0]
-      value:
+      value: 
       objectReference: {fileID: 2060838353}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c331be54977ca44b46f74ac8ce80dc, type: 2}
@@ -1888,7 +1888,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -1934,8 +1934,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1207099076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29, y: -4, z: 497}
-  m_LocalScale: {x: -18.31933, y: 14.714802, z: 20}
+  m_LocalPosition: {x: 41.3, y: -18.1, z: 497}
+  m_LocalScale: {x: 30, y: 30, z: 20}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 197219265}
@@ -1955,7 +1955,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -2121,8 +2121,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d17fa4cfb81c6ba4485a3ab03adafb22, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player1: {fileID: 1917073484}
   player2: {fileID: 912779368}
   minSizeY: 5
@@ -2137,8 +2137,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34382083ad114a07d000fbfb8d76c639, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   iterations: 3
   blurSpread: 0.363
   blurShader: {fileID: 4800000, guid: 57e6deea7c2924e22a5138e2b70bb4dc, type: 3}
@@ -2437,7 +2437,7 @@ Prefab:
     - target: {fileID: 114000013085013000, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value:
+      value: 
       objectReference: {fileID: 2003669540}
     - target: {fileID: 114000013085013000, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
@@ -2447,7 +2447,7 @@ Prefab:
     - target: {fileID: 114000010489356446, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value:
+      value: 
       objectReference: {fileID: 2003669540}
     - target: {fileID: 114000010489356446, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
@@ -2457,7 +2457,7 @@ Prefab:
     - target: {fileID: 114000010489356446, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value:
+      value: 
       objectReference: {fileID: 1345530057}
     - target: {fileID: 114000010489356446, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
@@ -2467,7 +2467,7 @@ Prefab:
     - target: {fileID: 114000011806211398, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value:
+      value: 
       objectReference: {fileID: 2003669540}
     - target: {fileID: 114000011806211398, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
@@ -2477,7 +2477,7 @@ Prefab:
     - target: {fileID: 114000010419046114, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value:
+      value: 
       objectReference: {fileID: 2003669540}
     - target: {fileID: 114000010419046114, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
@@ -2574,7 +2574,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -2697,22 +2697,22 @@ Prefab:
     - target: {fileID: 114000013050096216, guid: d76259251d3d2ed4a84a8e02b252ec76,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value:
+      value: 
       objectReference: {fileID: 120426616}
     - target: {fileID: 114000011728249156, guid: d76259251d3d2ed4a84a8e02b252ec76,
         type: 2}
       propertyPath: cam
-      value:
+      value: 
       objectReference: {fileID: 1326888718}
     - target: {fileID: 114000012644360848, guid: d76259251d3d2ed4a84a8e02b252ec76,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value:
+      value: 
       objectReference: {fileID: 120426616}
     - target: {fileID: 114000012644360848, guid: d76259251d3d2ed4a84a8e02b252ec76,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value:
+      value: 
       objectReference: {fileID: 120426622}
     - target: {fileID: 1000010733407992, guid: d76259251d3d2ed4a84a8e02b252ec76, type: 2}
       propertyPath: m_IsActive
@@ -2721,7 +2721,7 @@ Prefab:
     - target: {fileID: 114000013050096216, guid: d76259251d3d2ed4a84a8e02b252ec76,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value:
+      value: 
       objectReference: {fileID: 120426622}
     - target: {fileID: 114000013050096216, guid: d76259251d3d2ed4a84a8e02b252ec76,
         type: 2}
@@ -2928,7 +2928,7 @@ Prefab:
     - target: {fileID: 33000011845350330, guid: ca76a17e75253a6449a98b85063888f8,
         type: 2}
       propertyPath: m_Mesh
-      value:
+      value: 
       objectReference: {fileID: 893898518}
     - target: {fileID: 114000010467166832, guid: ca76a17e75253a6449a98b85063888f8,
         type: 2}
@@ -2948,7 +2948,7 @@ Prefab:
     - target: {fileID: 68000010923124180, guid: ca76a17e75253a6449a98b85063888f8,
         type: 2}
       propertyPath: m_Material
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 68000010923124180, guid: ca76a17e75253a6449a98b85063888f8,
         type: 2}
@@ -3241,8 +3241,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 1
     m_SelectOnUp: {fileID: 0}
@@ -3279,7 +3279,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument:
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -3293,8 +3293,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -3326,8 +3326,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 380d237a5a7774d5c884d9259b76d87a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   mainCam: {fileID: 1326888718}
   mapCam: {fileID: 197219258}
 --- !u!1001 &1731085487
@@ -3597,7 +3597,7 @@ Prefab:
     - target: {fileID: 233000010588733104, guid: 2e0e265da80d1e247841fd0985323de2,
         type: 2}
       propertyPath: m_ConnectedRigidBody
-      value:
+      value: 
       objectReference: {fileID: 2063524769}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e0e265da80d1e247841fd0985323de2, type: 2}
@@ -3772,8 +3772,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9c4e6ab05f7ad14a98ce4255a1774a8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!68 &2038015436
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -3891,7 +3891,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -3996,7 +3996,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
