@@ -10,7 +10,7 @@ public class FacebookShare : MonoBehaviour {
 	public string AppID = "1399925576886522";
 
 	// The link attached to this post.
-	public string Link = "https://play.google.com/store/apps/developer?id=Gamestoodio";
+	public string Link = "https://facebook.com";
 
 	// The URL of a picture attached to this post. The picture must be at least 200px by 200px.
 	public string Picture = "http://i65.tinypic.com/35hiigw.jpg";
@@ -22,7 +22,7 @@ public class FacebookShare : MonoBehaviour {
 	public string Caption = "SuicideSquad";
 
 	// The description of the link (appears beneath the link caption).
-	public string Description = "My High Score on Pinscape is 100! Can you beat it?";
+	public string Description = "My total score on Pinscape is 100! Can you beat it?";
 
 	public void ShareScoreOnFB(){
 		string score = GameController.Instance.GetTotalTokens ().ToString ();
