@@ -18,6 +18,8 @@ public class EndlessMovement : MonoBehaviour {
     private Rigidbody2D rbb;
     private Camera cam;
 
+    private float[] bumperYPos = { 5, 10, 12.5F, 20 };
+
 	// Use this for initialization
 	void Start () {
         rb1 = player1.GetComponent<Rigidbody2D>();
@@ -45,16 +47,29 @@ public class EndlessMovement : MonoBehaviour {
         }
 
         // Update boundary position
-        Vector2 nextPos = rbb.position + new Vector2(maxSpeed/2, 0);
+        Vector2 nextPos = rbb.position + new Vector2(maxSpeed/2, 0) * Time.fixedDeltaTime;
         Vector2 minPos = new Vector2(cam.transform.position.x - (cam.orthographicSize * Screen.width / Screen.height), 0);
-        Vector2 newPos = nextPos.x > minPos.x ? new Vector2(nextPos.x * Time.fixedDeltaTime, rbb.position.y) : new Vector2(minPos.x * Time.fixedDeltaTime, rbb.position.y);
+        Vector2 newPos = nextPos.x > minPos.x ? new Vector2(nextPos.x, rbb.position.y) : new Vector2(rbb.position.x + (minPos.x - rbb.position.x) * Time.fixedDeltaTime, rbb.position.y);
         rbb.MovePosition(newPos);
-        Debug.Log(nextPos);
 
+        System.Random rand = new System.Random();
         // Update bumper positions
-
-
-
+        foreach (GameObject bumper in bumpers) {
+            Rigidbody2D bumperRb = bumper.GetComponent<Rigidbody2D>();
+            if (bumperRb.position.x < rbb.position.x) {
+                float minX = cam.transform.position.x + (cam.orthographicSize * Screen.width / Screen.height);
+                foreach (GameObject otherBumper in bumpers) {
+                    // Ensure bumper is spaced at least 30 from every other bumper
+                    float otherX = otherBumper.GetComponent<Rigidbody2D>().position.x + 30;
+                    minX = otherX > minX ? otherX : minX;
+                }
+                float posX = minX + rand.Next(0, 50);
+                float posY = bumperYPos[rand.Next(0, 4)];
+                bumperRb.position = new Vector2(posX, posY);
+                bumper.GetComponent<BumperScript>().OverCharge = rand.Next(2) == 0;
+            }
+        }
+        
         // Update token positions
     }
 }
