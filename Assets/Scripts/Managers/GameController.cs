@@ -4,7 +4,8 @@ using System.Linq;
 using System.Collections;
 using System;
 
-namespace Managers {
+namespace Managers
+{
     /// <summary>
     /// The game controller is a script which manages :
     /// <list type="responsibilites">
@@ -16,9 +17,12 @@ namespace Managers {
     /// Control non-gameplay button captures.
     ///</list>
     /// </summary>
-    public class GameController : MonoBehaviour {
+    public class GameController : MonoBehaviour
+    {
 
-		private const int TOTAL_NUMBER_OF_LEVELS = 7; 
+        private const int TOTAL_NUMBER_OF_LEVELS = 7;
+        private const string TOKEN_PERSISTENCE_KEY_SUFFIX = "-TokensCollectedAcrossGame";
+        private const string LEVELS_PERSISTENCE_KEY_SUFFIX = "-LevelsUnlocked";
 
         #region Properties
         private static GameController instance;
@@ -26,7 +30,8 @@ namespace Managers {
         {
             get
             {
-                if (instance == null) {
+                if (instance == null)
+                {
                     instance = new GameController();
                 }
                 return instance;
@@ -37,9 +42,22 @@ namespace Managers {
 
             }
         }
+
+        private int _levelsUnlocked;
+        public int LevelsUnlocked
+        {
+            get
+            {
+                return _levelsUnlocked;
+            }
+            set
+            {
+                _levelsUnlocked = (value >= TOTAL_NUMBER_OF_LEVELS) ? TOTAL_NUMBER_OF_LEVELS : value;
+            }
+        }
         #endregion
 
-        #region Feilds
+        #region Fields
         public AudioClip MenuAudio;
         public AudioClip[] Playlist;
         public int LevelToClip;
@@ -48,21 +66,31 @@ namespace Managers {
         private AudioSource _audioSource;
         private bool _inMenu = true;
         private int _audioTrack = 1;
-		private int _tokens = 0;
-		private int _currentLevelTokens = 0;
-		private int[] _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
+        private int _tokens = 0;
+        private int _currentLevelTokens = 0;
+        private int[] _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
+        private string _teamTokenPersistenceKey;
+        private string _teamLevelsPersistenceKey;
+
+        // TODO set to default skins when skin colours have been finalized
+        public SkinColour _player1Skin { get; private set; }
+        public SkinColour _player2Skin { get; private set; }
 
         #endregion
 
         #region Constructor
-        void Awake() {
+        void Awake()
+        {
             //PlayerPrefs.DeleteAll();
             _audioSource = GetComponent<AudioSource>();
-            if (instance == null) {
+            if (instance == null)
+            {
                 instance = this;
                 // Load persistent values from machine
                 this.loadPreferences();
-            } else if (this != instance) {
+            }
+            else if (this != instance)
+            {
                 Destroy(gameObject);
             }
             // We dont want the game manager to be destroyed when when we load a new scene since it 
@@ -72,72 +100,89 @@ namespace Managers {
         #endregion
 
         #region Screen management
-        public void loadScreenSingle(string screenName) {
+        public void loadScreenSingle(string screenName)
+        {
             //Debug.Log(string.Format("changing screens to {0}", screenName));
-            if (SceneManager.GetActiveScene().name != screenName) {
+            if (SceneManager.GetActiveScene().name != screenName)
+            {
                 ChangeAudio(screenName);
             }
-            
-			ResetTokenCollectionOnCurrentLevel ();
+
+            ResetTokenCollectionOnCurrentLevel();
             SceneManager.LoadScene(screenName, LoadSceneMode.Single);
         }
 
-        public void loadScreenAdditive(string screenName) {
+        public void loadScreenAdditive(string screenName)
+        {
             ChangeAudio(screenName);
-			ResetTokenCollectionOnCurrentLevel ();
+            ResetTokenCollectionOnCurrentLevel();
             SceneManager.LoadScene(screenName, LoadSceneMode.Additive);
         }
 
-        public void restartCurrentScene() {
+        public void restartCurrentScene()
+        {
             int scene = SceneManager.GetActiveScene().buildIndex;
-			ResetTokenCollectionOnCurrentLevel ();
+            ResetTokenCollectionOnCurrentLevel();
             SceneManager.LoadScene(scene, LoadSceneMode.Single);
         }
         #endregion
 
         #region Audio management
-        internal void AdjustMasterVolume(float volume) {
+        internal void AdjustMasterVolume(float volume)
+        {
             _volume.Master = volume;
             AudioListener.volume = _volume.Master;
             //PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
             //PlayerPrefs.Save();
         }
 
-        internal void AdjustMusicVolume(float volume) {
+        internal void AdjustMusicVolume(float volume)
+        {
             _volume.Music = volume;
             _audioSource.volume = _volume.Music;
             //PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
             //PlayerPrefs.Save();
         }
 
-        internal void AdjustEffectVolume(float volume) {
+        internal void AdjustEffectVolume(float volume)
+        {
             _volume.Effects = volume;
         }
 
-        private void ChangeAudio(string screenTarget) {
-            if (!(screenTarget.Equals("AvatarSelectScreen") || screenTarget.Equals("LevelSelectScreen") || screenTarget.Equals("OptionsScreen") || screenTarget.Equals("Start"))) {
+        private void ChangeAudio(string screenTarget)
+        {
+            if (!(screenTarget.Equals("AvatarSelectScreen") || screenTarget.Equals("LevelSelectScreen") || screenTarget.Equals("OptionsScreen") || screenTarget.Equals("Start")))
+            {
                 _inMenu = false;
-            } else {
+            }
+            else
+            {
                 _inMenu = true;
             }
             AudioClip soundToSwitchTo;
-            if (!_inMenu) {
+            if (!_inMenu)
+            {
                 //Debug.Log("entering active level");
                 int soundIndex = _audioTrack / LevelToClip;
-                if (_audioTrack % LevelToClip == 0) {
+                if (_audioTrack % LevelToClip == 0)
+                {
                     soundIndex--;
                 }
-                if (soundIndex > Playlist.Length) {
+                if (soundIndex > Playlist.Length)
+                {
                     _audioTrack = 1;
                     soundIndex = 0;
                 }
                 soundToSwitchTo = Playlist[soundIndex];
                 _audioTrack++;
-            } else {
+            }
+            else
+            {
                 soundToSwitchTo = MenuAudio;
             }
 
-            if (soundToSwitchTo == _audioSource.clip) {
+            if (soundToSwitchTo == _audioSource.clip)
+            {
                 return;
             }
             _audioSource.clip = soundToSwitchTo;
@@ -150,7 +195,8 @@ namespace Managers {
         /// Used in <code>OptionsBehavior</code> to load in persistent values
         /// </summary>
         /// <returns>Structure holding volume values</returns>
-        public OptionValues LoadOptions() {
+        public OptionValues LoadOptions()
+        {
             return _volume;
         }
 
@@ -158,131 +204,177 @@ namespace Managers {
         /// This will load ALL saved player data into this GameController 
         /// instance from wherver the users browsersaves data.
         /// </summary>
-        protected internal void loadPreferences() {
-			// Audio
-			_volume = new OptionValues (
-				(PlayerPrefs.HasKey ("MasterVolume")) ? PlayerPrefs.GetFloat ("MasterVolume") : 1F,
-				(PlayerPrefs.HasKey ("MusicVolume")) ? PlayerPrefs.GetFloat ("MusicVolume") : 1F,
-				(PlayerPrefs.HasKey ("EffectVolume")) ? PlayerPrefs.GetFloat ("EffectVolume") : 1F);
-			_audioSource.volume = this._volume.Master;
-			AudioListener.volume = this._volume.Music;
+        protected internal void loadPreferences()
+        {
+            // Audio
+            _volume = new OptionValues(
+                (PlayerPrefs.HasKey("MasterVolume")) ? PlayerPrefs.GetFloat("MasterVolume") : 1F,
+                (PlayerPrefs.HasKey("MusicVolume")) ? PlayerPrefs.GetFloat("MusicVolume") : 1F,
+                (PlayerPrefs.HasKey("EffectVolume")) ? PlayerPrefs.GetFloat("EffectVolume") : 1F);
+            _audioSource.volume = this._volume.Master;
+            AudioListener.volume = this._volume.Music;
 
-			// Tokens
-			_tokens = (PlayerPrefs.HasKey ("Tokens")) ? PlayerPrefs.GetInt ("Tokens") : 0;
-			_currentLevelTokens = 0;
+        }
 
-			if (PlayerPrefs.HasKey ("TokensCollectedAcrossGame")) {
-				Debug.Log ("Tokens collected across game being loaded from persistence.");
-				string persistedTokenString = PlayerPrefs.GetString ("TokensCollectedAcrossGame");
-				Debug.Log ("Persistence token string found :" + persistedTokenString);
-				this.ConvertStringToTokensCollected (persistedTokenString);
-			} else {
-				Debug.Log ("No persistence found for tokens collected. Re-initalising instead!");
-				this.LoadInitialTokenPersistenceArray();
-			}
-
-		}
-
-        void OnDestroy() {
+        void OnDestroy()
+        {
             PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
             PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
             PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
-            PlayerPrefs.SetInt("Tokens", _tokens);
-			PlayerPrefs.SetString ("TokensCollectedAcrossGame", ConvertTokensCollectedToString());
+            PlayerPrefs.SetString(_teamTokenPersistenceKey, ConvertTokensCollectedToString());
+            PlayerPrefs.SetInt(_teamLevelsPersistenceKey, _levelsUnlocked);
             PlayerPrefs.Save();
         }
         #endregion
 
         #region Externally called handler methods
         [System.Obsolete("Use AddToken(int Level)")]
-        public void AddToken() {
-			this._tokens++;
-			this._currentLevelTokens++;
+        public void AddToken()
+        {
+            this._tokens++;
+            this._currentLevelTokens++;
         }
 
-		public void AddToken(int level){
-			Debug.Log (string.Format ("Token collected by player on level {0}", level));
-			this._tokens++;
-			this._currentLevelTokens++;
-			UpdateTokenPersistenceArray (this._currentLevelTokens, level);
-		}
+        public void AddToken(int level)
+        {
+            Debug.Log(string.Format("Token collected by player on level {0}", level));
+            this._tokens++;
+            this._currentLevelTokens++;
+            UpdateTokenPersistenceArray(this._currentLevelTokens, level);
+        }
 
-		public int GetTokensCollectedOnLevel(int level){
-			if (level >= _tokensCollectedAcrossGame.Length || level < 0) {
-				return -1;
-			}
-			return _tokensCollectedAcrossGame [level];
-		}
+        public int GetTokensCollectedOnLevel(int level)
+        {
+            if (level >= _tokensCollectedAcrossGame.Length || level < 0)
+            {
+                return -1;
+            }
+            return _tokensCollectedAcrossGame[level];
+        }
 
-		public int GetTokensCollectedOnCurrentLevel(){
-			return _currentLevelTokens;
-		}
+        public int GetTokensCollectedOnCurrentLevel()
+        {
+            return _currentLevelTokens;
+        }
 
-		public int GetTotalTokens() {
-			int total = 0;
-			foreach (int score in _tokensCollectedAcrossGame) {
-				total += score;
-			}
-			return total;
-		}
+        public int GetTotalTokens()
+        {
+            int total = 0;
+            foreach (int score in _tokensCollectedAcrossGame)
+            {
+                total += score;
+            }
+            return total;
+        }
 
-        internal float GetSFXVolume() {
+        public bool attemptTeamLoadGame(string teamName)
+        {
+            _teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
+            _teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
+            _currentLevelTokens = 0;
+            if (!PlayerPrefs.HasKey(_teamTokenPersistenceKey))
+            {
+                Debug.Log("Team name doesn't exist! Can't load game with this name: " + teamName);
+                return false;
+            }
+
+            Debug.Log("Tokens collected across game being loaded from persistence.");
+            string persistedTokenString = PlayerPrefs.GetString(_teamTokenPersistenceKey);
+            Debug.Log("Persistence token string found :" + persistedTokenString);
+            this.ConvertStringToTokensCollected(persistedTokenString);
+
+            return true;
+        }
+
+        public bool attemptTeamNewGame(string teamName)
+        {
+            _teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
+            _teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
+            _currentLevelTokens = 0;
+            if (PlayerPrefs.HasKey(_teamTokenPersistenceKey))
+            {
+                Debug.Log("Team name already exists! Can't create a new game with this name: " + teamName);
+                return false;
+            }
+
+            this.LoadInitialTokenPersistenceArray();
+            return true;
+        }
+
+        internal float GetSFXVolume()
+        {
             return _volume.Effects;
         }
         #endregion
 
-		#region Token Management
-		private void UpdateTokenPersistenceArray(int tokensCollectedValue, int level){
-			if (level > _tokensCollectedAcrossGame.Length || level < 0) {
-				Debug.LogError ("Level " + level + " out of bounds! Must be between 0 and " + _tokensCollectedAcrossGame.Length);
-				return;
-			}
+        #region Token Management
+        private void UpdateTokenPersistenceArray(int tokensCollectedValue, int level)
+        {
+            if (level > _tokensCollectedAcrossGame.Length || level < 0)
+            {
+                Debug.LogError("Level " + level + " out of bounds! Must be between 0 and " + _tokensCollectedAcrossGame.Length);
+                return;
+            }
 
-			level = level - 1;
-				
-			if (_tokensCollectedAcrossGame [level] < tokensCollectedValue) {
-				Debug.Log (string.Format("Updating tokens collected for Level {0} to {1}", level + 1, tokensCollectedValue));
-				_tokensCollectedAcrossGame[level] = tokensCollectedValue;
-			}
-		}
+            level = level - 1;
 
-		private void ResetTokenCollectionOnCurrentLevel(){
-			Debug.Log ("Resetting tokens collected for current level to 0");
-			_currentLevelTokens = 0;
-		}
+            if (_tokensCollectedAcrossGame[level] < tokensCollectedValue)
+            {
+                Debug.Log(string.Format("Updating tokens collected for Level {0} to {1}", level + 1, tokensCollectedValue));
+                _tokensCollectedAcrossGame[level] = tokensCollectedValue;
+            }
+        }
 
-		private void ConvertStringToTokensCollected(string marshalledArray){
-			Debug.Log ("Converting " + marshalledArray + " to tokens array.");
-			_tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
+        private void ResetTokenCollectionOnCurrentLevel()
+        {
+            Debug.Log("Resetting tokens collected for current level to 0");
+            _currentLevelTokens = 0;
+        }
 
-			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
-				this._tokensCollectedAcrossGame [i] = int.Parse("" + marshalledArray.ElementAt(i));
-			}
+        private void ConvertStringToTokensCollected(string marshalledArray)
+        {
+            Debug.Log("Converting " + marshalledArray + " to tokens array.");
+            _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
 
-			Debug.Log (_tokensCollectedAcrossGame[0]);
-		}
+            for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i)
+            {
+                this._tokensCollectedAcrossGame[i] = int.Parse("" + marshalledArray.ElementAt(i));
+            }
+        }
 
-		private string ConvertTokensCollectedToString(){
-			char[] tokenCharArray = _tokensCollectedAcrossGame.Select (s => ("" + s).ToCharArray().First()).ToArray ();
-			string tokensString = new string (tokenCharArray);
-			Debug.Log ("Converted tokens array to string: " + tokensString);
-			return tokensString;
-		}
+        private string ConvertTokensCollectedToString()
+        {
+            char[] tokenCharArray = _tokensCollectedAcrossGame.Select(s => ("" + s).ToCharArray().First()).ToArray();
+            string tokensString = new string(tokenCharArray);
+            Debug.Log("Converted tokens array to string: " + tokensString);
+            return tokensString;
+        }
 
-		private void LoadInitialTokenPersistenceArray(){
-			Debug.Log ("Re-initialising token array to " + TOTAL_NUMBER_OF_LEVELS + " zeros.");
-			for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i) {
-				this._tokensCollectedAcrossGame [i] = 0;
-			}
-		}
+        private void LoadInitialTokenPersistenceArray()
+        {
+            Debug.Log("Re-initialising token array to " + TOTAL_NUMBER_OF_LEVELS + " zeros.");
+            for (int i = 0; i < TOTAL_NUMBER_OF_LEVELS; ++i)
+            {
+                this._tokensCollectedAcrossGame[i] = 0;
+            }
+        }
 
-		#endregion
+        #endregion
+
+        #region Avatar management
+        public void SaveAvatarSelection(SkinColour player1, SkinColour player2)
+        {
+            _player1Skin = player1;
+            _player2Skin = player2;
+        }
+        #endregion
     }
 
     /// <summary>
     /// Struct that holds all the values that can be in volume options
     /// </summary>
-    public struct OptionValues {
+    public struct OptionValues
+    {
         private float master;
         public float Master
         {
@@ -293,7 +385,8 @@ namespace Managers {
             set
             {
                 master = value;
-                if (iterable == null) {
+                if (iterable == null)
+                {
                     iterable = new float[3];
                     iterable[1] = 1F;
                     iterable[2] = 1F;
@@ -311,7 +404,8 @@ namespace Managers {
             set
             {
                 music = value;
-                if (iterable == null) {
+                if (iterable == null)
+                {
                     iterable = new float[3];
                     iterable[0] = 1F;
                     iterable[1] = 1F;
@@ -329,7 +423,8 @@ namespace Managers {
             set
             {
                 effects = value;
-                if (iterable == null) {
+                if (iterable == null)
+                {
                     iterable = new float[3];
                     iterable[0] = 1F;
                     iterable[2] = 1F;
@@ -340,7 +435,8 @@ namespace Managers {
 
         public float[] iterable;
 
-        public OptionValues(float master, float music, float effects) {
+        public OptionValues(float master, float music, float effects)
+        {
             this.master = master;
             this.music = music;
             this.effects = effects;
