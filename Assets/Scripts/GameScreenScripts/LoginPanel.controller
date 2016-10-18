@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: AboutPanel
+  m_Name: LoginPanel
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -27,7 +27,7 @@ AnimatorState:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: AboutPageSlideOut
+  m_Name: LoginPageSlideOut
   m_Speed: -1
   m_CycleOffset: 0
   m_Transitions: []
@@ -50,7 +50,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: AboutPageSlide
+  m_Name: LoginPageSlide
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

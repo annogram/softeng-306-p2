@@ -120,7 +120,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 500}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: -0.90300006, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.8498824, z: 0}
   m_Children:
   - {fileID: 1157851969}
   - {fileID: 1358124070}
@@ -230,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startAnim: {fileID: 75847991}
   aboutAnim: {fileID: 240743613}
+  loginAnim: {fileID: 988924651}
 --- !u!1 &240743607
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startAnim: {fileID: 75847991}
   aboutAnim: {fileID: 240743613}
+  loginAnim: {fileID: 988924651}
 --- !u!1 &276244087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,7 +1586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAnim: {fileID: 75847991}
-  aboutAnim: {fileID: 988924651}
+  aboutAnim: {fileID: 240743613}
+  loginAnim: {fileID: 988924651}
 --- !u!95 &988924651
 Animator:
   serializedVersion: 3
@@ -1594,7 +1597,7 @@ Animator:
   m_GameObject: {fileID: 988924648}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 357de85ff502c4f6da65ba0415f1a786, type: 2}
+  m_Controller: {fileID: 9100000, guid: b14177b577dbb403b8e8121d05f4374d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -1828,15 +1831,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1601815817}
-        m_MethodName: Next
-        m_Mode: 5
+      - m_Target: {fileID: 75847992}
+        m_MethodName: showLoginPage
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LevelSelectScreen
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1908,8 +1911,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -526.99255}
-  m_SizeDelta: {x: 599.9999, y: 62.652832}
+  m_AnchoredPosition: {x: 480, y: -512.3694}
+  m_SizeDelta: {x: 600, y: 89.72211}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1192868539
 MonoBehaviour:
@@ -2117,7 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.54929006, b: 0.25735295, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2131,7 +2134,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 20
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
@@ -2927,7 +2930,7 @@ GameObject:
   - 114: {fileID: 1724693377}
   - 114: {fileID: 1724693376}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Login
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3289,8 +3292,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -292.83307}
-  m_SizeDelta: {x: 599.9999, y: 405.6661}
+  m_AnchoredPosition: {x: 480, y: -278.75418}
+  m_SizeDelta: {x: 600, y: 377.50836}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2063020347
 MonoBehaviour:
@@ -3386,7 +3389,7 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: 50
   m_PreferredWidth: -1
-  m_PreferredHeight: 80
+  m_PreferredHeight: 90
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
 --- !u!114 &2112504047
@@ -3408,9 +3411,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.30147058, g: 0.2815203, b: 0.2815203, a: 1}
+    m_HighlightedColor: {r: 0.30147058, g: 0.2815203, b: 0.2815203, a: 1}
+    m_PressedColor: {r: 0.30147058, g: 0.2815203, b: 0.2815203, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3445,12 +3448,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_CustomCaretColor: 0
+  m_CaretColor: {r: 0.9117647, g: 0.38283017, b: 0.040224895, a: 1}
+  m_CustomCaretColor: 1
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
   m_Text: Enter team name...
-  m_CaretBlinkRate: 0.85
-  m_CaretWidth: 1
+  m_CaretBlinkRate: 1.37
+  m_CaretWidth: 4
   m_ReadOnly: 0
 --- !u!114 &2112504048
 MonoBehaviour:
