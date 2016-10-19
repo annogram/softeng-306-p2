@@ -18,7 +18,12 @@ public class HighscoreScreen : MonoBehaviour {
 			instance.loadScreenSingle ("HSScreen");
 		} else {
 			// show popup
+			togglePopup ();
 		}
 
+	}
+
+	public void togglePopup(){
+		highscreenPopup.SetActive (!highscreenPopup.active);
 	}
 }
