@@ -164,7 +164,6 @@ public class PlayerController : MonoBehaviour {
         // Check if we need to do player 1 or player 2 controls
         if (gameObject.tag == "Player" && !_ball) {
 
-            _anim.SetBool("IsPlayer1", true);
             bool skin1 = _controller._player1Skin == SkinColour.BLUE ? false : true;
             _anim.SetBool("IsAltSkin", skin1);
    
@@ -204,7 +203,6 @@ public class PlayerController : MonoBehaviour {
             }
         } else if(gameObject.tag == "Player2" && !_ball) {
 
-            _anim.SetBool("IsPlayer1", false);
             bool skin2 = _controller._player2Skin == SkinColour.RED ? false : true;
             _anim.SetBool("IsAltSkin", skin2);
 
