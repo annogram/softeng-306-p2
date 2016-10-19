@@ -22,11 +22,13 @@ namespace Managers {
 		}
 			
 		public void TogglePlayerOne() {
+            // TODO change the player image in scene
 			player1 = player1 == SkinColour.BLUE ? SkinColour.GREEN : SkinColour.BLUE;
 		}
 
 		public void TogglePlayerTwo() {
-			player2 = player2 == SkinColour.RED ? SkinColour.PURPLE : SkinColour.RED;
+            // TODO change the player image in scene
+            player2 = player2 == SkinColour.RED ? SkinColour.PURPLE : SkinColour.RED;
 		}
 			
 
