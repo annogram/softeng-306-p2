@@ -71,6 +71,8 @@ namespace Managers
         private int[] _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
         private string _teamTokenPersistenceKey;
         private string _teamLevelsPersistenceKey;
+		public string _teamName { get; set; }
+		public bool LoggedIn { get; set; }
 
         // TODO set to default skins when skin colours have been finalized
         public SkinColour _player1Skin { get; private set; }
@@ -214,6 +216,12 @@ namespace Managers
             _audioSource.volume = this._volume.Master;
             AudioListener.volume = this._volume.Music;
 
+            _teamTokenPersistenceKey = _teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
+            ConvertStringToTokensCollected(PlayerPrefs.GetString(_teamTokenPersistenceKey));
+
+            _teamLevelsPersistenceKey = _teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
+            _levelsUnlocked = PlayerPrefs.GetInt(_teamLevelsPersistenceKey);
+
         }
 
         void OnDestroy()
@@ -300,6 +308,12 @@ namespace Managers
             this.LoadInitialTokenPersistenceArray();
             return true;
         }
+
+		public string getCurrentTeam ()
+		{
+			if (_teamName==null) { _teamName = "noname"; }
+			return _teamName;
+		}
 
         internal float GetSFXVolume()
         {

@@ -70,7 +70,7 @@ public class LevelExit : MonoBehaviour {
 
 	private void updateScores() {
 		
-		int levelScore = GameController.Instance.GetTokensCollectedOnLevel (currentLevel-1);
+		int levelScore = GameController.Instance.GetTokensCollectedOnCurrentLevel ();
 		int totalScore = GameController.Instance.GetTotalTokens ();
 
 		Transform scores = completedPanel.transform.GetChild(1);
