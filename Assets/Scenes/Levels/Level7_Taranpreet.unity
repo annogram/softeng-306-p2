@@ -1025,11 +1025,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.8
+      value: 340.7
       objectReference: {fileID: 0}
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 11.2
+      value: -26
       objectReference: {fileID: 0}
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1117,7 +1117,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014117552788, guid: 5e897f609727d6e40baea406c4ec7682, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.8198488
+      value: 0.38942143
       objectReference: {fileID: 0}
     - target: {fileID: 4000014117552788, guid: 5e897f609727d6e40baea406c4ec7682, type: 2}
       propertyPath: m_LocalScale.y
@@ -3452,11 +3452,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 20.6
+      value: 176.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 11.3
+      value: 40.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000013745934502, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3490,6 +3490,11 @@ Prefab:
     - target: {fileID: 1000011221110770, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
       propertyPath: m_Name
       value: ARROW_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000011941394272, guid: 38426062532c46240b42ac0d804c71e1,
+        type: 2}
+      propertyPath: MinDistance
+      value: 2.0831757
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 38426062532c46240b42ac0d804c71e1, type: 2}
