@@ -305,6 +305,7 @@ namespace Managers
 
 		public string getCurrentTeam ()
 		{
+			if (_teamName==null) { _teamName = "noname"; }
 			return _teamName;
 		}
 
