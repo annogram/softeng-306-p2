@@ -4,11 +4,13 @@ using System.Collections;
 public class AnimateTransition : MonoBehaviour {
 	public Animator startAnim;
 	public Animator aboutAnim;
+	public Animator loginAnim;
 
 	// Use this for initialization
 	void Start () {
 		startAnim.enabled = false;
 		aboutAnim.enabled = false;
+		loginAnim.enabled = false;
 	}
 
 	// Update is called once per frame
@@ -18,7 +20,12 @@ public class AnimateTransition : MonoBehaviour {
 
 	public void showStartPage(){
 		startAnim.Play ("StartSlideIn");
-		aboutAnim.Play ("AboutPageSlideOut");
+		if (aboutAnim.enabled) {
+			aboutAnim.Play ("AboutPageSlideOut");
+		}
+		if (loginAnim.enabled) {
+			loginAnim.Play ("LoginPageSlideOut");
+		}
 	}
 
 	public void showAboutPage(){
@@ -26,5 +33,12 @@ public class AnimateTransition : MonoBehaviour {
 		aboutAnim.enabled = true;
 		startAnim.Play ("StartSlideOut");
 		aboutAnim.Play ("AboutPageSlide");
+	}
+
+	public void showLoginPage(){
+		startAnim.enabled = true;
+		loginAnim.enabled = true;
+		startAnim.Play ("StartSlideOut");
+		loginAnim.Play ("LoginPageSlide");
 	}
 }
