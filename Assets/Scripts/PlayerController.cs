@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpDelay = .5f;
     public bool jumped;
     public bool isMoving = false;
+    public bool isBalloon = false;
 
     public float accl;
     public float maxSpeed;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour {
     private float _sfxVolume;
     private float _player1Speed;
     private float _player2Speed;
+    private float floatGravity = -20;
 
     private AudioSource _movementAudio;
     private AudioSource _jumpAudio;
@@ -164,10 +166,13 @@ public class PlayerController : MonoBehaviour {
         // Check if we need to do player 1 or player 2 controls
         if (gameObject.tag == "Player" && !_ball) {
 
-            _anim.SetBool("IsPlayer1", true);
             bool skin1 = _controller._player1Skin == SkinColour.BLUE ? false : true;
             _anim.SetBool("IsAltSkin", skin1);
-   
+            if (isBalloon) {
+                _rb.gravityScale = floatGravity;
+            } else {
+                _rb.gravityScale = 20F;
+            }
 
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
@@ -199,15 +204,18 @@ public class PlayerController : MonoBehaviour {
                     // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
-            } else {
-                _airDrag = 1/airCtrl;
+            } else if (!isBalloon) {
+                _airDrag = 1 / airCtrl;
             }
         } else if(gameObject.tag == "Player2" && !_ball) {
 
-            _anim.SetBool("IsPlayer1", false);
             bool skin2 = _controller._player2Skin == SkinColour.RED ? false : true;
             _anim.SetBool("IsAltSkin", skin2);
-
+            if (isBalloon) {
+                _rb.gravityScale = floatGravity;
+            } else {
+                _rb.gravityScale = 20F;
+            }
 
             // Player 2 keys
             Vector2 forceX = Vector2.zero;
@@ -237,7 +245,7 @@ public class PlayerController : MonoBehaviour {
                     // Animation for jump
                     _anim.SetTrigger("Jump");
                 }
-            } else {
+            } else if (!isBalloon) {
                 _airDrag = 1 / airCtrl;
             }
         }
