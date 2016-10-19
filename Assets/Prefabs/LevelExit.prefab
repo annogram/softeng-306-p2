@@ -24,7 +24,6 @@ GameObject:
   - 82: {fileID: 82000012971267680}
   - 212: {fileID: 212000013293037394}
   - 95: {fileID: 95000012647132672}
-  - 114: {fileID: 114000010690629992}
   m_Layer: 0
   m_Name: LevelExit
   m_TagString: Untagged
@@ -39,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010483696228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 404.25, y: 65.84, z: 0.51}
+  m_LocalPosition: {x: 230.1, y: 1.26, z: 0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -165,22 +164,7 @@ MonoBehaviour:
   ExitClip: {fileID: 8300000, guid: 1a115858e5145184d8ec8adda441dcfa, type: 3}
   completedPanel: {fileID: 0}
   cam: {fileID: 0}
-  currentLevel: 1
---- !u!114 &114000010690629992
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010483696228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e02b51e7b4b3467682a1e30528d1756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  updateLeaderboardGUI: 0
-  uniqueID: 
-  name3: 
-  onlineHighscore: []
+  currentLevel: 0
 --- !u!212 &212000013293037394
 SpriteRenderer:
   m_ObjectHideFlags: 1

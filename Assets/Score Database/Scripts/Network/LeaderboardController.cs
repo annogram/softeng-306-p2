@@ -70,7 +70,7 @@ public class LeaderboardController : MonoBehaviour
 		uniqueID = "123456789"; //Replace this TestScript variable into your game-variables
 		name3 = GameController.Instance._teamName;
 		score = GameController.Instance.GetTotalTokens();
-		Debug.Log ("reached with team name"+name3);
+		Debug.Log ("reached");
 	}
 
 	public  string Md5Sum(string strToEncrypt)
@@ -94,7 +94,7 @@ public class LeaderboardController : MonoBehaviour
 	}
 	
 	// remember to use StartCoroutine when calling this function!
-	public IEnumerator PostScores()
+	IEnumerator PostScores()
 	{
 		updateOnlineHighscoreData ();
 		//This connects to a server side php script that will add the name and score to a MySQL DB.
@@ -102,9 +102,8 @@ public class LeaderboardController : MonoBehaviour
 		string hash = Md5Sum(name3 + score + secretKey);
 		//string post_url = addScoreURL + "name=" + WWW.EscapeURL(name) + "&score=" + score + "&hash=" + hash;
 		string post_url = addScoreURL + "uniqueID=" + uniqueID+ "&name=" + WWW.EscapeURL (name3) + "&score=" + score+ "&hash=" + hash;
-		Debug.Log ("post url " + post_url);
+		//Debug.Log ("post url " + post_url);
 		// Post the URL to the site and create a download object to get the result.
-
 		WWW hs_post = new WWW("http://"+post_url);
 		yield return hs_post; // Wait until the download is done
 		

@@ -1177,8 +1177,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2544540}
-        m_MethodName: Restart
+      - m_Target: {fileID: 1037845933}
+        m_MethodName: restartCurrentScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1429,6 +1429,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f13363094962d50448088c81e93dfec8, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1037845933 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013709553640, guid: f13363094962d50448088c81e93dfec8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1037845932}
+  m_Script: {fileID: 11500000, guid: efce48390d57475459324e87822a9201, type: 3}
 --- !u!1 &1059952472
 GameObject:
   m_ObjectHideFlags: 0

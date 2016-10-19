@@ -19,18 +19,21 @@ public class LevelExit : MonoBehaviour {
     public int currentLevel;
     private GameController _gameController;
     private AudioSource _exitAudio;
-
+	private LeaderboardController lb;
 
     // Use this for initialization
     void Start()
     {
         _gameController = GameController.Instance;
         _exitAudio = GetComponent<AudioSource>();
+        _exitAudio.clip = ExitClip;
         if ((currentLevel + 1) > _gameController.LevelsUnlocked)
         {
             _gameController.LevelsUnlocked = currentLevel + 1;
         }
-        LeaderboardController.Instance.startPostScores();
+        
+		lb = LeaderboardController.Instance;
+
     }
 
 
@@ -44,7 +47,7 @@ public class LevelExit : MonoBehaviour {
             _exitAudio.volume = _gameController.GetSFXVolume();
             _exitAudio.Play();
 			completedPanel.SetActive (true);
-			LeaderboardController.Instance.startPostScores ();
+			lb.startPostScores ();
 			cam.GetComponent<Blur>().enabled = true;
 			Time.timeScale = 0.0f;
 			updateScores ();
