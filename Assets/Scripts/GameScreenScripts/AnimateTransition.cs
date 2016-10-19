@@ -40,6 +40,6 @@ public class AnimateTransition : MonoBehaviour {
 			loginAnim.enabled = true;
 			startAnim.Play ("StartSlideOut");
 			loginAnim.Play ("LoginPageSlide");
-		}
+
 	}
 }
