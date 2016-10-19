@@ -47,7 +47,12 @@ public class LevelExit : MonoBehaviour {
 			cam.GetComponent<Blur>().enabled = true;
 			Time.timeScale = 0.0f;
 			updateScores ();
-			_gameController.LevelsUnlocked = currentLevel+1;
+            int nextLevelUnlock = currentLevel + 1;
+            if (nextLevelUnlock >= currentLevel)
+            {
+                _gameController.LevelsUnlocked = nextLevelUnlock;
+            }
+			
            // GameController controller = GameController.Instance;
             //controller.loadScreenSingle(nextScene);
         }
