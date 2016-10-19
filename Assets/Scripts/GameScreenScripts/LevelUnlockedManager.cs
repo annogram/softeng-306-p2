@@ -3,12 +3,15 @@ using System.Collections;
 using Managers;
 using UnityEngine.UI;
 
+///<summary>
+/// This class is responsible for unlocking level logic
+///</summary>
 public class LevelUnlockedManager : MonoBehaviour {
 
     private GameController _controller;
     public Button[] levelButtons;
 
-	// Use this for initialization
+	// This method is for initialization
 	void Start () {
         _controller = GameController.Instance;
 
@@ -19,5 +22,5 @@ public class LevelUnlockedManager : MonoBehaviour {
             Debug.Log(i);
         }
 	}
-	
+
 }
