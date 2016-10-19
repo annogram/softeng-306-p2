@@ -2330,6 +2330,11 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1326888718}
+    - target: {fileID: 114000010242645360, guid: 4e9131a96c3c52c4b9c8559e198c96f9,
+        type: 2}
+      propertyPath: currentLevel
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e9131a96c3c52c4b9c8559e198c96f9, type: 2}
   m_IsPrefabParent: 0
