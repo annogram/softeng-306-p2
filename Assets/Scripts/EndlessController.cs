@@ -35,7 +35,7 @@ public class EndlessController : MonoBehaviour {
     private GameController _controller;
 
     private AudioSource _exitAudio;
-    private LeaderboardController lb;
+
 
     // Use this for initialization
     void Start () {
@@ -46,7 +46,7 @@ public class EndlessController : MonoBehaviour {
         _controller = GameController.Instance;
         _exitAudio = GetComponent<AudioSource>();
         _exitAudio.clip = ExitClip;
-        lb = LeaderboardController.Instance;
+        
 
     }
 
@@ -56,10 +56,10 @@ public class EndlessController : MonoBehaviour {
             _exitAudio.volume = _controller.GetSFXVolume();
             _exitAudio.Play();
             completedPanel.SetActive(true);
-            //lb.startPostScores();
+			LeaderboardController.Instance.startPostScores();
             cam.GetComponent<Blur>().enabled = true;
             Time.timeScale = 0.0f;
-            //updateScores();
+            updateScores();
             // GameController controller = GameController.Instance;
             //controller.loadScreenSingle(nextScene);
         }
