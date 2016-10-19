@@ -19,39 +19,36 @@ public class LevelExit : MonoBehaviour {
     public int currentLevel;
     private GameController _gameController;
     private AudioSource _exitAudio;
-	private LeaderboardController lb;
+
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         _gameController = GameController.Instance;
         _exitAudio = GetComponent<AudioSource>();
         _exitAudio.clip = ExitClip;
-        if ((currentLevel + 1) > _gameController.LevelsUnlocked)
-        {
+        if ((currentLevel + 1) > _gameController.LevelsUnlocked) {
             _gameController.LevelsUnlocked = currentLevel + 1;
         }
-        
-		lb = LeaderboardController.Instance;
 
+        LeaderboardController.Instance.startPostScores();
     }
 
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
             Playa1IsInDaHouse = true;
-        }else if(other.tag == "Player2") {
+        } else if (other.tag == "Player2") {
             Playa2IsInDaHouse = true;
         }
         if (Playa1IsInDaHouse && Playa2IsInDaHouse) {
             _exitAudio.volume = _gameController.GetSFXVolume();
             _exitAudio.Play();
-			completedPanel.SetActive (true);
-			lb.startPostScores ();
-			cam.GetComponent<Blur>().enabled = true;
-			Time.timeScale = 0.0f;
-			updateScores ();
-           // GameController controller = GameController.Instance;
+            completedPanel.SetActive(true);
+            LeaderboardController.Instance.startPostScores();
+            cam.GetComponent<Blur>().enabled = true;
+            Time.timeScale = 0.0f;
+            updateScores();
+            // GameController controller = GameController.Instance;
             //controller.loadScreenSingle(nextScene);
         }
     }
@@ -64,35 +61,35 @@ public class LevelExit : MonoBehaviour {
         }
     }
 
-	public void resume () {
-		completedPanel.SetActive (false);
-		cam.GetComponent<Blur>().enabled = false;
-		Time.timeScale = 1.0f;
-	}
+    public void resume() {
+        completedPanel.SetActive(false);
+        cam.GetComponent<Blur>().enabled = false;
+        Time.timeScale = 1.0f;
+    }
 
-	public void loadNextScene(string nextScene){
-		resume ();
-		GameController controller = GameController.Instance;
-		controller.loadScreenSingle(nextScene);
-	}
+    public void loadNextScene(string nextScene) {
+        resume();
+        GameController controller = GameController.Instance;
+        controller.loadScreenSingle(nextScene);
+    }
 
-	private void updateScores() {
-		
-		int levelScore = GameController.Instance.GetTokensCollectedOnCurrentLevel ();
-		int totalScore = GameController.Instance.GetTotalTokens ();
+    private void updateScores() {
 
-		Transform scores = completedPanel.transform.GetChild(1);
-		Transform levelEntry = scores.transform.Find ("LevelScorePoints");
-		Transform totalEntry = scores.transform.Find ("TotalScorePoints");
+        int levelScore = GameController.Instance.GetTokensCollectedOnCurrentLevel();
+        int totalScore = GameController.Instance.GetTotalTokens();
 
-		Text LevelScorePoints = levelEntry.GetComponent<Text> ();
-		Text TotalScorePoints = totalEntry.GetComponent<Text> ();
+        Transform scores = completedPanel.transform.GetChild(1);
+        Transform levelEntry = scores.transform.Find("LevelScorePoints");
+        Transform totalEntry = scores.transform.Find("TotalScorePoints");
 
-		LevelScorePoints.text = levelScore.ToString ();
-		TotalScorePoints.text = totalScore.ToString ();
+        Text LevelScorePoints = levelEntry.GetComponent<Text>();
+        Text TotalScorePoints = totalEntry.GetComponent<Text>();
+
+        LevelScorePoints.text = levelScore.ToString();
+        TotalScorePoints.text = totalScore.ToString();
 
 
-	}
+    }
 
 
 }
