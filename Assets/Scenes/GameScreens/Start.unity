@@ -2689,6 +2689,7 @@ GameObject:
   - 222: {fileID: 1436118868}
   - 114: {fileID: 1436118867}
   - 114: {fileID: 1436118866}
+  - 114: {fileID: 1436118869}
   m_Layer: 5
   m_Name: HighScore
   m_TagString: Untagged
@@ -2754,9 +2755,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1601815817}
-        m_MethodName: Next
-        m_Mode: 5
+      - m_Target: {fileID: 1601815818}
+        m_MethodName: HighscoreScreenRequested
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2800,6 +2801,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1436118864}
+--- !u!114 &1436118869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1436118864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce3691ba1a2a42f78bbfe8c6d1c1855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highscreenPopup: {fileID: 1082915625}
 --- !u!1 &1474084316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,6 +3207,8 @@ GameObject:
   - 114: {fileID: 1601815812}
   - 114: {fileID: 1601815816}
   - 114: {fileID: 1601815817}
+  - 114: {fileID: 1601815818}
+  - 114: {fileID: 1601815819}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3302,6 +3317,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c303b3d5a106841a66d525906cdab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1601815818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601815811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce3691ba1a2a42f78bbfe8c6d1c1855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highscreenPopup: {fileID: 0}
+--- !u!114 &1601815819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601815811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce3691ba1a2a42f78bbfe8c6d1c1855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highscreenPopup: {fileID: 0}
 --- !u!1 &1724693374
 GameObject:
   m_ObjectHideFlags: 0

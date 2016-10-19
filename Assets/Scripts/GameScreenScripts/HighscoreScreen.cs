@@ -12,7 +12,7 @@ public class HighscoreScreen : MonoBehaviour {
 		instance = GameController.Instance;
 	}
 	
-	void HighscoreScreenRequested() {
+	public void HighscoreScreenRequested() {
 
 		if (instance.LoggedIn) {
 			instance.loadScreenSingle ("HSScreen");
