@@ -49,7 +49,7 @@ public class Scrolllist : MonoBehaviour {
 		foreach (Transform childTransform in ScrollContain.transform) Destroy(childTransform.gameObject);
 
 		int j = 1;
-		for (int i=0; i<HSController.Instance.onlineHighscore.Length-1; i++) {
+		for (int i=0; i<LeaderboardController.Instance.onlineHighscore.Length-1; i++) {
 			GameObject ScorePanel;
 			ScorePanel = Instantiate (ScrollEntry) as GameObject;
 			ScorePanel.transform.parent = ScrollContain.transform;
@@ -73,15 +73,15 @@ public class Scrolllist : MonoBehaviour {
 			ScorePosition.text = j+". ";
 			string helpString = "";
 
-			helpString = helpString+HSController.Instance.onlineHighscore [i]+" ";
+			helpString = helpString+LeaderboardController.Instance.onlineHighscore [i]+" ";
 			i++;
 
 			ScoreName.text = helpString;
 
 			//
-			ScorePoints.text = HSController.Instance.onlineHighscore [i];
+			ScorePoints.text = LeaderboardController.Instance.onlineHighscore [i];
 
-			if(HSController.Instance.onlineHighscore [i]=="9999")
+			if(LeaderboardController.Instance.onlineHighscore [i]=="9999")
 			{
 				ScoreName.color=Color.red;
 				ScorePoints.color=Color.red;

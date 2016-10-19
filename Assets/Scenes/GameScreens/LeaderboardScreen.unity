@@ -1094,9 +1094,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 663371510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafcc650fd499a541917d1b59182ddd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e02b51e7b4b3467682a1e30528d1756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  updateLeaderboardGUI: 1
   uniqueID: 
   name3: 
   onlineHighscore: []
