@@ -83,7 +83,7 @@ namespace Managers
         #region Constructor
         void Awake()
         {
-//            PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteAll();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null)
             {
