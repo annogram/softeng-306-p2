@@ -2,32 +2,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Managers;
 
-public class HSController : MonoBehaviour
+public class LeaderboardController : MonoBehaviour
 {
-	private static HSController instance6;
+	private static LeaderboardController instance6;
+
+	public bool updateLeaderboardGUI = false;
 	
-	public static HSController Instance
+	public static LeaderboardController Instance
 	{
 		get { return instance6; }
 	}
 	void Awake() {
 		
-		DontDestroyOnLoad (gameObject);
+		//DontDestroyOnLoad (gameObject);
 		// If no Player ever existed, we are it.
 		if (instance6 == null)
 			instance6 = this;
 		// If one already exist, it's because it came from another level.
 		else if (instance6 != this) {
 			Destroy (gameObject);
-			return;
+			//return;
 		}
 
 
 	}
 	void Start(){
-		startPostScores ();
-		startGetScores ();
+
+		if (updateLeaderboardGUI) {
+			startGetScores ();
+		}
+		//startPostScores ();
+		//startGetScores ();
 
 
 		//
@@ -60,9 +67,10 @@ public class HSController : MonoBehaviour
 	public void updateOnlineHighscoreData()
 	{
 		// uniqueID,name3 and score will get the actual value before posting score
-		uniqueID = "123456799"; //Replace this TestScript variable into your game-variables
-		name3 = "Testname";
-		score = 5000;
+		uniqueID = "123456789"; //Replace this TestScript variable into your game-variables
+		name3 = GameController.Instance._teamName;
+		score = GameController.Instance.GetTotalTokens();
+		Debug.Log ("reached");
 	}
 
 	public  string Md5Sum(string strToEncrypt)
