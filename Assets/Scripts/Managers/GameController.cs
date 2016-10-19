@@ -216,6 +216,12 @@ namespace Managers
             _audioSource.volume = this._volume.Master;
             AudioListener.volume = this._volume.Music;
 
+            _teamTokenPersistenceKey = _teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
+            ConvertStringToTokensCollected(PlayerPrefs.GetString(_teamTokenPersistenceKey));
+
+            _teamLevelsPersistenceKey = _teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
+            _levelsUnlocked = PlayerPrefs.GetInt(_teamLevelsPersistenceKey);
+
         }
 
         void OnDestroy()
