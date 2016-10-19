@@ -29,6 +29,7 @@ public class LevelExit : MonoBehaviour {
         _exitAudio.clip = ExitClip;
         _gameController.LevelsUnlocked = currentLevel+1;
 		lb = LeaderboardController.Instance;
+
     }
 
 
@@ -46,6 +47,7 @@ public class LevelExit : MonoBehaviour {
 			cam.GetComponent<Blur>().enabled = true;
 			Time.timeScale = 0.0f;
 			updateScores ();
+			_gameController.LevelsUnlocked = currentLevel+1;
            // GameController controller = GameController.Instance;
             //controller.loadScreenSingle(nextScene);
         }

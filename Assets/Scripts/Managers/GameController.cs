@@ -83,7 +83,7 @@ namespace Managers
         #region Constructor
         void Awake()
         {
-            //PlayerPrefs.DeleteAll();
+//            PlayerPrefs.DeleteAll();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null)
             {
@@ -216,12 +216,6 @@ namespace Managers
             _audioSource.volume = this._volume.Master;
             AudioListener.volume = this._volume.Music;
 
-            _teamTokenPersistenceKey = _teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
-            ConvertStringToTokensCollected(PlayerPrefs.GetString(_teamTokenPersistenceKey));
-
-            _teamLevelsPersistenceKey = _teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
-            _levelsUnlocked = PlayerPrefs.GetInt(_teamLevelsPersistenceKey);
-
         }
 
         void OnDestroy()
@@ -277,9 +271,10 @@ namespace Managers
 
         public bool attemptTeamLoadGame(string teamName)
         {
-            _teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
-            _teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
-            _currentLevelTokens = 0;
+			_teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
+			_teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
+			_currentLevelTokens = 0;
+
             if (!PlayerPrefs.HasKey(_teamTokenPersistenceKey))
             {
                 Debug.Log("Team name doesn't exist! Can't load game with this name: " + teamName);
@@ -290,15 +285,16 @@ namespace Managers
             string persistedTokenString = PlayerPrefs.GetString(_teamTokenPersistenceKey);
             Debug.Log("Persistence token string found :" + persistedTokenString);
             this.ConvertStringToTokensCollected(persistedTokenString);
-
+			this.PostLoginLogic ();
             return true;
         }
 
         public bool attemptTeamNewGame(string teamName)
         {
-            _teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
-            _teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
-            _currentLevelTokens = 0;
+			_teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
+			_teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
+			_currentLevelTokens = 0;
+
             if (PlayerPrefs.HasKey(_teamTokenPersistenceKey))
             {
                 Debug.Log("Team name already exists! Can't create a new game with this name: " + teamName);
@@ -306,8 +302,15 @@ namespace Managers
             }
 
             this.LoadInitialTokenPersistenceArray();
+			this.PostLoginLogic ();
             return true;
         }
+
+		private void PostLoginLogic() {
+			_levelsUnlocked = PlayerPrefs.GetInt(_teamLevelsPersistenceKey);
+			PlayerPrefs.SetString(_teamTokenPersistenceKey, ConvertTokensCollectedToString());
+			PlayerPrefs.Save ();
+		}
 
 		public string getCurrentTeam ()
 		{

@@ -128,9 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuAudio: {fileID: 8300000, guid: 3668d78fdedd3ba409746f3cf145a984, type: 3}
   Playlist:
-  - {fileID: 8300000, guid: 606f90c2b6c9ba442a7dfa9bc898df95, type: 3}
+  - {fileID: 8300000, guid: 4a0da99995bb66f4398f9d71242ffe21, type: 3}
   - {fileID: 8300000, guid: 4d887f91d8f52ae4e8561a72a05d64f7, type: 3}
   - {fileID: 8300000, guid: d8a71da88491c774b9c15a98b061a08c, type: 3}
   - {fileID: 8300000, guid: 115a8b5de47cc0242b9aeb61be55e7b4, type: 3}
-  - {fileID: 8300000, guid: 509fb092837c9bf438aacc6538761c3e, type: 3}
+  - {fileID: 8300000, guid: fa7013e39d3a97d469d6c8e3ba0ac094, type: 3}
   LevelToClip: 2

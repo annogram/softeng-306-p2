@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
         _movementAudio.clip = playerRunningClip;
         _jumpAudio = aSources[1];
         _jumpAudio.clip = playerJumpingClip;
-
+        _originalJumpStrength = jumpStrength;
     }
 
     // Update is called once per frame
@@ -165,6 +165,9 @@ public class PlayerController : MonoBehaviour {
         if (gameObject.tag == "Player" && !_ball) {
 
             _anim.SetBool("IsPlayer1", true);
+            bool skin1 = _controller._player1Skin == SkinColour.BLUE ? false : true;
+            _anim.SetBool("IsAltSkin", skin1);
+   
 
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
@@ -202,6 +205,10 @@ public class PlayerController : MonoBehaviour {
         } else if(gameObject.tag == "Player2" && !_ball) {
 
             _anim.SetBool("IsPlayer1", false);
+            bool skin2 = _controller._player2Skin == SkinColour.RED ? false : true;
+            _anim.SetBool("IsAltSkin", skin2);
+
+
             // Player 2 keys
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.D)) {
