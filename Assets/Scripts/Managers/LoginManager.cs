@@ -59,6 +59,7 @@ namespace Managers {
 		private void successfullLogin(){
 			clearMessage ();
 			GameController.Instance._teamName = inputField.text;
+			GameController.Instance.LoggedIn = true;
 			instance.loadScreenSingle (NEXT_SCENE_FOLLOWING_LOGIN);
 		}
 
