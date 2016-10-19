@@ -70,7 +70,7 @@ namespace Managers {
 		public void clearMessage(){
 			messageText.text = "";
 		}
-
+			
 	}
 
 }
