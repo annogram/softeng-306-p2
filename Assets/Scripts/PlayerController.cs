@@ -165,6 +165,9 @@ public class PlayerController : MonoBehaviour {
         if (gameObject.tag == "Player" && !_ball) {
 
             _anim.SetBool("IsPlayer1", true);
+            bool skin = _controller._player1Skin == SkinColour.BLUE ? false : true;
+            _anim.SetBool("IsAltSkin", true);
+   
 
             // Horizontal movement
             Vector2 forceX = Vector2.zero;
@@ -202,6 +205,10 @@ public class PlayerController : MonoBehaviour {
         } else if(gameObject.tag == "Player2" && !_ball) {
 
             _anim.SetBool("IsPlayer1", false);
+            bool skin = _controller._player2Skin == SkinColour.RED ? false : true;
+            _anim.SetBool("IsAltSkin", true);
+
+
             // Player 2 keys
             Vector2 forceX = Vector2.zero;
             if (Input.GetKey(KeyCode.D)) {
