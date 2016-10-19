@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Managers;
 public class AnimateTransition : MonoBehaviour {
 	public Animator startAnim;
 	public Animator aboutAnim;
@@ -36,9 +36,10 @@ public class AnimateTransition : MonoBehaviour {
 	}
 
 	public void showLoginPage(){
-		startAnim.enabled = true;
-		loginAnim.enabled = true;
-		startAnim.Play ("StartSlideOut");
-		loginAnim.Play ("LoginPageSlide");
+			startAnim.enabled = true;
+			loginAnim.enabled = true;
+			startAnim.Play ("StartSlideOut");
+			loginAnim.Play ("LoginPageSlide");
+		}
 	}
 }
