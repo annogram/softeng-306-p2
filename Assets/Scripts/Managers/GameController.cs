@@ -20,7 +20,7 @@ namespace Managers
     public class GameController : MonoBehaviour
     {
 
-        private const int TOTAL_NUMBER_OF_LEVELS = 7;
+        private const int TOTAL_NUMBER_OF_LEVELS = 8;
         private const string TOKEN_PERSISTENCE_KEY_SUFFIX = "-TokensCollectedAcrossGame";
         private const string LEVELS_PERSISTENCE_KEY_SUFFIX = "-LevelsUnlocked";
 
@@ -242,7 +242,10 @@ namespace Managers
             Debug.Log(string.Format("Token collected by player on level {0}", level));
             this._tokens++;
             this._currentLevelTokens++;
-            UpdateTokenPersistenceArray(this._currentLevelTokens, level);
+            if (level != 8) {
+                UpdateTokenPersistenceArray(this._currentLevelTokens, level);
+            }
+            
         }
 
         public int GetTokensCollectedOnLevel(int level)

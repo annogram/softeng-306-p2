@@ -40,7 +40,7 @@ namespace Managers{
             Destroy(this.gameObject, 1);
 		}
 
-		private void updateScore() {
+		protected void updateScore() {
 
 			Transform score = _scoreHUD.transform.Find ("Score");
 			Text scoreText = score.GetComponent<Text> ();

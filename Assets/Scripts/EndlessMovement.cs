@@ -102,10 +102,10 @@ public class EndlessMovement : MonoBehaviour {
         foreach (GameObject coin in coins) {
             Rigidbody2D coinRb = coin.GetComponent<Rigidbody2D>();
             if (coinRb.position.x < rbb.position.x) {
-                float minX = cam.transform.position.x + (cam.orthographicSize * Screen.width / Screen.height) + 10;
+                float minX = cam.transform.position.x + (cam.orthographicSize * Screen.width / Screen.height) + 250;
                 float posX = minX + rand.Next(0, 250);
                 float posY = rand.Next(8, 30);
-                coinRb.position = new Vector3(posX, posY, -10);
+                coinRb.position = new Vector3(posX, posY, 10);
             }
        }
     }

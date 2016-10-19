@@ -14,6 +14,8 @@ public class EndlessCoin : CoinController {
         _coinAudio.volume = _gameController.GetSFXVolume();
         _coinAudio.Play();
         this.gameObject.GetComponent<Rigidbody2D>().position = new Vector2(-10, 0);
+        _gameController.AddToken(8);
+        updateScore();
         //_anim.SetTrigger("Collected_Coin");
     }
 }
