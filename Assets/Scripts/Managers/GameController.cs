@@ -23,6 +23,7 @@ namespace Managers
         private const int TOTAL_NUMBER_OF_LEVELS = 7;
         private const string TOKEN_PERSISTENCE_KEY_SUFFIX = "-TokensCollectedAcrossGame";
         private const string LEVELS_PERSISTENCE_KEY_SUFFIX = "-LevelsUnlocked";
+        private const string ENDLESS_PERSISTENCE_KEY_SUFFIX = "-EndlessHighscore";
 
         #region Properties
         private static GameController instance;
@@ -68,9 +69,11 @@ namespace Managers
         private int _audioTrack = 1;
         private int _tokens = 0;
         private int _currentLevelTokens = 0;
+        private int _endlessHighscore = 0;
         private int[] _tokensCollectedAcrossGame = new int[TOTAL_NUMBER_OF_LEVELS];
         private string _teamTokenPersistenceKey;
         private string _teamLevelsPersistenceKey;
+        private string _teamEndlessPersistenceKey;
 		public string _teamName { get; set; }
 		public bool LoggedIn { get; set; }
 
@@ -83,7 +86,7 @@ namespace Managers
         #region Constructor
         void Awake()
         {
-//            PlayerPrefs.DeleteAll();
+            //PlayerPrefs.DeleteAll();
             _audioSource = GetComponent<AudioSource>();
             if (instance == null)
             {
@@ -225,6 +228,7 @@ namespace Managers
             PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
             PlayerPrefs.SetString(_teamTokenPersistenceKey, ConvertTokensCollectedToString());
             PlayerPrefs.SetInt(_teamLevelsPersistenceKey, _levelsUnlocked);
+            PlayerPrefs.SetInt(_teamEndlessPersistenceKey, _endlessHighscore);
             PlayerPrefs.Save();
         }
         #endregion
@@ -243,6 +247,12 @@ namespace Managers
             this._tokens++;
             this._currentLevelTokens++;
             UpdateTokenPersistenceArray(this._currentLevelTokens, level);
+        }
+
+        public void UpdateEndlessHighscore(int score) {
+            if (score > _endlessHighscore) {
+                _endlessHighscore = score;
+            }
         }
 
         public int GetTokensCollectedOnLevel(int level)
@@ -273,7 +283,9 @@ namespace Managers
         {
 			_teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
 			_teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
+            _teamEndlessPersistenceKey = teamName + ENDLESS_PERSISTENCE_KEY_SUFFIX;
 			_currentLevelTokens = 0;
+            _endlessHighscore = 0;
 
             if (!PlayerPrefs.HasKey(_teamTokenPersistenceKey))
             {
@@ -293,7 +305,9 @@ namespace Managers
         {
 			_teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
 			_teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
-			_currentLevelTokens = 0;
+            _teamEndlessPersistenceKey = teamName + ENDLESS_PERSISTENCE_KEY_SUFFIX;
+            _currentLevelTokens = 0;
+            _endlessHighscore = 0;
 
             if (PlayerPrefs.HasKey(_teamTokenPersistenceKey))
             {

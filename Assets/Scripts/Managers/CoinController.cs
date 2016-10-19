@@ -14,7 +14,7 @@ namespace Managers{
         protected AudioSource _coinAudio;
 		private GameObject _scoreHUD;
 
-		void Start(){
+		protected virtual void Start(){
 			_gameController = GameController.Instance;
             _anim = GetComponent<Animator>();
             _collider = GetComponent<BoxCollider2D>();
@@ -40,7 +40,7 @@ namespace Managers{
             Destroy(this.gameObject, 1);
 		}
 
-		private void updateScore() {
+		protected void updateScore() {
 
 			Transform score = _scoreHUD.transform.Find ("Score");
 			Text scoreText = score.GetComponent<Text> ();
