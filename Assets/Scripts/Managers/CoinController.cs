@@ -51,6 +51,9 @@ namespace Managers{
             Destroy(this.gameObject, 1);
 		}
 
+        /// <summary>
+        /// Updates the score in the hud
+        /// </summary>
 		protected void updateScore() {
 
 			Transform score = _scoreHUD.transform.Find ("Score");

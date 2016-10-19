@@ -4,6 +4,9 @@ using Managers;
 using UnityEngine.UI;
 using System;
 
+/// <summary>
+/// Manages the behavior of the HUD which is displayed on ever level
+/// </summary>
 public class HUDManager : MonoBehaviour {
 	private GameObject _infoHUD;
 	public int level;

@@ -4,7 +4,10 @@ using UnityEngine.UI;
 using System.Linq;
 
 namespace Managers{
-	
+
+/// <summary>
+/// Responsible for posting data to the high score database
+/// </summary>
 public class HighScoreManager : MonoBehaviour {
 
 		//private GameController _gameController;
