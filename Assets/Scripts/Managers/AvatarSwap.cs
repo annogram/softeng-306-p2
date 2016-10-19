@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Possible colors that the avatars can be
+/// </summary>
 public enum SkinColour {
 
 	BLUE,
@@ -11,6 +14,9 @@ public enum SkinColour {
 }
 
 namespace Managers {
+    /// <summary>
+    /// Avatar swap handles changing the asthetic skins on the players
+    /// </summary>
 	public class AvatarSwap : MonoBehaviour {
 
         public Sprite BlueIdle;
@@ -25,13 +31,18 @@ namespace Managers {
         private GameObject _player2Sphere;
 
 		void Start() {
+            // load in objects from scene
 			this.controller = GameController.Instance;
             _player1Sphere = GameObject.Find("Player1Sphere");
             _player2Sphere = GameObject.Find("Player2Sphere");
+            // Set default colors
             _player1Colour = SkinColour.BLUE;
             _player2Colour = SkinColour.RED;
         }
-			
+		
+        /// <summary>
+        /// Changes the avatar color of player 1
+        /// </summary>
 		public void TogglePlayerOne() {
             if (_player1Colour == SkinColour.BLUE)
             {
@@ -46,6 +57,9 @@ namespace Managers {
             
 		}
 
+        /// <summary>
+        /// Changes the avatar color of player 2
+        /// </summary>
 		public void TogglePlayerTwo() {
             if (_player2Colour == SkinColour.RED)
             {
@@ -60,6 +74,9 @@ namespace Managers {
         }
 			
 
+        /// <summary>
+        /// Add player choices to persistence
+        /// </summary>
 		public void SubmitSkinsToController(){
 			controller.SaveAvatarSelection (_player1Colour, _player2Colour);
 		}

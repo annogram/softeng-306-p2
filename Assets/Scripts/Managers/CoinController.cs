@@ -4,6 +4,9 @@ using UnityEngine.UI;
 using System;
 
 namespace Managers{
+    /// <summary>
+    /// Controls the behavior of the coin game object
+    /// </summary>
 	public class CoinController : MonoBehaviour {
         public int Level;
         public AudioClip CoinCollectedClip;
@@ -31,12 +34,20 @@ namespace Managers{
 			}
 		}
 
+        /// <summary>
+        /// CoinPickup triggers incimenting the cached token counter
+        /// the method has been made virtrual so that <code>EndlessCoin</code> can
+        /// modify behavior appropriately.
+        /// 
+        /// <seealso cref="Managers.EndlessCoin"/>
+        /// </summary>
 		protected virtual void CoinPickup(){
             _coinAudio.volume = _gameController.GetSFXVolume();
             _coinAudio.Play();
 			_gameController.AddToken(Level);
             _anim.SetTrigger("Collected_Coin");
 			updateScore ();
+            // Removes the coin after a certian delay so the animation can play through
             Destroy(this.gameObject, 1);
 		}
 
