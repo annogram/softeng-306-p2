@@ -14,7 +14,7 @@ namespace Managers{
         protected AudioSource _coinAudio;
 		private GameObject _scoreHUD;
 
-		void Start(){
+		protected virtual void Start(){
 			_gameController = GameController.Instance;
             _anim = GetComponent<Animator>();
             _collider = GetComponent<BoxCollider2D>();

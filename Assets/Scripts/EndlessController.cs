@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
 
 
-public class EndlessMovement : MonoBehaviour {
+public class EndlessController : MonoBehaviour {
 
     public GameObject player1;
     public GameObject player2;
@@ -53,8 +53,6 @@ public class EndlessMovement : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
         if (cam.orthographicSize > maxCamSize) {
-            // Level complete screen here
-            _controller.loadScreenSingle(SceneManager.GetActiveScene().name);
             _exitAudio.volume = _controller.GetSFXVolume();
             _exitAudio.Play();
             completedPanel.SetActive(true);
@@ -67,7 +65,7 @@ public class EndlessMovement : MonoBehaviour {
         }
 
         // Update platform positions
-        foreach(GameObject platform in platforms) {
+        foreach (GameObject platform in platforms) {
             Rigidbody2D platformRb = platform.GetComponent<Rigidbody2D>();
             if ((platformRb.position.x + (platformRb.transform.localScale.x/2)) < rbb.position.x) {
                 platformRb.transform.Translate(platformRb.position + new Vector2(platformRb.transform.localScale.x, 0));
