@@ -2136,8 +2136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c27e134c9b2486faea275e2d32deb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completedPanel: {fileID: 0}
-  cam: {fileID: 0}
+  completedPanel: {fileID: 1771345181}
+  cam: {fileID: 1326888718}
 --- !u!114 &1530781255
 MonoBehaviour:
   m_ObjectHideFlags: 0
