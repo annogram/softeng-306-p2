@@ -40,8 +40,7 @@ namespace Managers {
 		void NewGame() {
 			bool attempt = instance.attemptTeamNewGame (inputField.text);
 			if (attempt) {
-				clearMessage ();
-				instance.loadScreenSingle (NEXT_SCENE_FOLLOWING_LOGIN);
+				successfullLogin ();
 			} else {
 				messageText.text = "Team already exists! Can't create new game.";
 			}
@@ -50,11 +49,17 @@ namespace Managers {
 		void LoadGame() {
 			bool attempt = instance.attemptTeamLoadGame (inputField.text);
 			if (attempt) {
-				clearMessage ();
-				instance.loadScreenSingle (NEXT_SCENE_FOLLOWING_LOGIN);
+				successfullLogin ();
 			} else {
 				messageText.text = "No saved data for team!";
 			}
+		}
+
+		//Complete the actions for setting team name and next scene
+		private void successfullLogin(){
+			clearMessage ();
+			GameController.Instance._teamName = inputField.text;
+			instance.loadScreenSingle (NEXT_SCENE_FOLLOWING_LOGIN);
 		}
 
 		public void clearMessage(){
