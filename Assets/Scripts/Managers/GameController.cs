@@ -72,6 +72,7 @@ namespace Managers
         private string _teamTokenPersistenceKey;
         private string _teamLevelsPersistenceKey;
 		private string _teamName = "testteam";
+		private bool loggedIn = false;
 
         // TODO set to default skins when skin colours have been finalized
         public SkinColour _player1Skin { get; private set; }
