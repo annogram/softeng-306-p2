@@ -4,7 +4,7 @@ using System;
 
 public class PowerupGiverController : MonoBehaviour
 {
-    private PowerupPlayerController ppc;
+    private PlayerController ppc;
     // Use this for initialization
     void Start()
     {
@@ -21,7 +21,7 @@ public class PowerupGiverController : MonoBehaviour
     {
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Player2")
         {
-            ppc = col.gameObject.GetComponent<PowerupPlayerController>();
+            ppc = col.gameObject.GetComponent<PlayerController>();
                 ppc.isBalloon = true;
         }
 
