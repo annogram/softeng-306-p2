@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
         _movementAudio.clip = playerRunningClip;
         _jumpAudio = aSources[1];
         _jumpAudio.clip = playerJumpingClip;
-
+        _originalJumpStrength = jumpStrength;
     }
 
     // Update is called once per frame
