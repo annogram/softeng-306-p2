@@ -26,7 +26,7 @@ public class FacebookShare : MonoBehaviour {
 
 	public void ShareScoreOnFB(){
 		string score = GameController.Instance.GetTotalTokens ().ToString ();
-		Caption = "My High Score on Pinscape is " + score + "! Can you beat it?";
+		Description = "My High Score on Pinscape is " + score + "! Can you beat it?";
 		Application.OpenURL("https://www.facebook.com/dialog/feed?"+ "app_id="+AppID+ "&link="+
 			Link+ "&picture="+Picture+ "&name="+ReplaceSpace(Name)+ "&caption="+
 			ReplaceSpace(Caption)+ "&description="+ReplaceSpace(Description)+
