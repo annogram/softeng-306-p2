@@ -462,6 +462,17 @@ MonoBehaviour:
           m_StringArgument: LevelSelectScreen
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 869415283}
+        m_MethodName: SubmitSkinsToController
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &351491894
@@ -768,6 +779,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b605d7de05f740e28e957cf7ed025ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BlueIdle: {fileID: 21300000, guid: ed92fc7552aba5d439aaad459d2cfb36, type: 3}
+  GreenIdle: {fileID: 21300000, guid: 04cf1dd9fe5a67f4cb087018115b3177, type: 3}
+  RedIdle: {fileID: 21300000, guid: 71839f0a95e439e408fc6f4980ea64fd, type: 3}
+  PurpleIdle: {fileID: 21300000, guid: 053d551282e51814ea791293e480b690, type: 3}
 --- !u!114 &869415284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,7 +1391,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ed92fc7552aba5d439aaad459d2cfb36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71839f0a95e439e408fc6f4980ea64fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
