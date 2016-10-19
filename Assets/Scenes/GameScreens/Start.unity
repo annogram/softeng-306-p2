@@ -2756,7 +2756,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1436118869}
-        m_MethodName: togglePopup
+        m_MethodName: HighscoreScreenRequested
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

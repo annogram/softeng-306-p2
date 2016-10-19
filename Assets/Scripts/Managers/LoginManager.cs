@@ -18,6 +18,8 @@ namespace Managers {
 		public bool newGame;
 	
 		void Start () {
+
+
 			instance = GameController.Instance;
 			Transform message = this.gameObject.transform.Find ("Message");
 			messageText = message.GetComponent<Text> ();
@@ -31,6 +33,7 @@ namespace Managers {
 
 		//Login for desired load or new game
 		public void login() {
+
 			if (newGame)
 				NewGame ();
 			else
@@ -61,6 +64,7 @@ namespace Managers {
 			GameController.Instance._teamName = inputField.text;
 			GameController.Instance.LoggedIn = true;
 			instance.loadScreenSingle (NEXT_SCENE_FOLLOWING_LOGIN);
+			Debug.Log ("Successful login!");
 		}
 
 		public void clearMessage(){
