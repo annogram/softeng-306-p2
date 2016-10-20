@@ -3341,8 +3341,8 @@ MonoBehaviour:
   nextScene: LevelSelect
   ExitClip: {fileID: 8300000, guid: 1a115858e5145184d8ec8adda441dcfa, type: 3}
   currentLevel: 8
-  maxSpeed: 10
-  acceleration: 50
+  maxSpeed: 50
+  acceleration: 110
   bumpers:
   - {fileID: 689291806}
   - {fileID: 197326837}
