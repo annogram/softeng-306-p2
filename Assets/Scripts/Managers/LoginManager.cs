@@ -11,8 +11,6 @@ namespace Managers {
 
 		private const string NEXT_SCENE_FOLLOWING_LOGIN = "AvatarSelectScreen";
 
-        private const string VIDEO_SCENE_FOLLOWING_LOGIN = "VideoScreen";
-
 		private GameController instance;
 
 		private Text messageText;
@@ -65,16 +63,7 @@ namespace Managers {
 			clearMessage ();
 			GameController.Instance._teamName = inputField.text;
 			GameController.Instance.LoggedIn = true;
-
-            if (newGame)
-            {
-                instance.loadScreenNoMusic(VIDEO_SCENE_FOLLOWING_LOGIN);
-            }
-            else
-            {
-                instance.loadScreenSingle(NEXT_SCENE_FOLLOWING_LOGIN);
-            }
-
+			instance.loadScreenSingle (NEXT_SCENE_FOLLOWING_LOGIN);
 			Debug.Log ("Successful login!");
 		}
 
