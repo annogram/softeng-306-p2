@@ -12,7 +12,7 @@ public class BgScript : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
-            _controller.loadScreenSingle(SceneManager.GetActiveScene().name);
+            _controller.restartCurrentScene();
         }
     }
 }
