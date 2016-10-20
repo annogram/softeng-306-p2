@@ -2133,7 +2133,6 @@ GameObject:
   - 224: {fileID: 1749728808}
   - 222: {fileID: 1749728810}
   - 114: {fileID: 1749728809}
-  - 114: {fileID: 1749728811}
   m_Layer: 5
   m_Name: Text - Volume
   m_TagString: Untagged
@@ -2198,26 +2197,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1749728807}
---- !u!114 &1749728811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1749728807}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
 --- !u!1 &1808234820
 GameObject:
   m_ObjectHideFlags: 0

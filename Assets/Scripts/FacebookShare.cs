@@ -10,7 +10,7 @@ public class FacebookShare : MonoBehaviour {
 	public string AppID = "1399925576886522";
 
 	// The link attached to this post.
-	public string Link = "https://facebook.com";
+	public string Link = "http://i65.tinypic.com/35hiigw.jpg";
 
 	// The URL of a picture attached to this post. The picture must be at least 200px by 200px.
 	public string Picture = "http://i65.tinypic.com/35hiigw.jpg";
