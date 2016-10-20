@@ -33,6 +33,12 @@ EditorBuildSettings:
     path: Assets/GameScreens/LevelSelectScreen.unity
   - enabled: 0
     path: Assets/GameScreens/OptionsScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/level5_Helen.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/level6_Helen.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level7_Taranpreet.unity
   - enabled: 0
     path: Assets/GameScreens/PauseScreen.unity
   - enabled: 1
