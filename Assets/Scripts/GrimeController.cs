@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Linq;
 
+///<summary>
+/// This class is responsible for the grime logic
+///</summary>
+
 public class GrimeController : MonoBehaviour, Assets.Scripts.IButtonPress
 {
 
@@ -22,6 +26,7 @@ public class GrimeController : MonoBehaviour, Assets.Scripts.IButtonPress
         _anim = GetComponent<Animator>();
     }
 
+    // This method updates the grime according to its fall status and position
     void FixedUpdate()
     {
         if (isFalling && (hasFallen < fallDistance))
@@ -42,6 +47,8 @@ public class GrimeController : MonoBehaviour, Assets.Scripts.IButtonPress
         return true;
     }
 
+    //This method detects if a player model enteres the grime and animates the
+    //grime accordingly.
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -55,6 +62,8 @@ public class GrimeController : MonoBehaviour, Assets.Scripts.IButtonPress
         }
     }
 
+    //This method detects if all player models exits the grime and animates the
+    //grime accordingly.
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -71,6 +80,7 @@ public class GrimeController : MonoBehaviour, Assets.Scripts.IButtonPress
         }
     }
 
+    //Fall method sets is falling to true
     public void fall()
     {
         isFalling = true;

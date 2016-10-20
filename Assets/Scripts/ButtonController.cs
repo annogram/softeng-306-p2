@@ -3,6 +3,9 @@ using System.Collections;
 using Assets.Scripts;
 using Managers;
 
+///<summary>
+/// This class is responsible for the button logic for the button game object
+///</summary>
 public class ButtonController : MonoBehaviour {
     private Rigidbody2D _rb;
     private bool _pressed;
@@ -12,6 +15,7 @@ public class ButtonController : MonoBehaviour {
     public GameObject[] ButtonActions;
     public LayerMask[] CanPress;
     public AudioClip ButtonPressClip;
+
 	// Use this for initialization
 	void Start () {
         _gameController = GameController.Instance;
@@ -20,12 +24,8 @@ public class ButtonController : MonoBehaviour {
         _buttonAudio = GetComponent<AudioSource>();
         _buttonAudio.clip = ButtonPressClip;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
+    // This method deals with the logic of what happens when the button is pressed
     void OnTriggerEnter2D(Collider2D other) {
         foreach (var layer in CanPress) {
             // If the component that colided with this object is allowed to interact with it then do this
@@ -43,6 +43,7 @@ public class ButtonController : MonoBehaviour {
         }
     }
 
+    // This method deals with the logic of what happens when the button is un pressed
     void OnTriggerExit2D(Collider2D other) {
         if (_pressed) {
             _pressed = false;

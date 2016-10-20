@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
 
-
+///<summary>
+/// This class is responsible for the logic in the endless model
+///</summary>
 public class EndlessController : MonoBehaviour {
 
     public GameObject player1;
@@ -16,7 +18,7 @@ public class EndlessController : MonoBehaviour {
     public AudioClip ExitClip;
     public GameObject completedPanel;
     public int currentLevel;
-    
+
     public float maxSpeed = 100.0F;
     public float acceleration = 100.0F;
 
@@ -46,7 +48,7 @@ public class EndlessController : MonoBehaviour {
         _controller = GameController.Instance;
         _exitAudio = GetComponent<AudioSource>();
         _exitAudio.clip = ExitClip;
-        
+
 
     }
 
@@ -95,7 +97,7 @@ public class EndlessController : MonoBehaviour {
                 bumper.GetComponent<BumperScript>().OverCharge = rand.Next(3) == 0;
             }
         }
-        
+
         // Update token positions
         foreach (GameObject coin in coins) {
             Rigidbody2D coinRb = coin.GetComponent<Rigidbody2D>();

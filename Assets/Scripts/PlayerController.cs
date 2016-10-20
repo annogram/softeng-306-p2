@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using Managers;
 
-
+///<summary>
+/// This class is responsible for the player logic
 public class PlayerController : MonoBehaviour {
 
     public bool facingRight = true;
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpStrength;
     public LayerMask[] jumpableLayers;
     public float airCtrl;
-	public string displayName = "PLAYER";
+	  public string displayName = "PLAYER";
 
     public AudioClip playerRunningClip;
     public AudioClip playerJumpingClip;
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour {
     private Vector2 _jump;
     private float _airDrag = 1;
     private Animator _anim;
-	private Canvas _name;
+	  private Canvas _name;
     private GameController _controller;
     private float _sfxVolume;
     private float _player1Speed;
@@ -47,15 +48,15 @@ public class PlayerController : MonoBehaviour {
     private bool _inGrime;
 
     private bool isTouchingPlayer = false;
-    
+
     // Use this for initialization
     void Start() {
         _ball = false;
         _rb = GetComponent<Rigidbody2D>();
         _feet = GetComponent<EdgeCollider2D>();
         _anim = GetComponent<Animator>();
-		_name = GetComponentInChildren<Canvas> ();
-		setPlayerName (displayName);
+		    _name = GetComponentInChildren<Canvas> ();
+		    setPlayerName (displayName);
         _controller = GameController.Instance;
         AudioSource[] aSources = GetComponents<AudioSource>();
         _movementAudio = aSources[0];
@@ -71,13 +72,16 @@ public class PlayerController : MonoBehaviour {
         this.movementManager();
         this.movementAudioManager();
         this.HandleLayers();
-		this.reset();
+		    this.reset();
+
+        // Checks if player is in grime and applies the slow effect on the player
         if (_inGrime)
         {
             this.ApplySlow();
         }
     }
 
+    // This method deals with the collision entry with ramps and other player models
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Ramp") {
             _ball = true;
@@ -93,6 +97,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    // This method deals with the collision exit with ramps and other player models
     void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.tag == "Ramp") {
             _ball = false;
@@ -110,6 +115,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     #region Grime Methods
+    // This method sets all the appropriate variables when the player enters the grime
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Grime")
@@ -121,6 +127,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    // This method applies the slow effect on the player by setting the jumpStrength
+    // and a force to slow down the player
     void ApplySlow()
     {
         float playerSpeed = _rb.velocity.x;
@@ -136,6 +144,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    // This method sets all the appropriate variables when players exit the grime
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Grime")
@@ -250,10 +259,8 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        //moveX = (Mathf.Abs(rb.velocity.x) >= maxSpeed) ? 0 : Input.GetAxis("Horizontal");
-        //Vector2 forceX = new Vector2(moveX, 0f);
-        
-        // Horizontal movement to player object
+
+
 
     }
 

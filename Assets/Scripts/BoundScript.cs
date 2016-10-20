@@ -5,6 +5,10 @@ using Managers;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine.UI;
 
+///<summary>
+/// This class is responsible for the bound logic in the endless mode. For players dying.
+///</summary>
+
 public class BoundScript : MonoBehaviour
 {
     private GameController _controller;
@@ -14,7 +18,7 @@ public class BoundScript : MonoBehaviour
     public Camera cam;
     public int currentLevel;
     private AudioSource _exitAudio;
-    private LeaderboardController lb;    
+    private LeaderboardController lb;
 
     void Start() {
         _controller = GameController.Instance;
@@ -23,20 +27,18 @@ public class BoundScript : MonoBehaviour
         lb = LeaderboardController.Instance;
     }
 
+    // This method deals with the even of a player falling out of bounds
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
             _exitAudio.volume = _controller.GetSFXVolume();
             _exitAudio.Play();
             completedPanel.SetActive(true);
-            //lb.startPostScores();
             cam.GetComponent<Blur>().enabled = true;
             Time.timeScale = 0.0f;
-            //updateScores();
-            // GameController controller = GameController.Instance;
-            //controller.loadScreenSingle(nextScene);
         }
     }
 
+    // This method updates the scores
     private void updateScores() {
 
         int levelScore = GameController.Instance.GetTokensCollectedOnCurrentLevel();
