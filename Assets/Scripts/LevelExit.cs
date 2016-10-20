@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
-using UnityEditor.SceneManagement;
 using UnityStandardAssets.ImageEffects;
 using Managers;
 
@@ -35,6 +34,12 @@ public class LevelExit : MonoBehaviour {
 		LeaderboardController.Instance.startPostScores ();
     }
 
+	void Update() {
+		if (Input.GetKeyDown (KeyCode.L)) {
+			finishLevel ();
+		}
+	}
+
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
@@ -43,17 +48,19 @@ public class LevelExit : MonoBehaviour {
             Playa2IsInDaHouse = true;
         }
         if (Playa1IsInDaHouse && Playa2IsInDaHouse) {
-            _exitAudio.volume = _gameController.GetSFXVolume();
-            _exitAudio.Play();
-			completedPanel.SetActive (true);
-			LeaderboardController.Instance.startPostScores ();
-			cam.GetComponent<Blur>().enabled = true;
-			Time.timeScale = 0.0f;
-			updateScores ();
-           // GameController controller = GameController.Instance;
-            //controller.loadScreenSingle(nextScene);
+			finishLevel ();
         }
     }
+
+	private void finishLevel(){
+		_exitAudio.volume = _gameController.GetSFXVolume();
+		_exitAudio.Play();
+		completedPanel.SetActive (true);
+		LeaderboardController.Instance.startPostScores ();
+		cam.GetComponent<Blur>().enabled = true;
+		Time.timeScale = 0.0f;
+		updateScores ();
+	}
 
     void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Player") {
