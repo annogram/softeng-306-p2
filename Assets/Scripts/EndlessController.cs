@@ -16,7 +16,6 @@ public class EndlessController : MonoBehaviour {
 
     public string nextScene;
     public AudioClip ExitClip;
-    public GameObject completedPanel;
     public int currentLevel;
 
     public float maxSpeed = 100.0F;
@@ -57,11 +56,11 @@ public class EndlessController : MonoBehaviour {
         if (cam.orthographicSize > maxCamSize) {
             _exitAudio.volume = _controller.GetSFXVolume();
             _exitAudio.Play();
-            completedPanel.SetActive(true);
+            
 			LeaderboardController.Instance.startPostScores();
             cam.GetComponent<Blur>().enabled = true;
             Time.timeScale = 0.0f;
-            updateScores();
+
             // GameController controller = GameController.Instance;
             //controller.loadScreenSingle(nextScene);
         }
@@ -109,20 +108,5 @@ public class EndlessController : MonoBehaviour {
             }
        }
     }
-
-    private void updateScores() {
-
-        int levelScore = GameController.Instance.GetTokensCollectedOnCurrentLevel();
-        int totalScore = GameController.Instance.GetTotalTokens();
-
-        Transform scores = completedPanel.transform.GetChild(1);
-        Transform levelEntry = scores.transform.Find("LevelScorePoints");
-        Transform totalEntry = scores.transform.Find("TotalScorePoints");
-
-        Text LevelScorePoints = levelEntry.GetComponent<Text>();
-        Text TotalScorePoints = totalEntry.GetComponent<Text>();
-
-        LevelScorePoints.text = levelScore.ToString();
-        TotalScorePoints.text = totalScore.ToString();
-    }
+		
 }
