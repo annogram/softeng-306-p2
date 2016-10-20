@@ -1638,6 +1638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollContain: {fileID: 1084452205}
+  title: {fileID: 2024967496}
 --- !u!1 &776454366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3652,7 +3653,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: High Scores
+  m_Text: High Scores - Team teamname
 --- !u!222 &2024967497
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -7,11 +7,15 @@ namespace Managers{
 	
 public class HighScoreManager : MonoBehaviour {
 
-		//private GameController _gameController;
 		public GameObject ScrollContain;
-		// Use this for initialization
+		public Text title;
+
 		void Start () {
 			
+			//Update title with team name
+			title.text = "High Scores | Team: " + GameController.Instance._teamName; 
+
+			//Go through the list of levels, update scores accordfngly
 			int level = 0;
 			int totalScore = 0;
 			foreach (Transform entry in ScrollContain.transform){
@@ -20,7 +24,6 @@ public class HighScoreManager : MonoBehaviour {
 				//GameController.Instance.AddToken (3);
 				//GameController.Instance.AddToken (5);
 
-				//Go through the list of levels, update scores accordfngly
 				int levelScore = GameController.Instance.GetTokensCollectedOnLevel (level);
 				Transform currentHS = entry.transform.Find ("ScorePoints");
 				Transform label = entry.transform.Find ("ScoreText");
