@@ -66,9 +66,11 @@ public class Scrolllist : MonoBehaviour {
 			//first position is green
 			if (j==1)
 			{
-				ScoreName.color=Color.green;
-				ScorePoints.color=Color.green;
-				ScorePosition.color=Color.green;
+				ScorePanel.GetComponent<Image> ().color = new Color32( 0xFF, 0xFF, 0xFF, 0xE0 );
+				Color32 c = new Color32(0x4C,0x47,0x47,0xFF);
+				ScoreName.color = c;
+				ScorePoints.color = c;
+				ScorePosition.color = c;
 			}
 			ScorePosition.text = j+". ";
 			string helpString = "";
