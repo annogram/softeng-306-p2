@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
-using UnityEditor.SceneManagement;
 using UnityStandardAssets.ImageEffects;
 using Managers;
 
