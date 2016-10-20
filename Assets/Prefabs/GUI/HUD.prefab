@@ -93,7 +93,7 @@ GameObject:
   - 212: {fileID: 212000013146622864}
   - 61: {fileID: 61000010544887614}
   - 95: {fileID: 95000012857307368}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CounterCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7766de4db7bb64592b88b470210afe7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 7
 --- !u!114 &114000010993183010
 MonoBehaviour:
   m_ObjectHideFlags: 1
