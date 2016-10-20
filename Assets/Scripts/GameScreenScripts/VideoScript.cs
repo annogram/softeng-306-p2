@@ -7,6 +7,7 @@ public class VideoScript : MonoBehaviour
 
     private AudioSource _videoAudio;
     private MovieTexture _video;
+    private const string AVATAR_SELECT_SCREEN = "AvatarSelectScreen";
 
     // Use this for initialization
     void Start()
@@ -36,7 +37,7 @@ public class VideoScript : MonoBehaviour
 
         if (!_video.isPlaying)
         {
-            GameController.Instance.loadScreenSingle("LevelSelectScreen");
+            GameController.Instance.loadScreenSingle(AVATAR_SELECT_SCREEN);
         }
 
     }
