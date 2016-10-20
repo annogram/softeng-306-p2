@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter)), ExecuteInEditMode]
+///<summary>
+/// This class is responsible for generating ramps
+///</summary>
 public class RampGenerator : MonoBehaviour {
     public int SegmentCount;
     public float OuterRadius;
@@ -15,6 +18,8 @@ public class RampGenerator : MonoBehaviour {
     private void Update() {
         UpdateMesh();
     }
+
+    // This method uses mathematical algorithms to generate a ramp
     private void UpdateMesh() {
         _mesh.Clear();
         Vector3[] vertices = new Vector3[(SegmentCount + 1) * 2];

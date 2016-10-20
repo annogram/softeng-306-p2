@@ -4,6 +4,9 @@ using System.Collections;
 using Assets.Scripts;
 using System;
 
+///<summary>
+/// This class is responsible for the rail logic
+///</summary>
 public class RailScript : MonoBehaviour, IButtonPress {
 
     public float ChangeWidth;
@@ -29,6 +32,7 @@ public class RailScript : MonoBehaviour, IButtonPress {
         return true;
     }
 
+    // This method moves the rail depending on the state
     void FixedUpdate()
     {
         if (_translate && _increment != ChangeWidth)

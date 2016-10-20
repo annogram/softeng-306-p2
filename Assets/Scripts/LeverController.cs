@@ -3,6 +3,9 @@ using System.Collections;
 using Assets.Scripts;
 using Managers;
 
+///<summary>
+/// This class is responsible for the logic for the lever objects
+///</summary>
 public class LeverController : MonoBehaviour
 {
     private Rigidbody2D _rb;
@@ -14,6 +17,7 @@ public class LeverController : MonoBehaviour
     public GameObject[] ButtonActions;
     public LayerMask[] CanPress;
     public AudioClip LeverSwitchClip;
+
     // Use this for initialization
     void Start()
     {
@@ -26,18 +30,20 @@ public class LeverController : MonoBehaviour
         _leverAudio.clip = LeverSwitchClip;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
+        // Toggle the _pressed boolean state
         _pressed = !_pressed;
+
+        // Set the animation depending on the pressed state
         _anim.SetBool("Activated", _pressed);
+
+        // Audio triggers
         _leverAudio.volume = _gameController.GetSFXVolume();
         _leverAudio.Play();
+
+        // If pressed is true loop through all the connected componets and trigger their
+        // on trigger actions
         if (_pressed)
         {
             foreach (var actor in ButtonActions)
@@ -45,6 +51,8 @@ public class LeverController : MonoBehaviour
                 actor.GetComponent<IButtonPress>().Trigger();
             }
         }
+        // If pressed is false loop through the connected components and trigger their
+        // un trigger actions
         else
         {
             foreach (var actor in ButtonActions)

@@ -2,6 +2,10 @@
 using System.Collections;
 using Managers;
 
+///<summary>
+/// This class is responsible for the logic for springs
+///</summary>
+
 public class SpringController : MonoBehaviour {
 
     public GameObject spring;
@@ -29,8 +33,10 @@ public class SpringController : MonoBehaviour {
         _springAudio.clip = SpringLaunchClip;
     }
 
+    // This method is called when objects enter the spring trigger box collider
     void OnTriggerEnter2D(Collider2D col) {
 
+        // If the object collding is a player object set the shouldCompress boolean true
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Player2") {
             pc = col.gameObject.GetComponent<PlayerController>();
             shouldCompress = true;
@@ -38,8 +44,11 @@ public class SpringController : MonoBehaviour {
 
     }
 
+    // This method is called when objects exit the spring trigger box collider
     void OnTriggerExit2D(Collider2D col) {
 
+        // If the object exiting is a player object set the shouldCompress boolean false and
+        // apply forces to the player to act as a expanding spring
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Player2") {
             shouldCompress = false;
             Vector2 currentExitForce = new Vector2((1 - (spring.transform.localScale.x - minWidth) / (maxWidth - minWidth)) * (exitForce.x), 0);
@@ -53,6 +62,7 @@ public class SpringController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
 
+        //If shouldCompress is true comrpess the spring else expand the spring
         if (shouldCompress) {
             CompressSpring();
         } else {
@@ -61,6 +71,7 @@ public class SpringController : MonoBehaviour {
 
     }
 
+    //This method is responsible for expanding the spring
     private void ExpandSpring() {
 
         if (spring.transform.localScale.x < maxWidth)
@@ -76,6 +87,7 @@ public class SpringController : MonoBehaviour {
 
     }
 
+    //This method is responsible for compressing the spring
     private void CompressSpring() {
 
         bigCompressFactor = pc.IsTouchingPlayer() ? 1F : 0.3F;

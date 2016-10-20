@@ -4,8 +4,11 @@ using Assets.Scripts;
 using System;
 using Managers;
 
-public class PaddleScript : MonoBehaviour, IButtonPress {
+/// <summary>
+/// This class is responsible for the Paddle logic
+/// </summary>
 
+public class PaddleScript : MonoBehaviour, IButtonPress {
 
     private HingeJoint2D hj;
     private GameController _gameController;
