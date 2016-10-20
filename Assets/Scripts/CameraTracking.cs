@@ -39,7 +39,7 @@ namespace Assets.Scripts
         }
 
         void Update()
-		{	
+		{
             SetCameraPos();
             SetCameraSize();
         }
