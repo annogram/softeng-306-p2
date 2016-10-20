@@ -114,6 +114,7 @@ namespace Managers
             }
 
             ResetTokenCollectionOnCurrentLevel();
+			saveData ();
             SceneManager.LoadScene(screenName, LoadSceneMode.Single);
         }
 
@@ -223,14 +224,18 @@ namespace Managers
 
         void OnDestroy()
         {
-            PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
-            PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
-            PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
-            PlayerPrefs.SetString(_teamTokenPersistenceKey, ConvertTokensCollectedToString());
-            PlayerPrefs.SetInt(_teamLevelsPersistenceKey, _levelsUnlocked);
-            PlayerPrefs.SetInt(_teamEndlessPersistenceKey, _endlessHighscore);
-            PlayerPrefs.Save();
+			saveData ();
         }
+
+		private void saveData(){
+			PlayerPrefs.SetFloat("MasterVolume", _volume.Master);
+			PlayerPrefs.SetFloat("MusicVolume", _volume.Music);
+			PlayerPrefs.SetFloat("EffectVolume", _volume.Effects);
+			PlayerPrefs.SetString(_teamTokenPersistenceKey, ConvertTokensCollectedToString());
+			PlayerPrefs.SetInt(_teamLevelsPersistenceKey, _levelsUnlocked);
+			PlayerPrefs.SetInt(_teamEndlessPersistenceKey, _endlessHighscore);
+			PlayerPrefs.Save();
+		}
         #endregion
 
         #region Externally called handler methods
@@ -281,11 +286,7 @@ namespace Managers
 
         public bool attemptTeamLoadGame(string teamName)
         {
-			_teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
-			_teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
-            _teamEndlessPersistenceKey = teamName + ENDLESS_PERSISTENCE_KEY_SUFFIX;
-			_currentLevelTokens = 0;
-            _endlessHighscore = 0;
+			this.PreLoginLogic (teamName);
 
             if (!PlayerPrefs.HasKey(_teamTokenPersistenceKey))
             {
@@ -303,11 +304,7 @@ namespace Managers
 
         public bool attemptTeamNewGame(string teamName)
         {
-			_teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
-			_teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
-            _teamEndlessPersistenceKey = teamName + ENDLESS_PERSISTENCE_KEY_SUFFIX;
-            _currentLevelTokens = 0;
-            _endlessHighscore = 0;
+			this.PreLoginLogic (teamName);
 
             if (PlayerPrefs.HasKey(_teamTokenPersistenceKey))
             {
@@ -320,10 +317,22 @@ namespace Managers
             return true;
         }
 
+		private void PreLoginLogic(string teamName) {
+			_teamTokenPersistenceKey = teamName + TOKEN_PERSISTENCE_KEY_SUFFIX;
+			_teamLevelsPersistenceKey = teamName + LEVELS_PERSISTENCE_KEY_SUFFIX;
+			_teamEndlessPersistenceKey = teamName + ENDLESS_PERSISTENCE_KEY_SUFFIX;
+			_currentLevelTokens = 0;
+		}
+
 		private void PostLoginLogic() {
-			_levelsUnlocked = PlayerPrefs.GetInt(_teamLevelsPersistenceKey);
+			_levelsUnlocked = PlayerPrefs.HasKey(_teamLevelsPersistenceKey) ? PlayerPrefs.GetInt(_teamLevelsPersistenceKey) : 0;
+			_endlessHighscore = PlayerPrefs.HasKey (_teamEndlessPersistenceKey) ? PlayerPrefs.GetInt (_teamEndlessPersistenceKey) : 0;
 			PlayerPrefs.SetString(_teamTokenPersistenceKey, ConvertTokensCollectedToString());
 			PlayerPrefs.Save ();
+		}
+
+		public int GetEndlessHighscore() {
+			return _endlessHighscore;
 		}
 
 		public string getCurrentTeam ()
