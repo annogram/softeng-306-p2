@@ -8,17 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScreens/Start.unity
   - enabled: 1
+    path: Assets/Scenes/GameScreens/VideoScreen.unity
+  - enabled: 1
     path: Assets/Scenes/Levels/Level1_Akram_Jay.unity
   - enabled: 1
     path: Assets/Scenes/Levels/Level2_Nick.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Endless.unity
   - enabled: 1
     path: Assets/Scenes/Levels/Level3_Nick.unity
   - enabled: 0
     path: Assets/Scenes/Levels/Level5.unity
   - enabled: 0
     path: Assets/Scenes/Lvls/level1.unity
-  - enabled: 1
-    path: Assets/Scenes/Levels/Endless.unity
   - enabled: 0
     path: Assets/Scenes/Lvls/level2_Nick.unity
   - enabled: 0
