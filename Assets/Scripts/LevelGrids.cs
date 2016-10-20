@@ -16,7 +16,7 @@ public class LevelGrids : MonoBehaviour {
 		RectTransform parent = gameObject.GetComponent<RectTransform> ();
 		GridLayoutGroup grid = gameObject.GetComponent<GridLayoutGroup> ();
 
-		grid.cellSize = new Vector2 (parent.rect.width / col, parent.rect.height / row);
+		grid.cellSize = new Vector2 (parent.rect.width / col - 5, parent.rect.height / row - 5);
 
 	}
 }
