@@ -174,11 +174,13 @@ namespace Managers
                 {
                     soundIndex--;
                 }
-                if (soundIndex > Playlist.Length)
+                if (soundIndex > Playlist.Length -1)
                 {
                     _audioTrack = 1;
                     soundIndex = 0;
+                    Debug.Log(string.Format("Resetting index"));
                 }
+                Debug.Log(string.Format("Track: {0}\n Playlist Size: {1}", soundIndex, Playlist.Length));
                 soundToSwitchTo = Playlist[soundIndex];
                 _audioTrack++;
             }
