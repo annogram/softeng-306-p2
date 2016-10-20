@@ -14,7 +14,14 @@ public class HUDManager : MonoBehaviour {
 		//Set level number on GUI
 		Transform levelInfo = _infoHUD.transform.Find ("LevelNumber");
 		Text levelText = levelInfo.GetComponent<Text> ();
-		levelText.text = "Level "+level.ToString ();
+        if (level.ToString().Equals("-1"))
+        {
+            levelText.text = "Endless";
+        } else
+        {
+            levelText.text = "Level " + level.ToString();
+        }
+		
 
 		//Set team name on GUI
 		Transform teamInfo = _infoHUD.transform.Find ("TeamName");
