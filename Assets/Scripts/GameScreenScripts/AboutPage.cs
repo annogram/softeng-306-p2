@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+///<summary>
+/// This class is responsible for toggling the active page between start-page
+/// and about page.
+///</summary>
 public class AboutPage : MonoBehaviour {
 	public GameObject start;
 	public GameObject about;
-	// Use this for initialization
-	void Start () {
-	
-	}
 
-	// Update is called once per frame
-	void Update () {
-	}
-
+	//This method toggles the start page and about page
 	public void togglePage(){
+
 		start.SetActive (!start.active);
 		about.SetActive (!about.active);
 

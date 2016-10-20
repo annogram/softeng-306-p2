@@ -1,23 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Managers;
+/// <summary>
+/// This class is responsible for animating the start, login, about-page transitions.
+/// </summary>
 public class AnimateTransition : MonoBehaviour {
 	public Animator startAnim;
 	public Animator aboutAnim;
 	public Animator loginAnim;
 
-	// Use this for initialization
+	// This method is for initialization
 	void Start () {
 		startAnim.enabled = false;
 		aboutAnim.enabled = false;
 		loginAnim.enabled = false;
 	}
 
-	// Update is called once per frame
-	void Update () {
-
-	}
-
+	// This method animates the start page sliding in and the current page to slide out
 	public void showStartPage(){
 		startAnim.Play ("StartSlideIn");
 		if (aboutAnim.enabled) {
@@ -28,6 +27,7 @@ public class AnimateTransition : MonoBehaviour {
 		}
 	}
 
+	// This method animates the about page sliding in and the current page to slide out
 	public void showAboutPage(){
 		startAnim.enabled = true;
 		aboutAnim.enabled = true;
@@ -35,6 +35,7 @@ public class AnimateTransition : MonoBehaviour {
 		aboutAnim.Play ("AboutPageSlide");
 	}
 
+	// This method animates the login page sliding in and the current page to slide out
 	public void showLoginPage(){
 			startAnim.enabled = true;
 			loginAnim.enabled = true;

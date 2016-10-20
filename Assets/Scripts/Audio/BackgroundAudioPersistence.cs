@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+///<summary>
+/// This singleton class is responsible for the bg music persistence
+///</summary>
 public class BackgroundAudioPersistence : MonoBehaviour {
 
 	private static BackgroundAudioPersistence instance = null;
