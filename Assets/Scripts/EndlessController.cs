@@ -13,6 +13,7 @@ public class EndlessController : MonoBehaviour {
     public GameObject player1;
     public GameObject player2;
     public GameObject boundary;
+    public GameObject completedPanel;
 
     public string nextScene;
     public AudioClip ExitClip;
@@ -39,7 +40,7 @@ public class EndlessController : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         rb1 = player1.GetComponent<Rigidbody2D>();
         rb2 = player2.GetComponent<Rigidbody2D>();
         rbb = boundary.GetComponent<Rigidbody2D>();
@@ -52,29 +53,26 @@ public class EndlessController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate () {
+    void FixedUpdate() {
         if (cam.orthographicSize > maxCamSize) {
             _exitAudio.volume = _controller.GetSFXVolume();
             _exitAudio.Play();
-            
-			LeaderboardController.Instance.startPostScores();
+            completedPanel.SetActive(true);
+            updateScores();
             cam.GetComponent<Blur>().enabled = true;
             Time.timeScale = 0.0f;
-
-            // GameController controller = GameController.Instance;
-            //controller.loadScreenSingle(nextScene);
         }
 
         // Update platform positions
         foreach (GameObject platform in platforms) {
             Rigidbody2D platformRb = platform.GetComponent<Rigidbody2D>();
-            if ((platformRb.position.x + (platformRb.transform.localScale.x/2)) < rbb.position.x) {
+            if ((platformRb.position.x + (platformRb.transform.localScale.x / 2)) < rbb.position.x) {
                 platformRb.transform.Translate(platformRb.position + new Vector2(platformRb.transform.localScale.x, 0));
             }
         }
 
         // Update boundary position
-        Vector2 nextPos = rbb.position + new Vector2(maxSpeed/2, 0) * Time.fixedDeltaTime;
+        Vector2 nextPos = rbb.position + new Vector2(maxSpeed / 2, 0) * Time.fixedDeltaTime;
         Vector2 minPos = new Vector2(cam.transform.position.x - (cam.orthographicSize * Screen.width / Screen.height), 0);
         Vector2 newPos = nextPos.x > minPos.x ? new Vector2(nextPos.x, rbb.position.y) : new Vector2(rbb.position.x + (minPos.x - rbb.position.x) * Time.fixedDeltaTime, rbb.position.y);
         rbb.MovePosition(newPos);
@@ -106,7 +104,23 @@ public class EndlessController : MonoBehaviour {
                 float posY = rand.Next(8, 30);
                 coinRb.position = new Vector3(posX, posY, 10);
             }
-       }
+        }
     }
-		
+
+    // This method updates the scores
+    private void updateScores() {
+
+        int levelScore = GameController.Instance.GetTokensCollectedOnCurrentLevel();
+        int totalScore = GameController.Instance.GetEndlessHighscore();
+
+        Transform scores = completedPanel.transform.GetChild(1);
+        Transform levelEntry = scores.transform.Find("EndlessScorePoints");
+        Transform totalEntry = scores.transform.Find("TotalScorePoints");
+
+        Text LevelScorePoints = levelEntry.GetComponent<Text>();
+        Text TotalScorePoints = totalEntry.GetComponent<Text>();
+
+        LevelScorePoints.text = levelScore.ToString();
+        TotalScorePoints.text = totalScore.ToString();
+    }
 }

@@ -1038,7 +1038,7 @@ Prefab:
     - target: {fileID: 224000010863739632, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 232.48999
+      value: 154.49
       objectReference: {fileID: 0}
     - target: {fileID: 224000010863739632, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
@@ -1063,7 +1063,7 @@ Prefab:
     - target: {fileID: 224000011235687392, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 232.48999
+      value: 154.49
       objectReference: {fileID: 0}
     - target: {fileID: 224000011235687392, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
@@ -1088,12 +1088,12 @@ Prefab:
     - target: {fileID: 224000010863739632, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 344.97998
+      value: 188.98001
       objectReference: {fileID: 0}
     - target: {fileID: 224000011235687392, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 344.97998
+      value: 188.98001
       objectReference: {fileID: 0}
     - target: {fileID: 114000011826403556, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
@@ -3338,6 +3338,7 @@ MonoBehaviour:
   player1: {fileID: 1759825323}
   player2: {fileID: 385952915}
   boundary: {fileID: 141757314}
+  completedPanel: {fileID: 1309438923}
   nextScene: LevelSelect
   ExitClip: {fileID: 8300000, guid: 1a115858e5145184d8ec8adda441dcfa, type: 3}
   currentLevel: 8
