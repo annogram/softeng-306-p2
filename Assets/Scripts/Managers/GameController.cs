@@ -107,6 +107,7 @@ namespace Managers
         #region Screen management
         public void loadScreenSingle(string screenName)
         {
+            _audioSource.mute = false;
             //Debug.Log(string.Format("changing screens to {0}", screenName));
             if (SceneManager.GetActiveScene().name != screenName)
             {
@@ -115,6 +116,12 @@ namespace Managers
 
             ResetTokenCollectionOnCurrentLevel();
 			saveData ();
+            SceneManager.LoadScene(screenName, LoadSceneMode.Single);
+        }
+
+        public void loadScreenNoMusic(String screenName) {
+            _audioSource.mute = true;
+            ResetTokenCollectionOnCurrentLevel();
             SceneManager.LoadScene(screenName, LoadSceneMode.Single);
         }
 
