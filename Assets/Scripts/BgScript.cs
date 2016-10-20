@@ -17,7 +17,7 @@ public class BgScript : MonoBehaviour {
     // This method resets the level on collision where a player model goes out of bounds
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
-            _controller.loadScreenSingle(SceneManager.GetActiveScene().name);
+            _controller.restartCurrentScene();
         }
     }
 }
