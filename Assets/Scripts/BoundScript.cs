@@ -33,6 +33,7 @@ public class BoundScript : MonoBehaviour
             _exitAudio.volume = _controller.GetSFXVolume();
             _exitAudio.Play();
             completedPanel.SetActive(true);
+			updateScores ();
             cam.GetComponent<Blur>().enabled = true;
             Time.timeScale = 0.0f;
         }
@@ -42,10 +43,10 @@ public class BoundScript : MonoBehaviour
     private void updateScores() {
 
         int levelScore = GameController.Instance.GetTokensCollectedOnCurrentLevel();
-        int totalScore = GameController.Instance.GetTotalTokens();
+		int totalScore = GameController.Instance.GetEndlessHighscore();
 
         Transform scores = completedPanel.transform.GetChild(1);
-        Transform levelEntry = scores.transform.Find("LevelScorePoints");
+        Transform levelEntry = scores.transform.Find("EndlessScorePoints");
         Transform totalEntry = scores.transform.Find("TotalScorePoints");
 
         Text LevelScorePoints = levelEntry.GetComponent<Text>();
@@ -54,5 +55,10 @@ public class BoundScript : MonoBehaviour
         LevelScorePoints.text = levelScore.ToString();
         TotalScorePoints.text = totalScore.ToString();
     }
+
+	public void resume(){
+		Time.timeScale = 1f;
+		completedPanel.SetActive (false);
+	}
 
 }
