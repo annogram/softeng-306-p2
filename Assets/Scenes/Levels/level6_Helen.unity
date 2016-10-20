@@ -1642,7 +1642,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013428433912, guid: b2f83f6e6110549e8b50a894f0ce07db, type: 2}
       propertyPath: m_Name
-      value: CompletedPanel (1)
+      value: CompletedPanel
       objectReference: {fileID: 0}
     - target: {fileID: 114000013085013000, guid: b2f83f6e6110549e8b50a894f0ce07db,
         type: 2}
@@ -2123,7 +2123,7 @@ Prefab:
     - target: {fileID: 224000010863739632, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 201.55
+      value: 112.630005
       objectReference: {fileID: 0}
     - target: {fileID: 224000010863739632, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
@@ -2148,7 +2148,7 @@ Prefab:
     - target: {fileID: 224000011235687392, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 201.55
+      value: 112.630005
       objectReference: {fileID: 0}
     - target: {fileID: 224000011235687392, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
@@ -2168,12 +2168,12 @@ Prefab:
     - target: {fileID: 224000010863739632, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 283.1
+      value: 105.26001
       objectReference: {fileID: 0}
     - target: {fileID: 224000011235687392, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 283.1
+      value: 105.26001
       objectReference: {fileID: 0}
     - target: {fileID: 114000010126054956, guid: d22d4e6ee1a18490ba6032cfd55ac4a8,
         type: 2}
@@ -2440,7 +2440,6 @@ GameObject:
   - 114: {fileID: 1530781257}
   - 114: {fileID: 1530781256}
   - 114: {fileID: 1530781255}
-  - 114: {fileID: 1530781254}
   - 114: {fileID: 1530781253}
   m_Layer: 5
   m_Name: Canvas
@@ -2460,19 +2459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c303b3d5a106841a66d525906cdab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1530781254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1530781252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74c27e134c9b2486faea275e2d32deb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  completedPanel: {fileID: 1771345181}
-  cam: {fileID: 1326888718}
 --- !u!114 &1530781255
 MonoBehaviour:
   m_ObjectHideFlags: 0
