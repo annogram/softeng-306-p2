@@ -23,7 +23,7 @@ public class HighScoreManager : MonoBehaviour {
 				Transform label = entry.transform.Find ("ScoreText");
 				Text ScorePoints = currentHS.GetComponent<Text> ();
 				Text ScoreText = label.GetComponent<Text> ();
-				if (ScoreText.text == "Total") {
+				if (ScoreText.text == "Total" || ScoreText.text == "Endless Mode") {
 					continue;
 				}
 
@@ -37,6 +37,16 @@ public class HighScoreManager : MonoBehaviour {
 			Text totalText = total.GetComponent<Text> ();
 			totalText.text = totalScore.ToString ();
 
+			Transform endlessEntry = ScrollContain.transform.GetChild (1);
+			Transform endless = endlessEntry.transform.Find ("ScorePoints");
+			Text endlessText = endless.GetComponent<Text> ();
+
+			// Waiting on method to be written in GameController
+			//int endlessScore = GameController.Instance.GetEndlessScore ();
+
+			//Using placeholder for now
+			int endlessScore = 5;
+			endlessText.text = endlessScore.ToString ();
 		
 		}
 		
